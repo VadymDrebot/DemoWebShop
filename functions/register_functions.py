@@ -1,6 +1,8 @@
 import logging
 
-from constants.register_page_const import RegisterConstants as RegConst
+from selenium.webdriver.common.by import By
+
+from constants.register_page_const import RegisterConstants as RegConst, RegisterObject
 from functions.common_functions import CommonFunctions
 import textwrap
 
@@ -10,12 +12,12 @@ class RegisterFunctions(CommonFunctions, RegConst):
 
     def fill_register_fields(self, user):
         # self.logger.error(f"password; {user.password}")
-        self.wait_send_keys(locator=user.FIRST_NAME_INPUT_FIELD_xpath, data=user.first_name)
-        self.wait_send_keys(locator=user.LAST_NAME_INPUT_FIELD_xpath, data=user.last_name)
-        self.wait_send_keys(locator=user.EMAIL_INPUT_FIELD_xpath, data=user.email)
-        self.wait_send_keys(locator=user.PASSWORD_INPUT_FIELD_xpath, data=user.password)
-        self.wait_send_keys(locator=user.CONFIRM_PASSWORD_INPUT_FIELD_xpath, data=user.confirm_password)
-        self.tab_click()
+        self.wait_send_keys(locator=user.FIRST_NAME_INPUT_FIELD_id, locator_type=By.ID, data=user.first_name)
+        self.wait_send_keys(locator=user.LAST_NAME_INPUT_FIELD_id, locator_type=By.ID, data=user.last_name)
+        self.wait_send_keys(locator=user.EMAIL_INPUT_FIELD_id, locator_type=By.ID, data=user.email)
+        self.wait_send_keys(locator=user.PASSWORD_INPUT_FIELD_id, locator_type=By.ID, data=user.password)
+        self.wait_send_keys(locator=user.CONFIRM_PASSWORD_INPUT_FIELD_id, locator_type=By.ID, data=user.confirm_password)
+        self.press_keyboard_button()
 
     # def verify_email(self, email):
     #     if email.index("@") > 0:

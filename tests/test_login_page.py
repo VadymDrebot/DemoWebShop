@@ -31,7 +31,7 @@ class TestLoginPage:
         """
         login_page.fill_login_page_fields_and_click(email_data="", password_data="")
 
-        login_page.verify_text_presents_in_message(message_locator=LogInConstants.LOGIN_ERROR_MESSAGE_xpath,
+        login_page.verify_text_presence_in_message(message_locator=LogInConstants.LOGIN_ERROR_MESSAGE_xpath,
                                                    expected_text=LogInConstants.LOGIN_ERROR_MESSAGE_text)
         # login_page.logger.info(f"\nactual message:'{LogInConstants.LOGIN_ERROR_MESSAGE_text}' \n"
         #                        f"is in expected message: '{login_page.get_text_from_xpath(LogInConstants.LOGIN_ERROR_MESSAGE_xpath)}'")
@@ -40,7 +40,7 @@ class TestLoginPage:
         # 2. email - empty,  password - valid
         login_page.fill_login_page_fields_and_click(email_data="", password_data=LogInConstants.VALID_PASSWORD)
 
-        login_page.verify_text_presents_in_message(message_locator=LogInConstants.LOGIN_ERROR_MESSAGE_xpath,
+        login_page.verify_text_presence_in_message(message_locator=LogInConstants.LOGIN_ERROR_MESSAGE_xpath,
                                                    expected_text=LogInConstants.LOGIN_ERROR_MESSAGE_text)
         # login_page.logger.info(f"\nactual message:'{LogInConstants.LOGIN_ERROR_MESSAGE_text}' \n"
         #                        f"is in expected message: '{login_page.get_text_from_xpath(LogInConstants.LOGIN_ERROR_MESSAGE_xpath)}'")

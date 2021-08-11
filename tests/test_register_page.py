@@ -43,7 +43,7 @@ class TestRegisterPageNoClick():
 
     def test2(self, register_page):
         # last_name -- valid
-        user = RegisterObject(last_name=register_page.random_word(5))
+        user = RegisterObject(last_name=register_page.VALID_LAST_NAME)
 
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
@@ -53,9 +53,9 @@ class TestRegisterPageNoClick():
 
     def test3(self, register_page):
         # first_name -- valid , email - invalid
-        user = RegisterObject(first_name=register_page.random_word(3),
-                              email=register_page.random_word(3),
-                              confirm_password=register_page.random_word(7))
+        user = RegisterObject(first_name=register_page.VALID_FIRST_NAME,
+                              email=register_page.INVALID_EMAIL,
+                              confirm_password=register_page.VALID_PASSWORD)
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
@@ -64,9 +64,9 @@ class TestRegisterPageNoClick():
 
     def test4(self, register_page):
         # last_name - valid , email - valid , confirm_password - invalid
-        user = RegisterObject(last_name=register_page.random_word(3),
-                              email=LogInConstants.VALID_EMAIL,
-                              confirm_password=register_page.random_word(4))
+        user = RegisterObject(last_name=register_page.VALID_LAST_NAME,
+                              email=register_page.VALID_EMAIL,
+                              confirm_password=register_page.INVALID_PASSWORD)
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
@@ -75,10 +75,9 @@ class TestRegisterPageNoClick():
 
     def test5(self, register_page):
         # first_name - valid , password and confirm_password -- valid
-        passw = register_page.random_word(7)
-        user = RegisterObject(first_name=register_page.random_word(5),
-                              password=passw,
-                              confirm_password=passw)
+        user = RegisterObject(first_name=register_page.VALID_FIRST_NAME,
+                              password=register_page.VALID_PASSWORD,
+                              confirm_password=register_page.VALID_PASSWORD)
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
@@ -86,12 +85,11 @@ class TestRegisterPageNoClick():
         register_page.verify_error_messages(user)
 
     def test6(self, register_page):
-        # last_name - valid , password - valid ,  confirm_password -- invalid
-        passw = register_page.random_word(3)
-        user = RegisterObject(last_name=register_page.random_word(5),
-                              email=register_page.random_word(5),
-                              password=passw,
-                              confirm_password=passw)
+        # last_name - valid , email - invalid , password , confirm_password -- invalid
+        user = RegisterObject(last_name=register_page.VALID_LAST_NAME,
+                              email=register_page.INVALID_EMAIL,
+                              password=register_page.INVALID_PASSWORD,
+                              confirm_password=register_page.INVALID_PASSWORD)
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
@@ -99,11 +97,11 @@ class TestRegisterPageNoClick():
         register_page.verify_error_messages(user)
 
     def test7(self, register_page):
-        # first_name_name - valid , email - valid , password - invalid , confirm_password -- invalid
-        user = RegisterObject(first_name=register_page.random_word(3),
-                              email=LogInConstants.VALID_EMAIL,
-                              password=register_page.random_word(3),
-                              confirm_password=register_page.random_word(7))
+        # first_name_name - valid , email - valid , password - invalid , confirm_password -- valid
+        user = RegisterObject(first_name=register_page.VALID_FIRST_NAME,
+                              email=register_page.VALID_EMAIL,
+                              password=register_page.INVALID_PASSWORD,
+                              confirm_password=register_page.VALID_PASSWORD)
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
@@ -111,11 +109,10 @@ class TestRegisterPageNoClick():
         register_page.verify_error_messages(user)
 
     def test8(self, register_page):
-        # first_name_name - valid , email - valid , password - invalid , confirm_password -- invalid
-        user = RegisterObject(first_name=register_page.random_word(3),
-                              email=LogInConstants.VALID_EMAIL,
-                              password=register_page.random_word(7),
-                              confirm_password=register_page.random_word(3))
+        # last_name - valid ,  password - valid , confirm_password -- invalid
+        user = RegisterObject(last_name=register_page.VALID_LAST_NAME,
+                              password=register_page.VALID_PASSWORD,
+                              confirm_password=register_page.INVALID_PASSWORD)
         # 1. fill all fields
         register_page.fill_register_fields(user)
 
@@ -123,7 +120,7 @@ class TestRegisterPageNoClick():
         register_page.verify_error_messages(user)
 
 
-class TestRegisterPageClick():
+class TestRegisterPageClick:
     logger = logging.getLogger(__name__)
 
     """
