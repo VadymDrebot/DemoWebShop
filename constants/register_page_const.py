@@ -16,6 +16,11 @@ class RegisterConstants:
     EMAIL_INPUT_FIELD_xpath = "//form[@action='/register']//input[@id='Email']"
     PASSWORD_INPUT_FIELD_xpath = "//form[@action='/register']//input[@id='Password']"
     CONFIRM_PASSWORD_INPUT_FIELD_xpath = "//form[@action='/register']//input[@id='ConfirmPassword']"
+    # FIRST_NAME_INPUT_FIELD_id = "FirstName"
+    # LAST_NAME_INPUT_FIELD_id = "LastName"
+    # EMAIL_INPUT_FIELD_id = "Email"
+    # PASSWORD_INPUT_FIELD_id = "Password"
+    # CONFIRM_PASSWORD_INPUT_FIELD_id = "ConfirmPassword"
 
     # ERROR_FIRST_NAME_IS_REQUIRED_xpath="//span[contains(text(),'First name is required.')]"
     FIELD_VALIDATION_ERROR_LIST_xpath = "//span[@class='field-validation-error']"  # list of errors after click 'register'
