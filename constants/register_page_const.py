@@ -7,7 +7,7 @@ class RegisterConstants:
     VALID_EMAIL = "vadim1@yahoo.com"
     VALID_PASSWORD = "abcdefg"
     INVALID_EMAIL = "abc"
-    INVALID_PASSWORD="abcde"
+    INVALID_PASSWORD = "abcde"
 
     GENDER_MAIL_CHECK_BOX_xpath = "//input[@id='gender-male']"
     GENDER_FEMAIL_CHECK_BOX_xpath = "//input[@id='gender-female']"
@@ -57,8 +57,10 @@ class RegisterObject(RegisterConstants):
         self.list_of_field_names = ["FIRST_NAME      ", "LAST_NAME       ", "EMAIL           ", "PASSWORD        ", "CONFIRM_PASSWORD"]
         self.list_of_error_messages = [first_name_error_message, last_name_error_message, email_error_message,
                                        password_error_message, confirm_password_error_message]
-        self.list_of_xpathes = [self.FIRST_NAME_ERROR_xpath, self.LAST_NAME_ERROR_xpath, self.EMAIL_ERROR_xpath, self.PASSWORD_ERROR_xpath,
-                                self.CONFIRM_PASSWORD_ERROR_xpath]
+        self.list_of_error_xpathes = [self.FIRST_NAME_ERROR_xpath, self.LAST_NAME_ERROR_xpath, self.EMAIL_ERROR_xpath, self.PASSWORD_ERROR_xpath,
+                                      self.CONFIRM_PASSWORD_ERROR_xpath]
+        self.list_of_input_field_xpathes = [self.FIRST_NAME_INPUT_FIELD_xpath, self.LAST_NAME_INPUT_FIELD_xpath, self.EMAIL_INPUT_FIELD_xpath,
+                                            self.PASSWORD_INPUT_FIELD_xpath, self.CONFIRM_PASSWORD_INPUT_FIELD_xpath]
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
