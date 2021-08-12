@@ -8,24 +8,26 @@ from constants.register_page_const import RegisterConstants, RegisterObject
 
 class TestRegisterPageNoClick():
     """
-    e- empty , v - valid , i - invalid              valid        invalid
+    Values for input fields: e- empty ,  v - valid ,  i - invalid
+    Error messages:
+        1. 'Wrong email'
+        2. {field name} is required
+        3. "The password should have at least 6 characters."
+        4. "The password and confirmation password do not match."
 
-    tests №   :  1  2  3  4  5  6  7  8
-    first_name:  e  e  v  e  v  e  v  e                any         --
-    last_name :  e  v  e  v  e  v  e  v                any         --
-    email     :  e  e  i  v  e  i  v  e               *@*.*      not *@*.*
-    password  :  e  e  e  e  v  i  i  v              >=6 char    <6 char
-    conf_passw:  e  e  v  i  v  i  v  i            ==password    !=password
+    tests №   :             1   2   3   4   5   6   7   8               valid        invalid
 
-    Tests 1-8 without click 'Register' button. Tests 8- with click 'Register' button
-    1. all empty fields. Expected result: no error message
-    2. last_name -- valid, rest fields --  empty. Expected result: no error message
-    3. 'first name', 'confirm_password' -- valid, 'email'  -- invalid, rest - empty, Expected result:error messages: 'Wrong email' and '"The password and confirmation password do not match."
-    4. 'last name', 'email' -- valid,'confirm password' - invalid, rest -- empty. Expected result:"The password and confirmation password do not match."
-    5. 'password==confirm password' <5 characters , without click 'Register' button
-    6. 'password==confirm password' <5 characters , with click 'Register' button
-    7. 'password' != 'confirm password' , without click 'Register' button
-    8. all fields are valid
+    first_name:             e   e   v   e   v   e   v   e                any         --
+    last_name :             e   v   e   v   e   v   e   v                any         --
+    email     :             e   e   i   v   e   i   v   e               *@*.*      not *@*.*
+    password  :             e   e   e   e   v   i   i   v              >=6 char    <6 char
+    conf_passw:             e   e   v   i   v   i   v   i            ==password    !=password
+
+    first_name_error_mes:   -   -   -   -   -   -   -   -
+    last_name_error_mes :   -   -   -   -   -   -   -   -
+    email_error_mes     :   -   -   1   -   -   1   -   -
+    password_error_mes  :   -   -   -   -   -   3   3   -
+    conf_passw_error_mes:   -   -   4   4   -   -   4   4
     """
 
     logger = logging.getLogger(__name__)
@@ -59,7 +61,7 @@ class TestRegisterPageNoClick():
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
-        # 2. verify 5 error messages '... is required' appears next to appropriate fields
+        # 2. verify 'Wrong email' and "The password and confirmation password do not match." error messages appears next to appropriate fields
         register_page.verify_error_messages(user)
 
     def test4(self, register_page):
@@ -70,7 +72,7 @@ class TestRegisterPageNoClick():
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
-        # 2. verify 5 error messages '... is required' appears next to appropriate fields
+        # 2. verify "The password and confirmation password do not match." error message appears next to appropriate fields
         register_page.verify_error_messages(user)
 
     def test5(self, register_page):
@@ -81,7 +83,7 @@ class TestRegisterPageNoClick():
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
-        # 2. verify 5 error messages '... is required' appears next to appropriate fields
+        # 2. verify no error messages appears next to appropriate fields
         register_page.verify_error_messages(user)
 
     def test6(self, register_page):
@@ -93,7 +95,7 @@ class TestRegisterPageNoClick():
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
-        # 2. verify 5 error messages '... is required' appears next to appropriate fields
+        # 2. verify 'Wrong email' and  "The password should have at least 6 characters." error messages  appears next to appropriate fields
         register_page.verify_error_messages(user)
 
     def test7(self, register_page):
@@ -105,7 +107,7 @@ class TestRegisterPageNoClick():
         # 1. fill all fields with empty values
         register_page.fill_register_fields(user)
 
-        # 2. verify 5 error messages '... is required' appears next to appropriate fields
+        # 2. verify "... at least 6 characters."  and " do not match."error messages appears next to appropriate fields
         register_page.verify_error_messages(user)
 
     def test8(self, register_page):
@@ -116,7 +118,7 @@ class TestRegisterPageNoClick():
         # 1. fill all fields
         register_page.fill_register_fields(user)
 
-        # 2. verify 5 error messages '... is required' appears next to appropriate fields
+        # 2. verify "The password and confirmation password do not match." error message appears next to appropriate fields
         register_page.verify_error_messages(user)
 
 
@@ -124,14 +126,27 @@ class TestRegisterPageClick:
     logger = logging.getLogger(__name__)
 
     """
-    e- empty , v - valid , i - invalid                      valid        invalid
-
-    tests №   :  9  10  11  12  13  14  15  16
-    first_name:  e  e   v   e   v   e   v   e                any         --
-    last_name :  e  v   e   v   e   v   e   v                any         --
-    email     :  e  e   i   v   e   i   v   e               *@*.*      not *@*.*
-    password  :  e  e   e   e   v   i   i   v              >=6 char    <6 char
-    conf_passw:  e  e   v   i   v   i   v   i            ==password    !=password
+    Values for input fields: e- empty ,  v - valid ,  i - invalid
+    Error messages:
+        1. 'Wrong email'
+        2. {field name} is required
+        3. "The password should have at least 6 characters."
+        4. "The password and confirmation password do not match."
+ 
+    tests №   :             9  10  11  12  13  14  15  16               valid        invalid
+    
+    first_name          :   e   e   v   e   v   e   v   e                any         --
+    last_name           :   e   v   e   v   e   v   e   v                any         --
+    email               :   e   e   i   v   e   i   v   e               *@*.*      not *@*.*
+    password            :   e   e   e   e   v   i   i   v              >=6 char    <6 char
+    conf_passw          :   e   e   v   i   v   i   v   i            ==password    !=password
+    
+    first_name_error_mes:   2   2   -   2   -   2   -   2
+    last_name_error_mes :   2   -   2   -   2   -   2   -
+    email_error_mes     :   2   2   1   -   2   1   -   2
+    password_error_mes  :   2   2   2   2   -   3   3   -
+    conf_passw_error_mes:   2   2   4   4   -   -   4   4
+    
     """
 
     def test9(self, register_page):
