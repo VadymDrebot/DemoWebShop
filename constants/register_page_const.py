@@ -11,11 +11,13 @@ class RegisterConstants:
 
     GENDER_MAIL_CHECK_BOX_xpath = "//input[@id='gender-male']"
     GENDER_FEMAIL_CHECK_BOX_xpath = "//input[@id='gender-female']"
-    # FIRST_NAME_INPUT_FIELD_xpath = "//input[@id='FirstName']"
-    # LAST_NAME_INPUT_FIELD_xpath = "//input[@id='LastName']"
-    # EMAIL_INPUT_FIELD_xpath = "//form[@action='/register']//input[@id='Email']"
-    # PASSWORD_INPUT_FIELD_xpath = "//form[@action='/register']//input[@id='Password']"
-    # CONFIRM_PASSWORD_INPUT_FIELD_xpath = "//form[@action='/register']//input[@id='ConfirmPassword']"
+
+    FIRST_NAME_INPUT_FIELD_xpath = "//input[@id='FirstName']"
+    LAST_NAME_INPUT_FIELD_xpath = "//input[@id='LastName']"
+    EMAIL_INPUT_FIELD_xpath = "//form[@action='/register']//input[@id='Email']"
+    PASSWORD_INPUT_FIELD_xpath = "//form[@action='/register']//input[@id='Password']"
+    CONFIRM_PASSWORD_INPUT_FIELD_xpath = "//form[@action='/register']//input[@id='ConfirmPassword']"
+
     FIRST_NAME_INPUT_FIELD_id = "FirstName"
     LAST_NAME_INPUT_FIELD_id = "LastName"
     EMAIL_INPUT_FIELD_id = "Email"

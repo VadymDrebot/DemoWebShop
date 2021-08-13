@@ -32,7 +32,7 @@ class CommonFunctions(Waitings):
         input_field = self.driver.driver.find_element(by=locator_type, value=locator)
         input_field.clear()
 
-    def press_keyboard_button(self, button=Keys.TAB):
+    def press_keyboard_button(self, button):
         actions = ActionChains(self.driver)
         actions.send_keys(button)
         actions.perform()

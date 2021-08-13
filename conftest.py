@@ -14,7 +14,7 @@ from functions.register_functions import RegisterFunctions
 
 @pytest.fixture()
 def start_page():
-    driver = webdriver.Chrome(executable_path=start_page_const.PATH_TO_WEBDRIVER)
+    driver = webdriver.Chrome(executable_path=start_page_const.PATH_TO_CHROME_WEBDRIVER)
     driver.get(start_page_const.START_PAGE_url)
     driver.implicitly_wait(time_to_wait=10)
     yield CommonFunctions(driver)
