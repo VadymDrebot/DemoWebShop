@@ -48,16 +48,16 @@ class CommonFunctions(Waitings):
         assert actual_message == expected_message
 
     @wait_5_sec
-    def click_button_and_verify_appeared_element(self, button_locator, appeared_element_locator,locator_type=By.XPATH):
+    def click_button_and_verify_appeared_element(self, button_locator, appeared_element_locator, locator_type=By.XPATH):
         # Click  button(by locator) and check XPATH(expecting_locator) for approving existing of the element
         self.wait_click_ability_and_click(locator=button_locator)
         self.wait_until_visibility_of_element(locator=appeared_element_locator, period=2)
         assert self.driver.find_element(by=locator_type, value=appeared_element_locator)
 
     @wait_5_sec
-    def click_button_and_verify_new_url(self, button_locator, url):
+    def click_button_and_verify_new_url(self, button_locator, button_locator_type, url):
         # Click button(by locator) and check new URL(expected)
-        self.wait_click_ability_and_click(button_locator)
+        self.wait_click_ability_and_click(locator=button_locator, locator_type=button_locator_type)
 
         # An expectation for checking the current url.
         WebDriverWait(self.driver, timeout=5).until(EC.url_to_be(url))
@@ -74,7 +74,7 @@ class CommonFunctions(Waitings):
         return elem.text
 
     # @log
-    def verify_presence_of_element(self, locator,locator_type=By.XPATH):
+    def verify_presence_of_element(self, locator, locator_type=By.XPATH):
         """ check the presence of the element by its xpath"""
         # True -- element is present at DOM
         # False -- element is absent at DOM
@@ -86,12 +86,12 @@ class CommonFunctions(Waitings):
             return False
         return True
 
-    def verify_checkbox_selected(self, locator,locator_type=By.XPATH):
+    def verify_checkbox_selected(self, locator, locator_type=By.XPATH):
         # self.logger.info(f"checkbox: {self.driver.find_element_by_xpath(locator).is_selected()}")
         return self.driver.find_element(by=locator_type, value=locator).is_selected()
 
     # @log
-    def verify_message(self, locator, expected_text,locator_type=By.XPATH):
+    def verify_message(self, locator, expected_text, locator_type=By.XPATH):
         """ verify 'expected_text' in 'locator'"""
         # verify that expected_text==text  in locator
         self.wait_until_text_in_element(locator, expected_text)
@@ -109,11 +109,11 @@ class CommonFunctions(Waitings):
         # self.logger.error(f"      message: -{message}- ")
         assert expected_text in message
 
-    def get_value_from_input_field(self, locator,locator_type=By.XPATH):
+    def get_value_from_input_field(self, locator, locator_type=By.XPATH):
         WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located((locator_type, locator)))
         return self.driver.find_element(by=locator_type, value=locator).get_attribute('value')
 
-    def get_text_from_locator(self, locator,locator_type=By.XPATH):
+    def get_text_from_locator(self, locator, locator_type=By.XPATH):
         WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located((locator_type, locator)))
         return self.driver.find_element(by=locator_type, value=locator).text
 

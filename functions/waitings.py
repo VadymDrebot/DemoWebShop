@@ -52,7 +52,7 @@ class Waitings():
     @wait_5_sec
     def wait_click_ability_and_click(self, locator, locator_type=By.XPATH):
         WebDriverWait(self.driver, timeout=5).until(EC.element_to_be_clickable((locator_type, locator)))
-        self.driver.driver.find_element(by=locator_type, value=locator).click()
+        self.driver.find_element(by=locator_type, value=locator).click()
 
     def wait_send_keys(self, locator, data, locator_type=By.XPATH):
         WebDriverWait(self.driver, timeout=10).until(EC.element_to_be_clickable((locator_type, locator)))
