@@ -4,14 +4,6 @@ from selenium.webdriver.common.by import By
 import logging
 
 
-def log(target_func):
-    logger = logging.getLogger(target_func.__name__)
-
-    def wrapper(*args, **kwargs):
-        logger.info(f"{target_func.__doc__} --- {kwargs}")
-        return target_func(*args, **kwargs)
-
-    return wrapper
 
 
 def wait_5_sec(target):
@@ -38,15 +30,13 @@ class Waitings():
         # wait until element became visible
         WebDriverWait(self.driver, timeout=period).until(EC.visibility_of_element_located((locator_type, locator)))
 
-    # def invisibility_of_element(self,locator):
-    # 	return WebDriverWait(self.driver, timeout=1).until(EC.visibility_of_element_located((By.XPATH, locator)))
 
     @wait_5_sec
     def scroll_to_element(self, locator):
         self.driver.execute_script(f"window.scrollTo(0, 1500)")
 
     def wait_until_text_in_element(self, locator, text, locator_type=By.XPATH):
-        # self.logger.warning(f"locator before:{locator} , textbefore:{text}")
+        # self.logger.warning(f"locator before:{locator} , text before:{text}")
         WebDriverWait(self.driver, timeout=5).until(EC.text_to_be_present_in_element((locator_type, locator), text))
 
     @wait_5_sec

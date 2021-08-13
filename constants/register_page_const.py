@@ -1,5 +1,5 @@
 # from functions.common_functions import GeneratedConstants
-
+from functions.helpers import random_valid_email
 
 class RegisterConstants:
     VALID_FIRST_NAME = "username"
@@ -46,8 +46,12 @@ class RegisterConstants:
 
     REGISTER_BUTTON_xpath = "//input[@id='register-button']"
 
+    EMAIL_ALREADY_EXISTS_xpath = "//div[@class='validation-summary-errors']"
+    EMAIL_ALREADY_EXISTS_text = "The specified email already exists"
     SUCCESS_REGISTRATION_xpath = "//div[@class='result']"
     SUCCESS_REGISTRATION_text = "Your registration completed"
+
+    EMAIL_IN_HEADER_xpath = "//a[@class='account' and contains(text(),'{email}')]"
 
 
 class RegisterObject(RegisterConstants):

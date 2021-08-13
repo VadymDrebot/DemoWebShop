@@ -7,26 +7,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-# class GeneratedConstants:
 
 
 class CommonFunctions(Waitings):
     # common functions  for all/any points of the project
-    @staticmethod
-    def random_word(count=5):
-        # generate random word up to 'count' symbols
-        random_word = ''
-        for elem in range(count):
-            random_word = random_word + random.choice(string.ascii_letters)
-        return random_word
-
-    @staticmethod
-    def valid_email():
-        # create email in format:  ***@***.***
-        email = str(CommonFunctions.random_word(3) + "@" + CommonFunctions.random_word(3) + "." + CommonFunctions.random_word(3))
-        return email
 
     def clear_input_field(self, locator, locator_type=By.XPATH):
         input_field = self.driver.driver.find_element(by=locator_type, value=locator)
@@ -71,7 +56,7 @@ class CommonFunctions(Waitings):
         # self.logger.info(elem.text)
         return elem.text
 
-    # @log
+
     def verify_presence_of_element(self, locator, locator_type=By.XPATH):
         """ check the presence of the element by its xpath"""
         # True -- element is present at DOM
@@ -88,7 +73,7 @@ class CommonFunctions(Waitings):
         # self.logger.info(f"checkbox: {self.driver.find_element_by_xpath(locator).is_selected()}")
         return self.driver.find_element(by=locator_type, value=locator).is_selected()
 
-    # @log
+
     def verify_message(self, locator, expected_text, locator_type=By.XPATH):
         """ verify 'expected_text' in 'locator'"""
         # verify that expected_text==text  in locator
@@ -112,8 +97,11 @@ class CommonFunctions(Waitings):
         return self.driver.find_element(by=locator_type, value=locator).get_attribute('value')
 
     def get_text_from_locator(self, locator, locator_type=By.XPATH):
-        WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located((locator_type, locator)))
-        return self.driver.find_element(by=locator_type, value=locator).text
+        if self.verify_presence_of_element(locator):
+            # WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located((By.XPATH, locator)))
+            return self.driver.find_element(by=locator_type, value=locator).text
+        else:
+            return "field is empty"
 
     def get_list_of_elements(self, list_locator):
         return self.wait_find_elements(list_locator)
