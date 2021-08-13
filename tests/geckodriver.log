@@ -1,0 +1,825 @@
+1628582970146	geckodriver	INFO	Listening on 127.0.0.1:58158
+1628582973161	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile5fAe3s"
+*** You are running in headless mode.
+1628582973956	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile5fAe3s\\search.json.mozlz4", (void 0)))
+1628582976001	Marionette	INFO	Listening on port 59363
+1628582976388	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628582979585	Marionette	INFO	Stopped listening on port 59363
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628582987921	geckodriver	INFO	Listening on 127.0.0.1:58288
+1628582990950	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileaaOuB2"
+*** You are running in headless mode.
+1628582991334	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileaaOuB2\\search.json.mozlz4", (void 0)))
+1628582992636	Marionette	INFO	Listening on port 58296
+1628582993061	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628582997298	Marionette	INFO	Stopped listening on port 58296
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628583021319	geckodriver	INFO	Listening on 127.0.0.1:61120
+1628583024343	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilecrgHQm"
+1628583024773	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilecrgHQm\\search.json.mozlz4", (void 0)))
+1628583026827	Marionette	INFO	Listening on port 61128
+1628583027062	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628583031610	Marionette	INFO	Stopped listening on port 61128
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628583042568	geckodriver	INFO	Listening on 127.0.0.1:61961
+1628583045592	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile0sWqlD"
+1628583045991	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile0sWqlD\\search.json.mozlz4", (void 0)))
+1628583047974	Marionette	INFO	Listening on port 61969
+1628583048311	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628583051813	Marionette	INFO	Stopped listening on port 61969
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628583062519	geckodriver	INFO	Listening on 127.0.0.1:54468
+1628583065560	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileLPcKUb"
+1628583065960	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileLPcKUb\\search.json.mozlz4", (void 0)))
+1628583067977	Marionette	INFO	Listening on port 54476
+1628583068279	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628583072812	Marionette	INFO	Stopped listening on port 54476
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628599327943	geckodriver	INFO	Listening on 127.0.0.1:58210
+1628599330961	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilelS4pdW"
+1628599331950	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilelS4pdW\\search.json.mozlz4", (void 0)))
+1628599334296	Marionette	INFO	Listening on port 58218
+1628599334781	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628599340661	Marionette	INFO	Stopped listening on port 58218
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628599341209	geckodriver	INFO	Listening on 127.0.0.1:58270
+1628599344237	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile8UllfP"
+1628599344634	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile8UllfP\\search.json.mozlz4", (void 0)))
+1628599346633	Marionette	INFO	Listening on port 58278
+1628599346977	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628599352597	Marionette	INFO	Stopped listening on port 58278
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628599353156	geckodriver	INFO	Listening on 127.0.0.1:58331
+1628599356186	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileZt5L3z"
+1628599356663	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileZt5L3z\\search.json.mozlz4", (void 0)))
+1628599358653	Marionette	INFO	Listening on port 58339
+1628599358905	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628599364304	Marionette	INFO	Stopped listening on port 58339
+1628599364916	geckodriver	INFO	Listening on 127.0.0.1:58391
+1628599367952	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileNbX1GJ"
+1628599368424	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileNbX1GJ\\search.json.mozlz4", (void 0)))
+1628599370414	Marionette	INFO	Listening on port 58399
+1628599370679	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628599373813	Marionette	INFO	Stopped listening on port 58399
+1628599374344	geckodriver	INFO	Listening on 127.0.0.1:58442
+1628599409859	geckodriver	INFO	Listening on 127.0.0.1:58448
+1628599412882	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilekujZwM"
+1628599413378	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilekujZwM\\search.json.mozlz4", (void 0)))
+1628599415343	Marionette	INFO	Listening on port 58456
+1628599415604	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628599420407	Marionette	INFO	Stopped listening on port 58456
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628599420985	geckodriver	INFO	Listening on 127.0.0.1:58508
+1628599424032	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilemZ6snV"
+1628599424471	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilemZ6snV\\search.json.mozlz4", (void 0)))
+1628599426401	Marionette	INFO	Listening on port 58516
+1628599426750	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628599434381	Marionette	INFO	Stopped listening on port 58516
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628599434969	geckodriver	INFO	Listening on 127.0.0.1:58567
+1628599438005	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilekX5yWa"
+1628599438472	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilekX5yWa\\search.json.mozlz4", (void 0)))
+1628599440474	Marionette	INFO	Listening on port 58575
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+1628600193443	Marionette	INFO	Stopped listening on port 58575
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+cated. Use //# instead
+1628599499396	Marionette	INFO	Stopped listening on port 58629
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628599499922	geckodriver	INFO	Listening on 127.0.0.1:58673
+1628599502952	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileHUSsEA"
+1628599503331	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileHUSsEA\\search.json.mozlz4", (void 0)))
+1628599505349	Marionette	INFO	Listening on port 58681
+1628599505666	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628599509327	Marionette	INFO	Stopped listening on port 58681
+[Parent 6304, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628599509872	geckodriver	INFO	Listening on 127.0.0.1:58726
+1628600106021	geckodriver	INFO	Listening on 127.0.0.1:58752
+1628600109052	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileWPE4fj"
+1628600109456	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileWPE4fj\\search.json.mozlz4", (void 0)))
+1628600111423	Marionette	INFO	Listening on port 58760
+1628600111766	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628600116256	Marionette	INFO	Stopped listening on port 58760
+[Parent 6192, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+1628600361602	geckodriver	INFO	Listening on 127.0.0.1:58806
+1628600364625	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile9zLUe3"
+1628600365077	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile9zLUe3\\search.json.mozlz4", (void 0)))
+1628600367096	Marionette	INFO	Listening on port 58816
+1628600367347	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628600370377	Marionette	INFO	Stopped listening on port 58816
+[Parent 5188, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628600387804	geckodriver	INFO	Listening on 127.0.0.1:61432
+1628600390838	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileIp8WyY"
+*** You are running in headless mode.
+1628600391254	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileIp8WyY\\search.json.mozlz4", (void 0)))
+1628600392779	Marionette	INFO	Listening on port 61440
+1628600392960	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628600404005	Marionette	INFO	Stopped listening on port 61440
+1628600961856	geckodriver	INFO	Listening on 127.0.0.1:61503
+1628600964879	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile09lHbf"
+1628600965300	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile09lHbf\\search.json.mozlz4", (void 0)))
+1628600967319	Marionette	INFO	Listening on port 61512
+1628600967611	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628600974336	Marionette	INFO	Stopped listening on port 61512
+1628601023557	geckodriver	INFO	Listening on 127.0.0.1:53891
+1628601026599	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileBGvbVg"
+*** You are running in headless mode.
+1628601026972	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileBGvbVg\\search.json.mozlz4", (void 0)))
+1628601028394	Marionette	INFO	Listening on port 53899
+1628601028718	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628601036405	Marionette	INFO	Stopped listening on port 53899
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628601047462	geckodriver	INFO	Listening on 127.0.0.1:52580
+1628601050495	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileeAyDjV"
+*** You are running in headless mode.
+1628601050955	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileeAyDjV\\search.json.mozlz4", (void 0)))
+1628601052048	Marionette	INFO	Listening on port 52588
+1628601052114	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628601059474	Marionette	INFO	Stopped listening on port 52588
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628601073361	geckodriver	INFO	Listening on 127.0.0.1:50964
+1628601076394	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilekTDK8n"
+*** You are running in headless mode.
+1628601076788	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilekTDK8n\\search.json.mozlz4", (void 0)))
+1628601077910	Marionette	INFO	Listening on port 50972
+1628601078014	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628601083293	Marionette	INFO	Stopped listening on port 50972
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628601096105	geckodriver	INFO	Listening on 127.0.0.1:53953
+1628601099129	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilemw7ieI"
+*** You are running in headless mode.
+1628601099556	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilemw7ieI\\search.json.mozlz4", (void 0)))
+1628601100639	Marionette	INFO	Listening on port 53961
+1628601100750	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628601104141	Marionette	INFO	Stopped listening on port 53961
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628601114241	geckodriver	INFO	Listening on 127.0.0.1:63411
+1628601117283	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileKF53u7"
+*** You are running in headless mode.
+1628601117795	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileKF53u7\\search.json.mozlz4", (void 0)))
+1628601118917	Marionette	INFO	Listening on port 63419
+1628601119412	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628601129205	Marionette	INFO	Stopped listening on port 63419
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628601948610	geckodriver	INFO	Listening on 127.0.0.1:55821
+1628601951632	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilevHz7En"
+*** You are running in headless mode.
+1628601952067	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilevHz7En\\search.json.mozlz4", (void 0)))
+1628601953212	Marionette	INFO	Listening on port 55829
+1628601953252	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628601958709	Marionette	INFO	Stopped listening on port 55829
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628602235882	geckodriver	INFO	Listening on 127.0.0.1:58043
+1628602238922	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile1oYbHy"
+*** You are running in headless mode.
+1628602239353	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile1oYbHy\\search.json.mozlz4", (void 0)))
+1628602240467	Marionette	INFO	Listening on port 58051
+1628602240544	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628602243654	Marionette	INFO	Stopped listening on port 58051
+1628602591390	geckodriver	INFO	Listening on 127.0.0.1:58818
+1628602594431	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilef4qphD"
+*** You are running in headless mode.
+1628602594796	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilef4qphD\\search.json.mozlz4", (void 0)))
+1628602595893	Marionette	INFO	Listening on port 58826
+1628602596050	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628602599272	Marionette	INFO	Stopped listening on port 58826
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628602804929	geckodriver	INFO	Listening on 127.0.0.1:64022
+1628602807956	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileafKKeE"
+*** You are running in headless mode.
+1628602808322	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileafKKeE\\search.json.mozlz4", (void 0)))
+1628602809669	Marionette	INFO	Listening on port 64030
+1628602810076	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628602815502	Marionette	INFO	Stopped listening on port 64030
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628602987731	geckodriver	INFO	Listening on 127.0.0.1:50678
+1628602990741	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilewHYFsX"
+*** You are running in headless mode.
+1628602991092	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilewHYFsX\\search.json.mozlz4", (void 0)))
+1628602992179	Marionette	INFO	Listening on port 50686
+1628602992363	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628602995586	Marionette	INFO	Stopped listening on port 50686
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628603209235	geckodriver	INFO	Listening on 127.0.0.1:64478
+1628603212315	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileK3dRw5"
+*** You are running in headless mode.
+1628603212675	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileK3dRw5\\search.json.mozlz4", (void 0)))
+1628603213961	Marionette	INFO	Listening on port 64486
+1628603214437	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628603393149	geckodriver	INFO	Listening on 127.0.0.1:64544
+1628603396227	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilepOJVle"
+*** You are running in headless mode.
+1628603396592	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilepOJVle\\search.json.mozlz4", (void 0)))
+1628603397676	Marionette	INFO	Listening on port 64552
+1628603397837	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628603624163	Marionette	INFO	Stopped listening on port 64552
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628603650016	geckodriver	INFO	Listening on 127.0.0.1:64606
+1628603653037	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile979A3r"
+*** You are running in headless mode.
+1628603653397	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile979A3r\\search.json.mozlz4", (void 0)))
+1628603654683	Marionette	INFO	Listening on port 64614
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+owebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628604015754	geckodriver	INFO	Listening on 127.0.0.1:61243
+1628604018817	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileV6W1nW"
+*** You are running in headless mode.
+1628604019160	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileV6W1nW\\search.json.mozlz4", (void 0)))
+1628604020250	Marionette	INFO	Listening on port 61251
+1628604020440	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628604237082	geckodriver	INFO	Listening on 127.0.0.1:61307
+1628604240123	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileVHQ83Z"
+*** You are running in headless mode.
+1628604240477	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileVHQ83Z\\search.json.mozlz4", (void 0)))
+1628604241875	Marionette	INFO	Listening on port 61315
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+owebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628604436362	geckodriver	INFO	Listening on 127.0.0.1:61423
+1628604439375	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileqRan1b"
+*** You are running in headless mode.
+1628604439727	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileqRan1b\\search.json.mozlz4", (void 0)))
+1628604440818	Marionette	INFO	Listening on port 61431
+1628604440998	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628604444292	Marionette	INFO	Stopped listening on port 61431
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628604608220	geckodriver	INFO	Listening on 127.0.0.1:50240
+1628604611247	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileFfINyu"
+*** You are running in headless mode.
+1628604611591	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileFfINyu\\search.json.mozlz4", (void 0)))
+1628604612670	Marionette	INFO	Listening on port 50248
+1628604612884	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628604615958	Marionette	INFO	Stopped listening on port 50248
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628605000681	geckodriver	INFO	Listening on 127.0.0.1:55166
+1628605003758	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileGMcHeI"
+1628605004128	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileGMcHeI\\search.json.mozlz4", (void 0)))
+1628605006090	Marionette	INFO	Listening on port 55174
+1628605006488	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605142593	geckodriver	INFO	Listening on 127.0.0.1:55231
+1628605145670	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile6fkRAi"
+1628605146003	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile6fkRAi\\search.json.mozlz4", (void 0)))
+1628605148002	Marionette	INFO	Listening on port 55239
+1628605148402	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605427911	geckodriver	INFO	Listening on 127.0.0.1:55294
+1628605430921	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileshnWZY"
+1628605431271	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileshnWZY\\search.json.mozlz4", (void 0)))
+1628605433262	Marionette	INFO	Listening on port 55302
+1628605433645	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605437652	Marionette	INFO	Stopped listening on port 55302
+[Parent 5404, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628605710012	geckodriver	INFO	Listening on 127.0.0.1:63887
+1628605713036	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileHXp9Ug"
+*** You are running in headless mode.
+1628605713385	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileHXp9Ug\\search.json.mozlz4", (void 0)))
+1628605714472	Marionette	INFO	Listening on port 63895
+1628605714664	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605717374	Marionette	INFO	Stopped listening on port 63895
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628605722154	geckodriver	INFO	Listening on 127.0.0.1:61860
+1628605725189	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileP7ZXHJ"
+*** You are running in headless mode.
+1628605725539	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileP7ZXHJ\\search.json.mozlz4", (void 0)))
+1628605726617	Marionette	INFO	Listening on port 61868
+1628605726813	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605730808	Marionette	INFO	Stopped listening on port 61868
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628605737279	geckodriver	INFO	Listening on 127.0.0.1:53780
+1628605740314	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileI7FXLJ"
+*** You are running in headless mode.
+1628605740687	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileI7FXLJ\\search.json.mozlz4", (void 0)))
+1628605741776	Marionette	INFO	Listening on port 53788
+1628605741934	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605744793	Marionette	INFO	Stopped listening on port 53788
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628605750603	geckodriver	INFO	Listening on 127.0.0.1:58077
+1628605757676	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilecjwuLx"
+*** You are running in headless mode.
+1628605758025	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilecjwuLx\\search.json.mozlz4", (void 0)))
+1628605759357	Marionette	INFO	Listening on port 58091
+1628605759787	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605763081	Marionette	INFO	Stopped listening on port 58091
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628605768376	geckodriver	INFO	Listening on 127.0.0.1:54794
+1628605771410	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilejMGOzN"
+*** You are running in headless mode.
+1628605771775	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilejMGOzN\\search.json.mozlz4", (void 0)))
+1628605772863	Marionette	INFO	Listening on port 54802
+1628605773030	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605776495	Marionette	INFO	Stopped listening on port 54802
+1628605782167	geckodriver	INFO	Listening on 127.0.0.1:54084
+1628605785201	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilee9BXds"
+*** You are running in headless mode.
+1628605785566	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilee9BXds\\search.json.mozlz4", (void 0)))
+1628605786653	Marionette	INFO	Listening on port 54092
+1628605786825	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605789778	Marionette	INFO	Stopped listening on port 54092
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628605801658	geckodriver	INFO	Listening on 127.0.0.1:54175
+1628605804694	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilecg2G1b"
+*** You are running in headless mode.
+1628605805057	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilecg2G1b\\search.json.mozlz4", (void 0)))
+1628605806125	Marionette	INFO	Listening on port 54183
+1628605806311	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605822240	Marionette	INFO	Stopped listening on port 54183
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628605832252	geckodriver	INFO	Listening on 127.0.0.1:55106
+1628605835306	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileZ0aO1H"
+*** You are running in headless mode.
+1628605835669	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileZ0aO1H\\search.json.mozlz4", (void 0)))
+1628605836784	Marionette	INFO	Listening on port 55114
+1628605836917	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628605848819	Marionette	INFO	Stopped listening on port 55114
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628607943174	geckodriver	INFO	Listening on 127.0.0.1:59655
+1628607946209	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile0cJYiK"
+*** You are running in headless mode.
+1628607947174	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile0cJYiK\\search.json.mozlz4", (void 0)))
+1628607949170	Marionette	INFO	Listening on port 59663
+1628607949448	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628607954568	Marionette	INFO	Stopped listening on port 59663
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628607962592	geckodriver	INFO	Listening on 127.0.0.1:61421
+1628607965639	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile9gzF85"
+*** You are running in headless mode.
+1628607966063	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile9gzF85\\search.json.mozlz4", (void 0)))
+1628607967186	Marionette	INFO	Listening on port 61430
+1628607967258	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628607973027	Marionette	INFO	Stopped listening on port 61430
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628607983610	geckodriver	INFO	Listening on 127.0.0.1:65519
+1628607986655	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileusJkBE"
+*** You are running in headless mode.
+1628607987086	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileusJkBE\\search.json.mozlz4", (void 0)))
+1628607988172	Marionette	INFO	Listening on port 65527
+1628607988273	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628607992859	Marionette	INFO	Stopped listening on port 65527
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628608001942	geckodriver	INFO	Listening on 127.0.0.1:54463
+1628608004981	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileSiXpIF"
+*** You are running in headless mode.
+1628608005359	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileSiXpIF\\search.json.mozlz4", (void 0)))
+1628608006473	Marionette	INFO	Listening on port 54471
+1628608006599	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628608012752	Marionette	INFO	Stopped listening on port 54471
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628608020364	geckodriver	INFO	Listening on 127.0.0.1:51362
+1628608023406	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilezpkq08"
+*** You are running in headless mode.
+1628608023812	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilezpkq08\\search.json.mozlz4", (void 0)))
+1628608025218	Marionette	INFO	Listening on port 51370
+1628608025530	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628608037593	Marionette	INFO	Stopped listening on port 51370
+1628608045421	geckodriver	INFO	Listening on 127.0.0.1:53571
+1628608048466	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileXDdHhl"
+*** You are running in headless mode.
+1628608048862	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileXDdHhl\\search.json.mozlz4", (void 0)))
+1628608050246	Marionette	INFO	Listening on port 53579
+1628608050591	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628608055572	Marionette	INFO	Stopped listening on port 53579
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628608063265	geckodriver	INFO	Listening on 127.0.0.1:60010
+1628608066308	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile7xYVb1"
+*** You are running in headless mode.
+1628608066685	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile7xYVb1\\search.json.mozlz4", (void 0)))
+1628608067852	Marionette	INFO	Listening on port 60018
+1628608067931	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628608072386	Marionette	INFO	Stopped listening on port 60018
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628608084795	geckodriver	INFO	Listening on 127.0.0.1:59433
+1628608087839	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilet6RGRM"
+*** You are running in headless mode.
+1628608088221	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilet6RGRM\\search.json.mozlz4", (void 0)))
+1628608089341	Marionette	INFO	Listening on port 59441
+1628608089460	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628608096455	Marionette	INFO	Stopped listening on port 59441
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628608729845	geckodriver	INFO	Listening on 127.0.0.1:58809
+1628608732875	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile0kGOFb"
+*** You are running in headless mode.
+1628608733276	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofile0kGOFb\\search.json.mozlz4", (void 0)))
+1628608735015	Marionette	INFO	Listening on port 61060
+1628608735109	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628608741817	Marionette	INFO	Stopped listening on port 61061
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628608741155	geckodriver	INFO	Listening on 127.0.0.1:59555
+1628608744184	mozrunner::runner	INFO	Running command: "C:\\P1628608745376	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileekw97F"
+1628608747254	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileyuDkXR"
+*** You are running in headless mode.
+1628608747692	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\UJavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicaJavaScript warning: http://demowebshop.tricentis.com/ScriptsJavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indica1628608751427	Marionette	INFO	Stopped listening on port 59561628608752239	Marionette	INFO	Stopped listening on port 59593JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ t1628608754974	mozrunner::runner	INFO	Running command: "C:\\Program F1628608758159	Marionette	INFO	Stopped listening on port 57791
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+*** You are running in headless mode.
+1628608755495	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileES8MiD\\search.json.mozlz4", (void 0)))
+1628608756887	Marionette	INFO	Listening on port 62244
+1628608757088	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts1628608761822	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--mari1628608762043	Marionette	INFO	Stopped listening on port 62244
+Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilewNEdtt"
+*** You are running in headless mode.
+1628608762286	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebu1628608765664	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileDy02hA"
+*** You are running in headless mode.
+1628608766014	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628608769697	Marionette	INFO	Stopped listening on port 62253
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+ngURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628608772977	Marionette	INFO	Stopped listening on port 62300
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628609132089	geckodriver	INFO	Listening on 127.0.0.1:51746
+1628609135122	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileDmGvcT"
+*** You are running in headless mode.
+1628609135575	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileqqmd81\\search.json.mozlz4", (void 0)))
+1628609137540	Marionette	INFO	Listening on port 64439
+1628609138001	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628609145641	Marionette	INFO	Stopped listening on port 64437
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileoend10"
+*** You are running in headless mode.
+1628609144040	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileoend10\\searJavaScript warning: http://de1628609145857	Marionette	INFO	Listening on port 64477
+1628609146378	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts1628609151505	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profi1628609152265	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote"[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No set1628609152746	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not ope162861628609156177	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileTHqjfw"
+*** You are running JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# insJavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628609162278	Marionette	INFO	Stopped listening on port 58727
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628609166696	Marionette	INFO	Stopped listening on port 59719
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628670192831	geckodriver	INFO	Listening on 127.0.0.1:55296
+1628670195867	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileEJWjVe"
+1628670196998	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofileEJWjVe\\search.json.mozlz4", (void 0)))
+1628670199428	Marionette	INFO	Listening on port 55304
+1628670199705	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628670243791	Marionette	INFO	Stopped listening on port 55304
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+"--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilezSedIg"
+1628670216129	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilezSedIg\\search.json.mozlz4", (void 0)))
+1628670218174	Marionette	INFO	Listening on port 59755
+1628670218328	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628670245319	Marionette	INFO	Stopped listening on port 59755
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+"--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilenFZW3Z"
+1628670233940	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vadim\\AppData\\Local\\Temp\\rust_mozprofilenFZW3Z\\search.json.mozlz4", (void 0)))
+1628670236266	Marionette	INFO	Listening on port 55433
+1628670236791	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://demowebshop.tricentis.com/Scripts/jquery-1.10.2.min.js, line 19: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1628670246327	Marionette	INFO	Stopped listening on port 55433
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
