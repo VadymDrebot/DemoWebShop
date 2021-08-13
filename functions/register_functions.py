@@ -31,16 +31,19 @@ class RegisterFunctions(CommonFunctions, RegConst):
             if field's 'error_messages' is NOT empty -- verify there is appropriate error message presents in its xpath"""
         # list_of_error_messages =
         #                   [first_name_error_message, last_name_error_message, email_error_message, password_error_message, confirm_password_message]
-        # list_of_xpathes = [user.FIRST_NAME_ERROR_xpath, user.LAST_NAME_ERROR_xpath, user.EMAIL_ERROR_xpath, user.PASSWORD_ERROR_xpath,
+        # list_of_error_xpathes = [user.FIRST_NAME_ERROR_xpath, user.LAST_NAME_ERROR_xpath, user.EMAIL_ERROR_xpath, user.PASSWORD_ERROR_xpath,
         #                    user.CONFIRM_PASSWORD_ERROR_xpath]
         # list_of_field_names = ["FIRST_NAME", "LAST_NAME", "EMAIL", "PASSWORD", "CONFIRM_PASSWORD"]
-        for error_message, xpath, field_name in zip(user.list_of_error_messages, user.list_of_xpathes, user.list_of_field_names):
+        # self.list_of_input_field_xpathes = [self.FIRST_NAME_INPUT_FIELD_xpath, self.LAST_NAME_INPUT_FIELD_xpath, self.EMAIL_INPUT_FIELD_xpath,
+        #                                    self.PASSWORD_INPUT_FIELD_xpath, self.CONFIRM_PASSWORD_INPUT_FIELD_xpath]
+        for error_message, error_xpath, field_name, input_field_xpath in zip(user.list_of_error_messages, user.list_of_error_xpathes,
+                                                                             user.list_of_field_names, user.list_of_input_field_xpathes):
             if error_message == "":
-                assert not self.verify_presence_of_element(xpath)
-                # self.logger.info(f" {field_name} error message field:   -empty-")
+                assert not self.verify_presence_of_element(error_xpath)
             else:
-                self.verify_message(locator=xpath, expected_text=error_message)
-                # self.logger.info(f" {field_name} error message field:  Actual result: -{self.get_text_from_xpath(xpath)}-")
+                self.verify_message(locator=error_xpath, expected_text=error_message)
+            self.logger.info(
+                f" {field_name} value: -{self.get_value_from_input_field(input_field_xpath)}-.     Error message actual result: -{self.get_text_from_xpath(error_xpath)}-")
 
         # self.logger.info(" -----------END OF THE TEST---------")
 

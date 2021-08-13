@@ -1,6 +1,7 @@
 from selenium import webdriver
 import pytest
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
 
 from constants import start_page_const
 # from constants.register_page_const import RegisterConstants
@@ -9,7 +10,6 @@ from constants.start_page_const import LOGIN_BUTTON_IN_HEADER_xpath, REGISTER_BU
 from functions.common_functions import CommonFunctions
 from functions.log_in_functions import LogInFunctions
 from functions.register_functions import RegisterFunctions
-from functions.waitings import Waitings
 
 
 @pytest.fixture()
