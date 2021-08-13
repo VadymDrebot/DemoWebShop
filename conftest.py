@@ -8,6 +8,7 @@ from constants.start_page_const import LOGIN_BUTTON_IN_HEADER_xpath, REGISTER_BU
 from functions.common_functions import CommonFunctions
 from functions.log_in_functions import LogInFunctions
 from functions.register_functions import RegisterFunctions
+from functions.waitings import Waitings
 
 
 @pytest.fixture()
@@ -15,7 +16,7 @@ def start_page():
     driver = webdriver.Chrome(executable_path=start_page_const.PATH_TO_WEBDRIVER)
     driver.get(start_page_const.START_PAGE_url)
     driver.implicitly_wait(time_to_wait=10)
-    yield CommonFunctions(driver)
+    yield Waitings(driver)
     driver.close()
 
 
