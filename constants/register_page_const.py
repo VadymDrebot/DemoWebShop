@@ -1,7 +1,5 @@
-# from functions.common_functions import GeneratedConstants
-from functions.helpers import random_valid_email
-
 class RegisterConstants:
+    # input data
     VALID_FIRST_NAME = "username"
     VALID_LAST_NAME = "last_name"
     VALID_EMAIL = "vadim1@yahoo.com"
@@ -9,6 +7,7 @@ class RegisterConstants:
     INVALID_EMAIL = "abc"
     INVALID_PASSWORD = "abcde"
 
+    # input fields
     GENDER_MAIL_CHECK_BOX_xpath = "//input[@id='gender-male']"
     GENDER_FEMAIL_CHECK_BOX_xpath = "//input[@id='gender-female']"
 
@@ -24,7 +23,7 @@ class RegisterConstants:
     PASSWORD_INPUT_FIELD_id = "Password"
     CONFIRM_PASSWORD_INPUT_FIELD_id = "ConfirmPassword"
 
-    # ERROR_FIRST_NAME_IS_REQUIRED_xpath="//span[contains(text(),'First name is required.')]"
+    # error messages
     FIELD_VALIDATION_ERROR_LIST_xpath = "//span[@class='field-validation-error']"  # list of errors after click 'register'
 
     FIRST_NAME_ERROR_xpath = "//span/span[@for='FirstName']"
@@ -55,13 +54,11 @@ class RegisterConstants:
 
 
 class RegisterObject(RegisterConstants):
+    """ create object for work with 'register page' """
+
     def __init__(self, first_name="", last_name="", email="", password="", confirm_password="",
                  first_name_error_message="", last_name_error_message="", email_error_message="", password_error_message="",
                  confirm_password_error_message=""):
-        # super().__init__()
-        self.register_button_clicked = False
-        # self.__first_name = ""
-        # self.__last_name = ""
         self.__email = ""
         self.__password = ""
         self.__confirm_password = ""
@@ -79,7 +76,6 @@ class RegisterObject(RegisterConstants):
         self.confirm_password = confirm_password
 
     def click_button(self):
-        # self.register_button_clicked = True
         if self.first_name == "":
             self.list_of_error_messages[0] = self.FIRST_NAME_IS_REQUIRED_text
         if self.last_name == "":
@@ -90,22 +86,6 @@ class RegisterObject(RegisterConstants):
             self.list_of_error_messages[3] = self.PASSWORD_IS_REQURED_text
         if self.confirm_password == "":
             self.list_of_error_messages[4] = self.PASSWORD_IS_REQURED_text
-
-    # @property
-    # def first_name(self):
-    #     return self.__first_name
-    #
-    # @first_name.setter
-    # def first_name(self, first_name):
-    #     self.__first_name = first_name
-    #
-    # @property
-    # def last_name(self):
-    #     return self.__last_name
-    #
-    # @last_name.setter
-    # def last_name(self, last_name):
-    #     self.__last_name = last_name
 
     @property
     def email(self):
