@@ -8,7 +8,7 @@ from functions.common_functions import CommonFunctions
 import textwrap
 
 
-class RegisterFunctions(CommonFunctions, RegConst):
+class RegisterFunctions(CommonFunctions):
     logger = logging.getLogger(__name__)
 
     def fill_register_fields(self, user):

@@ -10,6 +10,7 @@ from constants.start_page_const import LOGIN_BUTTON_IN_HEADER_xpath, REGISTER_BU
 from functions.common_functions import CommonFunctions
 from functions.log_in_functions import LogInFunctions
 from functions.register_functions import RegisterFunctions
+from functions.shopping_cart_functions import ShoppingCartFunctions
 
 
 @pytest.fixture()
@@ -31,3 +32,8 @@ def login_page(start_page):
 def register_page(start_page):
     start_page.click_button_and_verify_new_url(button_locator_type=By.CLASS_NAME, button_locator=REGISTER_BUTTON_IN_HEADER_class, url=REGISTER_PAGE_url)
     return RegisterFunctions(start_page.driver)
+
+
+@pytest.fixture()
+def shopping_cart_page(start_page):
+    return ShoppingCartFunctions(start_page.driver)

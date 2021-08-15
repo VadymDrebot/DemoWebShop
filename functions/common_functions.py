@@ -24,6 +24,7 @@ class CommonFunctions(Waitings):
 
     @wait_5_sec
     def click_button_and_verify_message_by_message_locator(self, button_locator, message_locator, expected_message, locator_type=By.XPATH):
+        """ for verifying appeared text of the message after click the button """
         self.wait_click_ability_and_click(locator=button_locator)
         self.wait_until_visibility_of_element(locator=message_locator, period=2)
         actual_message = self.driver.find_element(by=locator_type, value=message_locator)(message_locator).text
@@ -56,7 +57,6 @@ class CommonFunctions(Waitings):
         # self.logger.info(elem.text)
         return elem.text
 
-
     def verify_presence_of_element(self, locator, locator_type=By.XPATH):
         """ check the presence of the element by its xpath"""
         # True -- element is present at DOM
@@ -72,7 +72,6 @@ class CommonFunctions(Waitings):
     def verify_checkbox_selected(self, locator, locator_type=By.XPATH):
         # self.logger.info(f"checkbox: {self.driver.find_element_by_xpath(locator).is_selected()}")
         return self.driver.find_element(by=locator_type, value=locator).is_selected()
-
 
     def verify_message(self, locator, expected_text, locator_type=By.XPATH):
         """ verify 'expected_text' in 'locator'"""
@@ -97,7 +96,7 @@ class CommonFunctions(Waitings):
         return self.driver.find_element(by=locator_type, value=locator).get_attribute('value')
 
     def get_text_from_locator(self, locator, locator_type=By.XPATH):
-        if self.verify_presence_of_element(locator):
+        if self.verify_presence_of_element(locator, locator_type):
             # WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located((By.XPATH, locator)))
             return self.driver.find_element(by=locator_type, value=locator).text
         else:
@@ -112,3 +111,21 @@ class CommonFunctions(Waitings):
         for element in list_of_elements:
             list_of_texts.append(element.text.strip())
         return list_of_texts
+
+    def mouse_move_to_locator(self, locator_list, locator_type=By.XPATH):
+        actions = ActionChains(self.driver)
+        for locator in locator_list:
+            actions.move_to_element(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, locator))))
+            actions.perform()
+            time.sleep(1)
+
+    def mouse_click_to_locator(self, list_locator, locator_type=By.XPATH):
+        # list_locator --
+        actions = ActionChains(self.driver)
+        for locator in list_locator:
+            actions.move_to_element(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, locator))))
+            actions.perform()
+            time.sleep(1)
+        actions.click(self.driver.find_element(by=locator_type, value=list_locator[-1]))
+        actions.perform()
+        return self.driver.find_element(by=locator_type, value=list_locator[-1]).text
