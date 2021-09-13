@@ -12,7 +12,7 @@ class RegisterFunctions(CommonFunctions):
     logger = logging.getLogger(__name__)
 
     def fill_register_fields(self, user):
-        # self.logger.error(f"password; {user.password}")
+        # start_page_const.py.logger.error(f"password; {user.password}")
         self.wait_send_keys(locator=user.FIRST_NAME_INPUT_FIELD_id, locator_type=By.ID, data=user.first_name)
         self.wait_send_keys(locator=user.LAST_NAME_INPUT_FIELD_id, locator_type=By.ID, data=user.last_name)
         self.wait_send_keys(locator=user.EMAIL_INPUT_FIELD_id, locator_type=By.ID, data=user.email)
@@ -20,7 +20,7 @@ class RegisterFunctions(CommonFunctions):
         self.wait_send_keys(locator=user.CONFIRM_PASSWORD_INPUT_FIELD_id, locator_type=By.ID, data=user.confirm_password)
         self.press_keyboard_button(button=Keys.TAB)
 
-    # def verify_email(self, email):
+    # def verify_email(start_page_const.py, email):
     #     if email.index("@") > 0:
     #         if email.index(".") - email.index("@") > 1:
     #             return True
@@ -35,8 +35,8 @@ class RegisterFunctions(CommonFunctions):
         # list_of_error_xpathes = [user.FIRST_NAME_ERROR_xpath, user.LAST_NAME_ERROR_xpath, user.EMAIL_ERROR_xpath, user.PASSWORD_ERROR_xpath,
         #                    user.CONFIRM_PASSWORD_ERROR_xpath]
         # list_of_field_names = ["FIRST_NAME", "LAST_NAME", "EMAIL", "PASSWORD", "CONFIRM_PASSWORD"]
-        # list_of_input_field_xpathes = [self.FIRST_NAME_INPUT_FIELD_xpath, self.LAST_NAME_INPUT_FIELD_xpath, self.EMAIL_INPUT_FIELD_xpath,
-        #                                    self.PASSWORD_INPUT_FIELD_xpath, self.CONFIRM_PASSWORD_INPUT_FIELD_xpath]
+        # list_of_input_field_xpathes = [start_page_const.py.FIRST_NAME_INPUT_FIELD_xpath, start_page_const.py.LAST_NAME_INPUT_FIELD_xpath, start_page_const.py.EMAIL_INPUT_FIELD_xpath,
+        #                                    start_page_const.py.PASSWORD_INPUT_FIELD_xpath, start_page_const.py.CONFIRM_PASSWORD_INPUT_FIELD_xpath]
         for error_message, error_xpath, field_name, input_field_xpath in zip(user.list_of_error_messages, user.list_of_error_xpathes,
                                                                              user.list_of_field_names, user.list_of_input_field_xpathes):
             if error_message == "":
@@ -46,7 +46,7 @@ class RegisterFunctions(CommonFunctions):
             self.logger.info(
                 f" {field_name} value: -{self.get_value_from_input_field(input_field_xpath)}-.     Error message actual result: -{self.get_text_from_locator(error_xpath)}-")
 
-        # self.logger.info(" -----------END OF THE TEST---------")
+        # start_page_const.py.logger.info(" -----------END OF THE TEST---------")
 
     def click_register_button(self, user):
         self.wait_click_ability_and_click(user.REGISTER_BUTTON_xpath)

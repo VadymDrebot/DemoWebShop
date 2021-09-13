@@ -46,7 +46,7 @@ class TestRegisterPageNoClick():
 
         # 2. verify no error messages
         register_page.verify_error_messages(user)
-        # self.logger.info(f"Expected: all fields empty")
+        # start_page_const.py.logger.info(f"Expected: all fields empty")
 
     def test2(self, register_page):
         # last_name -- valid

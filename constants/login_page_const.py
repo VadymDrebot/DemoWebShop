@@ -1,7 +1,7 @@
 class LogInConstants:
-    VALID_EMAIL="vadim1@yahoo.com"
-    VALID_PASSWORD="drevad"
-    USER_NAME_IN_HEADER_xpath="//div[@class='header-links']//a[@class='account']"
+    VALID_EMAIL = "vadim1@yahoo.com"
+    VALID_PASSWORD = "drevad"
+    USER_NAME_IN_HEADER_xpath = "//div[@class='header-links']//a[@class='account']"
 
     EMAIL_INPUT_FIELD_xpath = "//form/div/input[@id='Email']"
     PASSWORD_INPUT_FIELD_xpath = "//form/div/input[@id='Password']"
