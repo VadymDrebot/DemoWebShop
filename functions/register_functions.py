@@ -4,11 +4,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 from constants.register_page_const import RegisterConstants as RegConst, RegisterObject
-from functions.common_functions import CommonFunctions
+from functions.neutral_functions import NeutralFunctions
 import textwrap
 
 
-class RegisterFunctions(CommonFunctions):
+class RegisterFunctions(NeutralFunctions):
     logger = logging.getLogger(__name__)
 
     def fill_register_fields(self, user):

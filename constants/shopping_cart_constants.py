@@ -25,49 +25,26 @@ class ShoppingCartConstants:
     UPDATE_SHOPPING_CART_BUTTON_name = "updatecart"
 
 
-class NewShoppingCart:
-    def __init__(self, start_product_count=0, current_product_count=0):
-        self.__temporary_dic = {}
-        self.list_of_products_in_shopping_cart = []  # each element will be : {"title": "", "price": "", "dom index": ""}
-        self.start_count_in_cart = start_product_count
-        self.current_count_in_cart = current_product_count
 
-        self.total_editing_product_price = {"before cart edit": "", "after cart edit": ""}
-        self.sub_total_price = {"before cart edit": "", "after cart edit": ""}
-
-        self.product_in_process = {"title": "", "price": "", "dom index": ""}
-
-        self.list_of_cart_dom_indexes = []
-
-    @property
-    def temporary_dic(self):
-        return self.__temporary_dic
-
-    @temporary_dic.setter
-    def temporary_dic(self, temporary_dic):
-        """ 'temporary_dic' """
-        self.list_of_products_in_shopping_cart.append(temporary_dic)
-
-
-class ExistingShoppingCart:
-    def __init__(self, start_product_count=0, current_product_count=0):
-        self.__temporary_dic = {}
-        self.list_of_products_in_shopping_cart = []  # each element will be : {"title": "", "price": "", "dom index": ""}
-        self.start_count_in_cart = start_product_count
-        self.current_count_in_cart = current_product_count
-
-        self.total_editing_product_price = {"before cart edit": "", "after cart edit": ""}
-        self.sub_total_price = {"before cart edit": "", "after cart edit": ""}
-
-        self.product_in_process = {"title": "", "price": "", "dom index": ""}
-
-        self.list_of_cart_dom_indexes = []
-
-    @property
-    def temporary_dic(self):
-        return self.__temporary_dic
-
-    @temporary_dic.setter
-    def temporary_dic(self, temporary_dic):
-        """ 'temporary_dic' """
-        self.list_of_products_in_shopping_cart.append(temporary_dic)
+# class ExistingShoppingCart:
+#     def __init__(self, start_product_count=0, current_product_count=0):
+#         self.__temporary_dic = {}
+#         self.list_of_products_in_shopping_cart = []  # each element will be : {"title": "", "price": "", "dom index": ""}
+#         self.start_count_in_cart = start_product_count
+#         self.current_count_in_cart = current_product_count
+#
+#         self.total_editing_product_price = {"before cart edit": "", "after cart edit": ""}
+#         self.sub_total_price = {"before cart edit": "", "after cart edit": ""}
+#
+#         self.product_in_process = {"title": "", "price": "", "dom index": ""}
+#
+#         self.list_of_cart_dom_indexes = []
+#
+#     @property
+#     def temporary_dic(self):
+#         return self.__temporary_dic
+#
+#     @temporary_dic.setter
+#     def temporary_dic(self, temporary_dic):
+#         """ 'temporary_dic' """
+#         self.list_of_products_in_shopping_cart.append(temporary_dic)

@@ -4,17 +4,41 @@ from selenium.webdriver.common.by import By
 
 from constants.shopping_cart_constants import ShoppingCartConstants
 from constants.start_page_const import ProductCategoryPageConstants
-from functions.common_functions import CommonFunctions
+from functions.neutral_functions import NeutralFunctions
+from functions.common_function import CommonFunction
 
 
-class ShoppingCartFunctions(CommonFunctions, ProductCategoryPageConstants, ShoppingCartConstants):
+class NewShoppingCart:
+    def __init__(self, start_count_in_cart=0):
+        # super().__init__()
+        # self.driver = driver
 
-    def make_list_of_dom_indexes(self, product, list_locator, locator_type=By.XPATH):
-        """ 'list_locator' -- list of items on a page(shopping cart).
-        Return: list of DOM indexes(from 1 to ...) into the 'product' object"""
-        product_amount_on_page = len(self.driver.find_elements(by=locator_type, value=list_locator))  # f.e. len=5
-        product.list_of_dom_indexes = [index for index in range(1, product_amount_on_page + 1)]  # lst= [1,2,3,4,5]
-        return product
+        # super().__init__(driver)
+        self.__temporary_dic = {}
+        self.list_of_products_in_shopping_cart = []  # each element will be : {"title": "", "price": "", "dom index": ""}
+        # self.__start_count_in_cart = ""
+        self.current_count_in_cart = start_count_in_cart
+
+        self.total_editing_product_price = {"before cart edit": "", "after cart edit": ""}
+        self.sub_total_price = {"before cart edit": "", "after cart edit": ""}
+
+        self.product_in_process = {"title": "", "price": "", "dom index": ""}
+
+        self.list_of_cart_dom_indexes = []
+        self.start_count_in_cart = start_count_in_cart
+
+    @property
+    def temporary_dic(self):
+        return self.__temporary_dic
+
+    @temporary_dic.setter
+    def temporary_dic(self, temporary_dic):
+        """ 'temporary_dic' """
+        self.list_of_products_in_shopping_cart.append(temporary_dic)
+        # self.start_count_in_cart = super().get_item_quantity_from_top_menu_shopping_cart()
+
+
+class ShoppingCartFunctions(CommonFunction, ProductCategoryPageConstants, ShoppingCartConstants):
 
     def choose_random_product_in_shopping_cart(self, product):
         """ choose RANDOM product from SHOPPING CART
@@ -130,7 +154,7 @@ class ShoppingCartFunctions(CommonFunctions, ProductCategoryPageConstants, Shopp
         """ Make: choose RANDOM product in the shopping cart, tick next to it, click 'Update shopping cart'
         Return: title of the removed item in 'product.product_in_process["title"]' for further actions"""
         # tick the removing item
-        self.make_list_of_dom_indexes(product, list_locator=self.LIST_OF_PRODUCTS_IN_SHOPPING_CART_path)
+        product.make_list_of_dom_indexes(product, list_locator=self.LIST_OF_PRODUCTS_IN_SHOPPING_CART_path)
         random_dom_index = random.choice(product.list_of_cart_dom_indexes)  # choose random DOM-index , f.e. '2'
         self.wait_click_ability_and_click(locator=self.PRODUCT_REMOVING_CHECK_BOX_IN_SHOPPING_CART_xpath.format(index=random_dom_index))
 
@@ -152,4 +176,30 @@ class ShoppingCartFunctions(CommonFunctions, ProductCategoryPageConstants, Shopp
         self.logger.info(f"Total price for chosen product-{time}-: -{product.total_editing_product_price[time]}-")
         self.logger.info(f"Sub total price in the Shopping cart-{time}-: -{product.sub_total_price[time]}-")
 
-    # def remember_all_products_in_shopping_cart(self,product):
+    def refill_the_product(self, product):
+        product.start_count_in_cart = self.get_item_quantity_from_top_menu_shopping_cart()
+        # product.list_of_cart_dom_indexes =self.make_list_of_dom_indexes(product,locator_type=)
+
+# class ExistingShoppingCart(ShoppingCartFunctions):
+#     def __init__(self, start_product_count=0, current_product_count=0):
+#         super().__init__(ShoppingCartFunctions.get_item_quantity_from_top_menu_shopping_cart())
+#         self.__temporary_dic = {}
+#         self.list_of_products_in_shopping_cart = []  # each element will be : {"title": "", "price": "", "dom index": ""}
+#         self.__start_count_in_cart = ""
+#         self.current_count_in_cart = current_product_count
+#
+#         self.total_editing_product_price = {"before cart edit": "", "after cart edit": ""}
+#         self.sub_total_price = {"before cart edit": "", "after cart edit": ""}
+#
+#         self.product_in_process = {"title": "", "price": "", "dom index": ""}
+#
+#         self.list_of_cart_dom_indexes = []
+#
+#     @property
+#     def temporary_dic(self):
+#         return self.__temporary_dic
+#
+#     @temporary_dic.setter
+#     def temporary_dic(self, temporary_dic):
+#         """ 'temporary_dic' """
+#         self.list_of_products_in_shopping_cart.append(temporary_dic)

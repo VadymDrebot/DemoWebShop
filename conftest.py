@@ -13,7 +13,7 @@ from constants.register_page_const import RegisterObject
 #     REGISTER_PAGE_url, \
 #     product_dict,
 from constants.start_page_const import GlobalConstants
-from functions.common_functions import CommonFunctions
+from functions.neutral_functions import NeutralFunctions
 from functions.log_in_functions import LogInFunctions
 from functions.register_functions import RegisterFunctions
 from functions.product_page_elements_functions import ProductPageFunctions
@@ -25,7 +25,7 @@ def start_page():
     driver = webdriver.Chrome(executable_path=GlobalConstants.PATH_TO_CHROME_WEBDRIVER)
     driver.get(GlobalConstants.START_PAGE_url)
     driver.implicitly_wait(time_to_wait=10)
-    yield CommonFunctions(driver)
+    yield NeutralFunctions(driver)
     driver.close()
 
 

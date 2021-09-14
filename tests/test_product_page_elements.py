@@ -3,7 +3,7 @@ import time
 
 
 from constants.start_page_const import Product
-from functions.common_functions import CommonFunctions
+from functions.neutral_functions import NeutralFunctions
 
 
 class TestProductPageElements:

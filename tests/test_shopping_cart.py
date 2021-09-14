@@ -1,7 +1,8 @@
 import logging
 from selenium.webdriver.common.by import By
-from constants.shopping_cart_constants import NewShoppingCart
+# from constants.shopping_cart_constants import NewShoppingCart
 from functions.log_in_functions import LogInFunctions
+from functions.shopping_cart_functions import NewShoppingCart
 
 
 # class TestShoppingCartUnregisteredUser:
@@ -182,7 +183,7 @@ class TestShoppingCartRegisteredUser:
         """
         # 1. remember number of products in 'Shopping cart'
         product = NewShoppingCart()
-        product.start_count_in_cart = shopping_cart_reg.get_item_quantity_from_top_menu_shopping_cart()
+        shopping_cart_reg.refill_the_product(product)
 
         # 2. click 'Add to Cart' on a random product (verifying "The product has been added to your shopping cart" message)
         shopping_cart_reg.add_some_products_to_shopping_cart(product, amount=1)
@@ -198,5 +199,3 @@ class TestShoppingCartRegisteredUser:
 
         # 8. verify the existence of the ADDED product in the "shopping cart"
         shopping_cart_reg.verify_presence_of_products_inside_shopping_cart(product)
-
-

@@ -1,6 +1,6 @@
 import pytest, logging
 from constants.start_page_const import LOGIN_BUTTON_IN_HEADER_xpath
-from functions.common_functions import CommonFunctions
+from functions.neutral_functions import NeutralFunctions
 from constants.login_page_const import LogInConstants
 
 

@@ -5,7 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 from constants.start_page_const import product_dict, GlobalConstants
 from functions.waitings import Waitings, wait_5_sec
-
+from functions.common_function import CommonFunction
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
@@ -13,8 +13,9 @@ import selenium.webdriver.support.expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-class CommonFunctions(Waitings, GlobalConstants):
-    # common functions  for all/any points of the project
+class NeutralFunctions(Waitings, GlobalConstants):
+    """common functions  for all/any points of the project or even other projects"""
+
     logger = logging.getLogger(__name__)
 
     def clear_input_field(self, locator, locator_type=By.XPATH):

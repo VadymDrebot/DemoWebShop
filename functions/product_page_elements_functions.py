@@ -7,10 +7,10 @@ from constants import start_page_const
 
 from constants.start_page_const import ProductCategoryPageConstants
 
-from functions.common_functions import CommonFunctions
+from functions.neutral_functions import NeutralFunctions
 
 
-class ProductPageFunctions(CommonFunctions, ProductCategoryPageConstants):
+class ProductPageFunctions(NeutralFunctions, ProductCategoryPageConstants):
     logger = logging.getLogger(__name__)
 
     def verify_correct_transition_to_page(self, product):

@@ -5,7 +5,7 @@ import string
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-from constants import self
+
 
 CHROME = "chrome"
 FIREFOX = "firefox"
