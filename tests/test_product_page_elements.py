@@ -2,8 +2,9 @@ import logging
 import time
 
 
-from constants.start_page_const import Product
-from functions.neutral_functions import NeutralFunctions
+from constants import product_page_constants as prod_page_const
+from functions.common_functions import CommonFunctions
+from functions.product_page_elements_functions import Product
 
 
 class TestProductPageElements:

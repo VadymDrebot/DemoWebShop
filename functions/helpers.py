@@ -1,11 +1,7 @@
-import logging
-import random
-import string
+import logging, random, string
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-
-
 
 CHROME = "chrome"
 FIREFOX = "firefox"

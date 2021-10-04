@@ -17,12 +17,12 @@ def wait_5_sec(target):
     return wrapper
 
 
-class Waitings():
+class Waitings:
     logger = logging.getLogger(__name__)
 
     def __init__(self, driver):
         self.driver = driver
-        # start_page_const.py.logger = logging.getLogger(__name__)
+        # product_page_constants.py.logger = logging.getLogger(__name__)
 
     def wait_until_visibility_of_element(self, locator, locator_type=By.XPATH, period=5):
         # wait until element became visible
@@ -33,8 +33,9 @@ class Waitings():
         self.driver.execute_script(f"window.scrollTo(0, 1500)")
 
     def wait_until_text_in_element(self, locator, expected_text, locator_type=By.XPATH):
-        # start_page_const.py.logger.warning(f"locator before:{locator} , text before:{text}")
-        WebDriverWait(self.driver, timeout=10).until(EC.text_to_be_present_in_element((locator_type, locator), expected_text))
+        # product_page_constants.py.logger.warning(f"locator before:{locator} , text before:{text}")
+
+        WebDriverWait(self.driver, timeout=5).until(EC.text_to_be_present_in_element((locator_type, locator), expected_text))
 
     @wait_5_sec
     def wait_click_ability_and_click(self, locator, locator_type=By.XPATH):
@@ -73,12 +74,12 @@ class Waitings():
     @wait_5_sec
     def wait_find_element(self, locator, locator_type=By.XPATH, timeout=3):
         WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((locator_type, locator)))
-        # start_page_const.py.logger.info(start_page_const.py.driver.find_element_by_xpath(locator))
+        # product_page_constants.py.logger.info(product_page_constants.py.driver.find_element_by_xpath(locator))
         return self.driver.find_element(by=locator_type, value=locator)
 
     # @wait_5_sec
     # disable @wait5sec as it somehow nullify 'return' result(list of elements) of the function
     def wait_find_elements(self, list_locator, locator_type=By.XPATH):
         WebDriverWait(self.driver, timeout=3).until(EC.presence_of_all_elements_located((locator_type, list_locator)))
-        # start_page_const.py.logger.info(f"list in waitings:{list_wait}")
+        # product_page_constants.py.logger.info(f"list in waitings:{list_wait}")
         return self.driver.find_elements(by=locator_type, value=list_locator)
