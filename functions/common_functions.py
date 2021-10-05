@@ -92,7 +92,7 @@ class CommonFunctions(Waitings):
             raise AssertionError(f"There is no Actual message")
         # return True
 
-    # product_page_constants.py.logger.info(f" Expected text: '{expected_text}' == Actual text: '{message}'")
+        # self.logger.info(f" Expected text: '{expected_text}' == Actual text: '{actual_message}'")
 
     def verify_text_presence_in_message(self, message_locator, expected_text):
         """verify that 'expected_text' PARTLY IN the  message(with 'message_locator')"""
