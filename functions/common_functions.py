@@ -1,13 +1,12 @@
 import logging
 import random, time
 
-from selenium.common.exceptions import NoSuchElementException,TimeoutException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-
 
 from functions.waitings import Waitings, wait_5_sec
 
@@ -30,8 +29,9 @@ class CommonFunctions(Waitings):
     def click_button_and_verify_message_by_message_locator(self, button_locator, message_locator, expected_message, locator_type=By.XPATH):
         """ for verifying appeared text of the message after click the button """
         self.wait_click_ability_and_click(locator=button_locator)
-        self.wait_until_visibility_of_element(locator=message_locator, period=4)
-        actual_message = self.driver.find_element(by=locator_type, value=message_locator).text
+        ## self.wait_until_visibility_of_element(locator=message_locator, period=4)
+        ## actual_message = self.driver.find_element(by=locator_type, value=message_locator).text
+        actual_message = self.wait_and_get_element_after_visibility(locator=message_locator, period=4).text
         # self.logger.info(f"--{expected_message=}--")
         # self.logger.info(f"--{actual_message=}--")
         assert actual_message == expected_message
@@ -39,16 +39,22 @@ class CommonFunctions(Waitings):
     @wait_5_sec
     def click_button_and_verify_appeared_element(self, button_locator, appeared_element_locator, locator_type=By.XPATH):
         # Click  button(by locator) and check XPATH(expecting_locator) for approving existing of the element
-        self.wait_click_ability_and_click(locator=button_locator)
-        self.wait_until_visibility_of_element(locator=appeared_element_locator, period=2)
-        assert self.driver.find_element(by=locator_type, value=appeared_element_locator)
+        self.wait_click_ability_and_click(locator_type, locator=button_locator)
+        ## self.wait_and_get_element_after_visibility(locator=appeared_element_locator, period=2)
+        ## assert self.driver.find_element(by=locator_type, value=appeared_element_locator)
+        assert self.wait_and_get_element_after_visibility(locator=appeared_element_locator, period=2)
 
     @wait_5_sec
-    def click_button_and_verify_new_url(self, button_locator, button_locator_type, url):
-        # Click button(by locator) and check new URL(expected)
-        self.wait_click_ability_and_click(locator=button_locator, locator_type=button_locator_type)
+    # def click_button_and_verify_new_url(self, button_locator, url, button_locator_type=By.XPATH):
+    #     """ Click button(by locator) and check new URL(expected)"""
+    #     self.wait_click_ability_and_click(locator=button_locator, locator_type=button_locator_type)
+    def click_button_and_verify_new_url(self, button, url):
+        """ Click button(by locator) and check new URL(expected)"""
+        self.wait_click_ability_and_click(button=button)
 
-        # An expectation for checking the current url.
+
+
+        """ An expectation for checking the current url."""
         WebDriverWait(self.driver, timeout=5).until(EC.url_to_be(url))
         # self.logger.info(f" Actual  url: -{self.driver.current_url}-")
         # self.logger.info(f"Expected url: -{url}-")
@@ -63,14 +69,16 @@ class CommonFunctions(Waitings):
         # product_page_constants.py.logger.info(elem.text)
         return elem.text
 
+    # ok
     def verify_presence_of_element(self, locator, locator_type=By.XPATH):
         """ check the presence of the element by its xpath
         True -- element is present at DOM
         False -- element is absent at DOM   """
         try:
             # decrease comment up to 1 sec for 'find_element_by_xpath'. By default, it will take 10 sec
-            self.driver.implicitly_wait(1)
-            self.driver.find_element(by=locator_type, value=locator)
+            self.driver.implicitly_wait(2)
+            # self.driver.find_element(by=locator_type, value=locator)
+            self.driver.find_element(*locator)
             # self.logger.info(f" Element exists: -{product_page_constants.py.driver.find_element(by=locator_type, value=locator+).text}-")
         except NoSuchElementException:
             return False
@@ -80,27 +88,30 @@ class CommonFunctions(Waitings):
         # self.logger.info(f"checkbox: {product_page_constants.py.driver.find_element_by_xpath(locator).is_selected()}")
         return self.driver.find_element(by=locator_type, value=locator).is_selected()
 
+    # ok
     def verify_message(self, locator, expected_text, locator_type=By.XPATH, comments=""):
-        """ verify that expected_text==text in 'locator'   """
-        try:
-            self.wait_until_text_in_element(locator=locator, expected_text=expected_text, locator_type=locator_type)
-            actual_message = self.driver.find_element(by=locator_type, value=locator).text.strip()
-            # self.logger.info(f"Actual  message {comments}: -{actual_message}-")
-            # self.logger.info(f"Expected  message: -{expected_text}-")
-            assert actual_message == expected_text, f"{actual_message=} , {expected_text=}"
-        except TimeoutException:
-            raise AssertionError(f"There is no Actual message")
-        # return True
+        """ verify that expected_text==actual text in 'locator'   """
+        # try:
 
-        # self.logger.info(f" Expected text: '{expected_text}' == Actual text: '{actual_message}'")
+        ## self.wait_and_get_text_from_element(locator=locator, expected_text=expected_text, locator_type=locator_type)
+        ## actual_message = self.driver.find_element(by=locator_type, value=locator).text.strip()
+        actual_text = self.get_text_from_locator(locator, locator_type=locator_type)
+        # self.logger.info(f"  actual  message/{comments}: --{actual_message}--")
+        # self.logger.info(f"expected  message/{comments}: --{expected_text}--")
+        assert actual_text == expected_text, f"{actual_text=} , {expected_text=}"
+        # except TimeoutException:
+        #     raise AssertionError(f"There is no Actual message")
 
-    def verify_text_presence_in_message(self, message_locator, expected_text):
+    # ok
+    def verify_text_partly_present_in_locator(self, message_locator, expected_text):
         """verify that 'expected_text' PARTLY IN the  message(with 'message_locator')"""
         message = self.get_text_from_locator(message_locator)
-        # self.logger.error(f"-{expected_text=}-")
-        # self.logger.error(f"      -{message=}- ")
+
+        self.logger.info(f"expected part of text: --{expected_text}--")
+        self.logger.info(f"    actual whole text: --{message}--")
         assert expected_text in message
 
+    # ok
     def get_value_from_input_field(self, locator, locator_type=By.XPATH):
         """ returns as string"""
         WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located((locator_type, locator)))
@@ -111,12 +122,21 @@ class CommonFunctions(Waitings):
         # self.logger.info(f"value of the attribute: '{product_page_constants.py.driver.find_element(by=locator_type, value=locator).get_attribute(attribute)}-")
         return self.driver.find_element(by=locator_type, value=locator).get_attribute(attribute)
 
-    def get_text_from_locator(self, locator, locator_type=By.XPATH):
-        if self.verify_presence_of_element(locator=locator, locator_type=locator_type):
+    # ok
+    # def get_text_from_locator(self, locator, locator_type=By.XPATH):
+    #     if self.verify_presence_of_element(locator=locator, locator_type=locator_type):
+    #         # WebDriverWait(product_page_constants.py.driver, timeout=5).until(EC.presence_of_element_located((By.XPATH, locator)))
+    #         return self.driver.find_element(by=locator_type, value=locator).text
+    #     # else:
+    #     return None
+    def get_text_from_locator(self, locator):
+        if self.verify_presence_of_element(locator=locator):
             # WebDriverWait(product_page_constants.py.driver, timeout=5).until(EC.presence_of_element_located((By.XPATH, locator)))
-            return self.driver.find_element(by=locator_type, value=locator).text
-        else:
-            return "field is empty"
+            return self.driver.find_element(*locator).text
+        # else:
+        return None
+
+
 
     def get_list_of_elements(self, list_locator):
         # self.logger.info(f"list in common: {list}")
@@ -136,6 +156,10 @@ class CommonFunctions(Waitings):
             # self.logger.info(f"element: -{element.text.strip()}-")
             list_of_texts.append(self.get_text_from_locator(locator=element).strip())
         return list_of_texts
+
+    @wait_5_sec
+    def scroll_to_element(self, locator):
+        self.driver.execute_script(f"window.scrollTo(0, 1500)")
 
     def move_mouse_to_locator(self, locator, locator_type=By.XPATH):
         actions = ActionChains(self.driver)

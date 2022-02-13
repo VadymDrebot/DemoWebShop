@@ -1,17 +1,12 @@
-import random
-
-from selenium import webdriver
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
 from constants import login_page_constants as login_const
-from constants import product_page_constants
-# from constants.register_page_const import RegisterConstants
 from constants import header_constants as header_const
-from  constants import global_constants as global_const
-# from constants.start_page_const import LOGIN_BUTTON_IN_HEADER_xpath, REGISTER_BUTTON_IN_HEADER_xpath, REGISTER_BUTTON_IN_HEADER_class, \
-#     REGISTER_PAGE_url, \
-#     product_dict,
+from constants import global_constants as global_const
 
 from functions.common_functions import CommonFunctions
 from functions.log_in_functions import LogInFunctions
@@ -23,8 +18,9 @@ from functions.shopping_cart_functions import ShoppingCartFunctions
 @pytest.fixture()
 def start_page():
     options = Options()
-    options.headless = True
-    driver = webdriver.Chrome(executable_path=global_const.PATH_TO_CHROME_WEBDRIVER)
+    # options.headless = True
+    driver = webdriver.Chrome(options=options, executable_path=global_const.PATH_TO_CHROME_WEBDRIVER)
+
     driver.get(global_const.START_PAGE_url)
     driver.implicitly_wait(time_to_wait=10)
     yield CommonFunctions(driver)
@@ -33,13 +29,18 @@ def start_page():
 
 @pytest.fixture()
 def login_page(start_page):
-    start_page.wait_click_ability_and_click(header_const.LOGIN_BUTTON_IN_HEADER_xpath)
+    # start_page.click_button_and_verify_new_url(button_locator_type=By.XPATH,
+    #                                            button_locator=header_const.LOGIN_BUTTON_IN_HEADER_xpath,
+    #                                            url=global_const.LOGIN_PAGE_url)
+    start_page.click_button_and_verify_new_url(button=header_const.LOGIN_BUTTON_IN_HEADER_xpath,
+                                               url=global_const.LOGIN_PAGE_url)
     return LogInFunctions(start_page.driver)
 
 
 @pytest.fixture()
 def register_page(start_page):
-    start_page.click_button_and_verify_new_url(button_locator_type=By.CLASS_NAME, button_locator=header_const.REGISTER_BUTTON_IN_HEADER_class,
+    start_page.click_button_and_verify_new_url(button_locator_type=By.CLASS_NAME,
+                                               button_locator=header_const.REGISTER_BUTTON_IN_HEADER_class,
                                                url=global_const.REGISTER_PAGE_url)
     return RegisterFunctions(start_page.driver)
 

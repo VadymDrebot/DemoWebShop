@@ -82,8 +82,7 @@ class ShoppingCartFunctions(ProjectFunction):
                 cart_object.list_of_products_under_work.append(copy_for_list)
                 cart_object.current_count_in_cart += 1
                 return
-            else:
-                break
+            break
 
     def get_item_quantity_from_top_menu_shopping_cart(self, comment=""):
         """
@@ -137,8 +136,8 @@ class ShoppingCartFunctions(ProjectFunction):
                         self.get_text_from_locator(locator=cart_const.PRODUCT_PRICE_IN_SHOPPING_CART_xpath.format(index=product_dom_index)):
                     # self.logger.info(f"title: -{title_from_dom}- , price: -{price_from_dom}-")
                     return True
-        else:
-            return False
+        # else:
+        return False
 
     def verify_absence_of_products_inside_shopping_cart(self, cart_object, comment="Absent product"):
         """
@@ -222,5 +221,5 @@ class ShoppingCartFunctions(ProjectFunction):
             self.verify_message(locator=cart_const.SHOPPING_CART_EMPTY_CONTENT_class, locator_type=By.CLASS_NAME,
                                 expected_text=cart_const.SHOPPING_CART_EMPTY_CONTENT_text)
             return []
-        else:
-            return self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_IN_SHOPPING_CART_xpath)
+        # else:
+        return self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_IN_SHOPPING_CART_xpath)

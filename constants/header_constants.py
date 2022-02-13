@@ -1,7 +1,17 @@
+from selenium.webdriver.common.by import By
+
+
+class Button():
+    def __init__(self, type, locator):
+        self.type = type
+        self.locator = locator
+
+
 REGISTER_BUTTON_IN_HEADER_xpath = "//a[@class='ico-register']"
 REGISTER_BUTTON_IN_HEADER_class = "ico-register"
 
-LOGIN_BUTTON_IN_HEADER_xpath = "//a[@class='ico-login']"
+LOGIN_BUTTON_IN_HEADER_xpath = (By.XPATH, "//a[@class='ico-login']")
+# LOGIN_BUTTON_IN_HEADER_xpath = "//a[@class='ico-login']"
 LOGOUT_BUTTON_IN_HEADER_xpath = "//a[@class='ico-logout']"
 
 SHOPPING_CART_BUTTON_IN_HEADER_xpath = "//li[@id='topcartlink']"

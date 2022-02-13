@@ -1,6 +1,6 @@
 # input data
-VALID_FIRST_NAME = "username"
-VALID_LAST_NAME = "last_name"
+VALID_FIRST_NAME = "valid username"
+VALID_LAST_NAME = "valid last_name"
 VALID_EMAIL = "vadim1@yahoo.com"
 VALID_PASSWORD = "abcdefg"
 INVALID_EMAIL = "abc"
@@ -50,3 +50,6 @@ SUCCESS_REGISTRATION_xpath = "//div[@class='result']"
 SUCCESS_REGISTRATION_text = "Your registration completed"
 
 EMAIL_IN_HEADER_xpath = "//a[@class='account' and contains(text(),'{email}')]"
+
+IS_REQUIRED_messages = [FIRST_NAME_IS_REQUIRED_text, LAST_NAME_IS_REQUIRED_text, EMAIL_IS_REQUIRED_text, PASSWORD_IS_REQURED_text,
+                        PASSWORD_IS_REQURED_text]

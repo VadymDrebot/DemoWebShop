@@ -24,32 +24,52 @@ class Waitings:
         self.driver = driver
         # product_page_constants.py.logger = logging.getLogger(__name__)
 
-    def wait_until_visibility_of_element(self, locator, locator_type=By.XPATH, period=5):
-        # wait until element became visible
+    def wait_and_get_element_after_visibility(self, locator, locator_type=By.XPATH, period=5):
+        # wait until element became visible and return it
         WebDriverWait(self.driver, timeout=period).until(EC.visibility_of_element_located((locator_type, locator)))
+        return self.driver.find_element(by=locator_type, value=locator)
+
+    # def wait_and_get_text_from_element(self, locator, expected_text, locator_type=By.XPATH):
+    # product_page_constants.py.logger.warning(f"locator before:{locator} , text before:{text}")
+
+    # WebDriverWait(self.driver, timeout=5).until(EC.text_to_be_present_in_element((locator_type, locator), expected_text))
 
     @wait_5_sec
-    def scroll_to_element(self, locator):
-        self.driver.execute_script(f"window.scrollTo(0, 1500)")
+    def wait_find_element(self, locator, locator_type=By.XPATH, timeout=3):
+        WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((locator_type, locator)))
+        # product_page_constants.py.logger.info(product_page_constants.py.driver.find_element_by_xpath(locator))
+        return self.driver.find_element(by=locator_type, value=locator)
 
-    def wait_until_text_in_element(self, locator, expected_text, locator_type=By.XPATH):
-        # product_page_constants.py.logger.warning(f"locator before:{locator} , text before:{text}")
+    # @wait_5_sec
+    # disable @wait5sec as it somehow nullify 'return' result(list of elements) of the function
+    def wait_find_elements(self, list_locator, locator_type=By.XPATH):
+        WebDriverWait(self.driver, timeout=3).until(EC.presence_of_all_elements_located((locator_type, list_locator)))
+        # product_page_constants.py.logger.info(f"list in waitings:{list_wait}")
+        return self.driver.find_elements(by=locator_type, value=list_locator)
 
-        WebDriverWait(self.driver, timeout=5).until(EC.text_to_be_present_in_element((locator_type, locator), expected_text))
+    # ok
+    # @wait_5_sec
+    # def wait_click_ability_and_click(self, locator, locator_type=By.XPATH):
+    #     WebDriverWait(self.driver, timeout=5).until(EC.element_to_be_clickable((locator_type, locator)))
+    #     self.driver.find_element(by=locator_type, value=locator).click()
+    def wait_click_ability_and_click(self, button, locator_type=By.XPATH):
+        WebDriverWait(self.driver, timeout=5).until(EC.element_to_be_clickable(button))
+        # button=(By.XPATH, "//a[@class='ico-login']")
+        # a, b = "xpath", "//a[@class='ico-login']"
+        self.driver.find_element(*button).click()
 
-    @wait_5_sec
-    def wait_click_ability_and_click(self, locator, locator_type=By.XPATH):
-        WebDriverWait(self.driver, timeout=5).until(EC.element_to_be_clickable((locator_type, locator)))
-        self.driver.find_element(by=locator_type, value=locator).click()
+        # c = a, b
+        # self.driver.find_element(c).click()
 
-    def wait_send_keys(self, locator, data, locator_type=By.XPATH):
-        WebDriverWait(self.driver, timeout=10).until(EC.element_to_be_clickable((locator_type, locator)))
-        input_field = self.driver.find_element(by=locator_type, value=locator)
+    # ok
+    def wait_send_keys(self, locator, data):
+        WebDriverWait(self.driver, timeout=10).until(EC.element_to_be_clickable(locator))
+        input_field = self.driver.find_element(*locator)
         input_field.clear()
         input_field.send_keys(data)
         if data != "":
             WebDriverWait(self.driver, timeout=5).until(
-                EC.text_to_be_present_in_element_value(locator=(locator_type, locator), text_=data))
+                EC.text_to_be_present_in_element_value(locator=locator, text_=data))
         # input_field.click()
 
     def wait_send_keys_without_clear(self, locator, data, locator_type=By.XPATH):
@@ -65,21 +85,8 @@ class Waitings:
         input_field.clear()
         input_field.send_keys(data)
 
-    def slow_send_keys(self, locator, data, locator_type=By.XPATH):
+    def wait_slow_send_keys(self, locator, data, locator_type=By.XPATH):
         WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located((locator_type, locator)))
         input_field = self.driver.find_element(by=locator_type, value=locator)
         for i in range(len(data)):
             input_field.send_keys(data[i])
-
-    @wait_5_sec
-    def wait_find_element(self, locator, locator_type=By.XPATH, timeout=3):
-        WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((locator_type, locator)))
-        # product_page_constants.py.logger.info(product_page_constants.py.driver.find_element_by_xpath(locator))
-        return self.driver.find_element(by=locator_type, value=locator)
-
-    # @wait_5_sec
-    # disable @wait5sec as it somehow nullify 'return' result(list of elements) of the function
-    def wait_find_elements(self, list_locator, locator_type=By.XPATH):
-        WebDriverWait(self.driver, timeout=3).until(EC.presence_of_all_elements_located((locator_type, list_locator)))
-        # product_page_constants.py.logger.info(f"list in waitings:{list_wait}")
-        return self.driver.find_elements(by=locator_type, value=list_locator)

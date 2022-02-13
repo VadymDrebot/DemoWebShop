@@ -40,8 +40,8 @@ class ProductPageFunctions(ProjectFunction):
     def verify_correct_transition_to_page(self, product):
         # verify URL
         expected_url = self.take_attribute(locator=product.mouse_movement_locators_list[-1], attribute='href')
-        # product_page_constants.py.logger.info(f"ACTUAL   url: -{product_page_constants.py.driver.current_url}-")
-        # product_page_constants.py.logger.info(f"EXPECTED url: -{expected_url}-")
+        self.logger.info(f"ACTUAL   url: -{self.driver.current_url}-")
+        self.logger.info(f"EXPECTED url: -{expected_url}-")
         assert self.driver.current_url == expected_url
 
         self.verify_page_name(product)
@@ -62,6 +62,6 @@ class ProductPageFunctions(ProjectFunction):
     def verify_page_name(self, product):
         actual_page_name = self.get_text_from_locator(locator=prod_page_const.PAGE_TITLE_class, locator_type=By.CLASS_NAME)
         expected_page_name = product.product_name
-        # product_page_constants.py.logger.info(f"ACTUAL   name of the page: -{actual_page_name}-")
-        # product_page_constants.py.logger.info(f"EXPECTED name of the page: -{expected_page_name}-")
+        self.logger.info(f"ACTUAL   name of the page: -{actual_page_name}-")
+        self.logger.info(f"EXPECTED name of the page: -{expected_page_name}-")
         assert actual_page_name == expected_page_name, f"{actual_page_name}, {expected_page_name}"

@@ -5,9 +5,9 @@ LIST_OF_SUBCATEGORY_ON_PAGE_xpath = "//div[@class='sub-category-checking_product
 LIST_OF_PRODUCT_BREADCRUMB_xpath = "//div[@class='breadcrumb']/ul/li"
 PAGE_TITLE_xpath = "//div[@class='page-title']"
 PAGE_TITLE_class = 'page-title'
-DROP_DOWN_SORT_BY_LIST_xpath = "//div[@class='cart_object-sorting']"
-DROP_DOWN_DISPLAY_PER_PAGE_LIST_xpath = "//div[@class='cart_object-page-size']"
-DROP_DOWN_VIEW_AS_LIST_xpath = "//div[@class='cart_object-viewmode']"
+DROP_DOWN_SORT_BY_LIST_xpath = "//div[@class='product-sorting']"
+DROP_DOWN_DISPLAY_PER_PAGE_LIST_xpath = "//div[@class='product-page-size']"
+DROP_DOWN_VIEW_AS_LIST_xpath = "//div[@class='product-viewmode']"
 LIST_OF_PRODUCTS_ON_PAGE_xpath = "//div[@class='product-grid']/div[@class='item-box']"  # list of products on the page(need so long)
 # LIST_OF_PRODUCTS_ON_PAGE_class = "checking_product_item-box"
 
