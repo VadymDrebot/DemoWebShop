@@ -1,4 +1,5 @@
 import logging, random, string
+import re
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
@@ -17,18 +18,23 @@ def random_word(count=5):
 
 def random_valid_email():
     # create email in format:  ***@***.***
-    email = str(random_word(3) + "@" + random_word(3) + "." + random_word(3))
-    return email
+    return str(random_word(3) + "@" + random_word(3) + "." + random_word(3)).lower()
 
 
-def log(target_func):
-    logger = logging.getLogger(target_func.__name__)
+def verify_email(email):
+    if re.match("\w+[@]\w+[.]\w+", email):
+        return True
+    return False
 
-    def wrapper(*args, **kwargs):
-        logger.info(f"{target_func.__doc__} --- {kwargs}")
-        return target_func(*args, **kwargs)
 
-    return wrapper
+# def log(target_func):
+#     logger = logging.getLogger(target_func.__name__)
+#
+#     def wrapper(*args, **kwargs):
+#         logger.info(f"{target_func.__doc__} --- {kwargs}")
+#         return target_func(*args, **kwargs)
+#
+#     return wrapper
 
 
 def create_driver(browser_name):

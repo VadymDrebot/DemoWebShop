@@ -12,9 +12,9 @@ from functions.waitings import Waitings, wait_5_sec
 
 
 class CommonFunctions(Waitings):
-    """common functions  for all/any points of the project or even other projects"""
+    """common/universal functions  for all/any points of the project or even other projects"""
 
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
 
     def clear_input_field(self, locator, locator_type=By.XPATH):
         input_field = self.driver.driver.find_element(by=locator_type, value=locator)
@@ -45,16 +45,11 @@ class CommonFunctions(Waitings):
         assert self.wait_and_get_element_after_visibility(locator=appeared_element_locator, period=2)
 
     @wait_5_sec
-    # def click_button_and_verify_new_url(self, button_locator, url, button_locator_type=By.XPATH):
-    #     """ Click button(by locator) and check new URL(expected)"""
-    #     self.wait_click_ability_and_click(locator=button_locator, locator_type=button_locator_type)
     def click_button_and_verify_new_url(self, button, url):
         """ Click button(by locator) and check new URL(expected)"""
         self.wait_click_ability_and_click(button=button)
 
-
-
-        """ An expectation for checking the current url."""
+        # An expectation for checking the current url.
         WebDriverWait(self.driver, timeout=5).until(EC.url_to_be(url))
         # self.logger.info(f" Actual  url: -{self.driver.current_url}-")
         # self.logger.info(f"Expected url: -{url}-")
@@ -70,16 +65,15 @@ class CommonFunctions(Waitings):
         return elem.text
 
     # ok
-    def verify_presence_of_element(self, locator, locator_type=By.XPATH):
+    def verify_presence_of_element(self, locator):
         """ check the presence of the element by its xpath
         True -- element is present at DOM
         False -- element is absent at DOM   """
         try:
             # decrease comment up to 1 sec for 'find_element_by_xpath'. By default, it will take 10 sec
-            self.driver.implicitly_wait(2)
-            # self.driver.find_element(by=locator_type, value=locator)
+            self.driver.implicitly_wait(1)
             self.driver.find_element(*locator)
-            # self.logger.info(f" Element exists: -{product_page_constants.py.driver.find_element(by=locator_type, value=locator+).text}-")
+            self.logger.info(f" Element exists: -{self.driver.find_element(*locator).text}-")
         except NoSuchElementException:
             return False
         return True
@@ -89,18 +83,12 @@ class CommonFunctions(Waitings):
         return self.driver.find_element(by=locator_type, value=locator).is_selected()
 
     # ok
-    def verify_message(self, locator, expected_text, locator_type=By.XPATH, comments=""):
+    def verify_message(self, locator, expected_text, comments=""):
         """ verify that expected_text==actual text in 'locator'   """
-        # try:
-
-        ## self.wait_and_get_text_from_element(locator=locator, expected_text=expected_text, locator_type=locator_type)
-        ## actual_message = self.driver.find_element(by=locator_type, value=locator).text.strip()
-        actual_text = self.get_text_from_locator(locator, locator_type=locator_type)
-        # self.logger.info(f"  actual  message/{comments}: --{actual_message}--")
-        # self.logger.info(f"expected  message/{comments}: --{expected_text}--")
+        actual_text = self.get_text_from_locator(locator)
+        # self.logger.info(f"  actual  message {comments}: --{actual_text:17}--")
+        # self.logger.info(f"expected  message {comments}: --{expected_text:17}--")
         assert actual_text == expected_text, f"{actual_text=} , {expected_text=}"
-        # except TimeoutException:
-        #     raise AssertionError(f"There is no Actual message")
 
     # ok
     def verify_text_partly_present_in_locator(self, message_locator, expected_text):
@@ -112,15 +100,15 @@ class CommonFunctions(Waitings):
         assert expected_text in message
 
     # ok
-    def get_value_from_input_field(self, locator, locator_type=By.XPATH):
+    def get_value_from_input_field(self, locator):
         """ returns as string"""
-        WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located((locator_type, locator)))
-        return self.driver.find_element(by=locator_type, value=locator).get_attribute('value')
+        WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located(locator))
+        return self.driver.find_element(*locator).get_attribute('value')
 
-    def take_attribute(self, locator, attribute, locator_type=By.XPATH):
-        WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located((locator_type, locator)))
+    def take_attribute(self, locator, attribute):
+        WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located( locator))
         # self.logger.info(f"value of the attribute: '{product_page_constants.py.driver.find_element(by=locator_type, value=locator).get_attribute(attribute)}-")
-        return self.driver.find_element(by=locator_type, value=locator).get_attribute(attribute)
+        return self.driver.find_element(*locator).get_attribute(attribute)
 
     # ok
     # def get_text_from_locator(self, locator, locator_type=By.XPATH):
@@ -131,12 +119,8 @@ class CommonFunctions(Waitings):
     #     return None
     def get_text_from_locator(self, locator):
         if self.verify_presence_of_element(locator=locator):
-            # WebDriverWait(product_page_constants.py.driver, timeout=5).until(EC.presence_of_element_located((By.XPATH, locator)))
             return self.driver.find_element(*locator).text
-        # else:
         return None
-
-
 
     def get_list_of_elements(self, list_locator):
         # self.logger.info(f"list in common: {list}")
@@ -179,16 +163,17 @@ class CommonFunctions(Waitings):
         actions.perform()
         actions.click(element)
 
-    def move_mouse_through_list_of_locators_and_click_last(self, movement_list_locator, locator_type=By.XPATH):
+    def move_mouse_through_list_of_locators_and_click_last(self, mouse_movement_locators_list):
         """elements of the 'list_locator' -- queue(line) for mouse movement
         the last element of the queue will be clicked
         return: the name(text) of the last(clicked) element"""
         actions = ActionChains(self.driver)
         element = ''
-        for locator in movement_list_locator:
-            element = WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((locator_type, locator)))
+        for locator in mouse_movement_locators_list:
+            element = WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
             actions.move_to_element(element)
             actions.perform()
         actions.click(element)
         actions.perform()
-        return self.driver.find_element(by=locator_type, value=movement_list_locator[-1]).text
+        # return element.text
+        # return self.driver.find_element(category.mouse_movement_locators_list[-1]).text

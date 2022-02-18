@@ -10,15 +10,34 @@ from constants.product_page_constants import PAGE_TITLE_class
 from functions.project_functions import ProjectFunction
 
 
+class ProductDescription:
+    def __init__(self):
+        self.title = ""
+        self.price = ""
+        self.dom_index = ""
+        self.quantity = 0
+
+
+class PriceObject:
+    def __init__(self):
+        self.before_cart_edit = ""
+        self.after_cart_edit = ""
+
+
 class ShoppingCartObject():
     def __init__(self, start_count_in_cart=0, removing_positions_amount=0, removing_products_amount=0):
         self.list_of_products_under_work = []  # each element will be : [ {"title": "", "price": "", "dom index": ""}, ...]
-        self.product_under_work = {"title": "", "price": "", "dom index": "", "quantity": 0}  # the product 'under work'
+        # self.product_under_work = {"title": "", "price": "", "dom index": "", "quantity": 0}  # the product 'under work'
+        # self.start_count_in_cart = start_count_in_cart
+        # self.current_count_in_cart = self.start_count_in_cart
+        #
+        # self.total_price = {"before cart edit": "", "after cart edit": ""}
+        # self.sub_total_price = {"before cart edit": "", "after cart edit": ""}
+        self.product_under_work = ProductDescription()
         self.start_count_in_cart = start_count_in_cart
         self.current_count_in_cart = self.start_count_in_cart
-
-        self.total_price = {"before cart edit": "", "after cart edit": ""}
-        self.sub_total_price = {"before cart edit": "", "after cart edit": ""}
+        self.total_price = PriceObject()
+        self.sub_total_price = PriceObject
 
 
 class ShoppingCartFunctions(ProjectFunction):
@@ -28,25 +47,29 @@ class ShoppingCartFunctions(ProjectFunction):
         choose RANDOM product from SHOPPING CART
         fill: cart_object.product_under_work : {"title": "", "price": "", "dom index": ""}
         """
-        cart_object.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_IN_SHOPPING_CART_xpath)
+        cart_object.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
         random_dom_index = random.choice(cart_object.list_of_cart_dom_indexes)
 
         cart_object.product_under_work["dom index"] = random_dom_index
         cart_object.product_under_work["title"] = self.get_text_from_locator(
-            locator=cart_const.PRODUCT_TITLE_IN_SHOPPING_CART_xpath.format(index=random_dom_index))
+            locator=cart_const.PRODUCT_TITLE_xpath.format(index=random_dom_index))
         cart_object.product_under_work["price"] = self.get_text_from_locator(
-            locator=cart_const.PRODUCT_PRICE_IN_SHOPPING_CART_xpath.format(index=random_dom_index))
+            locator=cart_const.PRODUCT_PRICE_xpath.format(index=random_dom_index))
         return cart_object
 
-    def add_products_to_shopping_cart(self, cart_object, adding_amount):
+    def add_random_products_to_shopping_cart(self, cart_object, adding_amount: int):
         """
+        open random category page |
+        add product               | several times
+
         'adding_amount' (type: <int>) -- quantity of products, wanted to add to 'Shopping cart'
         make: add 'adding_amount' products to a shopping cart
         fill: list_of_cart_dom_indexes with (type: <list>)  with  {"title": "", "price":""} , ...
         """
         self.logger.info(f"Cart before adding: {self.get_list_of_shopping_cart_products(cart_object)}")
         while cart_object.current_count_in_cart != cart_object.start_count_in_cart + adding_amount:
-            current_url = self.open_random_product_category_page_and_get_url()
+            self.open_random_product_category_page()
+            current_url = self.driver.current_url
             self.click_add_cart_of_random_product(cart_object, current_url)
 
     def click_add_cart_of_random_product(self, cart_object, current_url=""):
@@ -54,42 +77,44 @@ class ShoppingCartFunctions(ProjectFunction):
         make: on a cart_object category page(with numerous adding_amount of products) choose RANDOM cart_object with a 'Add to cart' button
         fill: cart_object.list_of_products_under_work = [ {"title": "", "price":""} ]
         """
+        # create list of dom indexes of "Add to cart' buttons
         cart_object.list_of_add_cart_dom_indexes = self.get_list_of_dom_indexes(
             products_list_locator=prod_page_const.LIST_OF_PRODUCTS_ON_PAGE_xpath,
             condition_list_locator=prod_page_const.LIST_OF_ADD_TO_CART_BUTTONS_ON_PAGE_xpath)
-
+        # remove products dom index from "list_of_add_cart_dom_indexes" and try to add the product to the cart(not allways it's possible)
         while cart_object.list_of_add_cart_dom_indexes:
             random_dom_index = random.choice(cart_object.list_of_add_cart_dom_indexes)
             cart_object.list_of_add_cart_dom_indexes.remove(random_dom_index)
 
             # if 'add to cart' button exists -- remember 'name' and 'price' and click it
-            cart_object.product_under_work["title"] = self.get_text_from_locator(
+            cart_object.product_under_work.title = self.get_text_from_locator(
                 locator=prod_page_const.LIST_OF_PRODUCT_TITLES_ON_PAGE_xpath.format(index=random_dom_index))
-            cart_object.product_under_work["price"] = self.get_text_from_locator(
+            cart_object.product_under_work.price = self.get_text_from_locator(
                 locator=prod_page_const.LIST_OF_PRODUCT_PRICES_ON_PAGE_xpath.format(index=random_dom_index))
 
-            self.driver.find_element(by=By.XPATH,
-                                     value=prod_page_const.LIST_OF_ADD_TO_CART_BUTTONS_ON_PAGE_xpath.format(index=random_dom_index)).click()
+            self.driver.find_element(*prod_page_const.LIST_OF_ADD_TO_CART_BUTTONS_ON_PAGE_xpath.format(index=random_dom_index)).click()
 
-            # after click 'Add to Cart' some products open 'Product page' to clarify details. If happens -- open new 'Product category page'
+            # after click 'Add to Cart' some products open 'Product page' to clarify details. If happens -- open new 'Category  page'
             time.sleep(1)
             if self.driver.current_url == current_url:
                 self.verify_message(locator=cart_const.PRODUCT_HAS_BEEN_ADDED_MESSAGE_xpath,
                                     expected_text=cart_const.PRODUCT_HAS_BEEN_ADDED_MESSAGE_text, comments="above the header")
                 # write 'name' and 'price' into the list 'cart_object.list_of_products_under_work' as a dictionary
-                self.logger.info(f"Product was added to Shopping cart: -{cart_object.product_under_work['title']}-")
-                copy_for_list = cart_object.product_under_work.copy()
-                cart_object.list_of_products_under_work.append(copy_for_list)
+                self.logger.info(f"Product was added to Shopping cart: -{cart_object.product_under_work.title}-")
+                # copy_for_list = cart_object.product_under_work.copy()
+                # cart_object.list_of_products_under_work.append(copy_for_list)
+                cart_object.list_of_products_under_work.append(cart_object.product_under_work)
                 cart_object.current_count_in_cart += 1
                 return
-            break
+            continue
+            # break
 
-    def get_item_quantity_from_top_menu_shopping_cart(self, comment=""):
+    def get_item_quantity_from_top_menu_shopping_cart(self, comment="") -> int:
         """
         make: READ quantity of products in the 'Shopping cart' in the header .
         return: <int>
         """
-        quantity = self.get_text_from_locator(locator=header_const.QUANTITY_OF_PRODUCTS_IN_SHOPPING_CART_xpath)
+        quantity = self.get_text_from_locator(header_const.QUANTITY_OF_PRODUCTS_IN_SHOPPING_CART_xpath)
         int_quantity = int(quantity[1:-1])
         self.logger.info(f"Quantity of products in shopping cart from the header -{comment}- : -{int_quantity}-")
         return int_quantity
@@ -100,7 +125,7 @@ class ShoppingCartFunctions(ProjectFunction):
         Params: 'action' -- 'increase' or 'decrease' , 'value' -- adding_amount(int) for 'action' """
         self.wait_send_keys(locator=cart_const.PRODUCT_QUANTITY_INPUT_FIELD_xpath.format(index=cart_object.product_under_work["dom index"]),
                             data=f"{value}")
-        self.wait_click_ability_and_click(locator=cart_const.UPDATE_SHOPPING_CART_BUTTON_name, locator_type=By.NAME)
+        self.wait_click_ability_and_click(locator=cart_const.UPDATE_BUTTON_name, locator_type=By.NAME)
 
         new_value = self.get_value_from_input_field(
             locator=cart_const.PRODUCT_QUANTITY_INPUT_FIELD_xpath.format(index=cart_object.product_under_work['dom index']))
@@ -118,7 +143,7 @@ class ShoppingCartFunctions(ProjectFunction):
             assert self.check_presence_of_the_product_inside_shopping_cart(cart_object), \
                 f"-{cart_object.product_under_work['title']}- not in the cart"
             # self.logger.info(f"-{comment}-  : -{cart_object.product_under_work['title']}-")
-        self.logger.info(f"Shopping cart -{comment}-  : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_IN_SHOPPING_CART_xpath)}-")
+        self.logger.info(f"Shopping cart -{comment}-  : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
 
     def check_presence_of_the_product_inside_shopping_cart(self, cart_object):
         """
@@ -126,14 +151,14 @@ class ShoppingCartFunctions(ProjectFunction):
         input params: cart_object.product_under_work
         return: True / False
         """
-        cart_object.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_IN_SHOPPING_CART_xpath)
+        cart_object.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
         for product_dom_index in cart_object.list_of_cart_dom_indexes:
             if cart_object.product_under_work["title"] == \
-                    self.get_text_from_locator(locator=cart_const.PRODUCT_TITLE_IN_SHOPPING_CART_xpath.format(index=product_dom_index)):
+                    self.get_text_from_locator(locator=cart_const.PRODUCT_TITLE_xpath.format(index=product_dom_index)):
 
                 # verify 'price' only if name was found in the Shopping cart
                 if cart_object.product_under_work["price"] == \
-                        self.get_text_from_locator(locator=cart_const.PRODUCT_PRICE_IN_SHOPPING_CART_xpath.format(index=product_dom_index)):
+                        self.get_text_from_locator(locator=cart_const.PRODUCT_PRICE_xpath.format(index=product_dom_index)):
                     # self.logger.info(f"title: -{title_from_dom}- , price: -{price_from_dom}-")
                     return True
         # else:
@@ -159,7 +184,7 @@ class ShoppingCartFunctions(ProjectFunction):
                 # self.logger.info(f" -{comment}-  : -{cart_object.product_under_work['title']}-")
 
             self.logger.info(
-                f"Shopping cart -{comment}-  : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_IN_SHOPPING_CART_xpath)}-")
+                f"Shopping cart -{comment}-  : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
 
     def remove_random_products_from_shopping_cart(self, cart_object, removing_positions_amount=0, removing_products_amount=0):
         """
@@ -174,17 +199,17 @@ class ShoppingCartFunctions(ProjectFunction):
 
         # make list of 'Shopping cart' dom indexes
         self.wait_click_ability_and_click(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id, locator_type=By.ID)
-        self.logger.info(f"Shopping cart before removing : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_IN_SHOPPING_CART_xpath)}-")
+        self.logger.info(f"Shopping cart before removing : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
 
-        cart_object.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_IN_SHOPPING_CART_xpath)
+        cart_object.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
 
         for _ in range(cart_object.removing_positions_amount):
             random_dom_index = random.choice(cart_object.list_of_cart_dom_indexes)  # choose random DOM-index , f.e. '2'
-            self.wait_click_ability_and_click(locator=cart_const.PRODUCT_REMOVING_CHECK_BOX_IN_SHOPPING_CART_xpath.format(index=random_dom_index))
+            self.wait_click_ability_and_click(locator=cart_const.PRODUCT_REMOVING_CHECK_BOX_xpath.format(index=random_dom_index))
 
             # remember 'title' and 'quantity' of the removing position
             cart_object.product_under_work["title"] = self.get_text_from_locator(
-                locator=cart_const.PRODUCT_TITLE_IN_SHOPPING_CART_xpath.format(index=random_dom_index))
+                locator=cart_const.PRODUCT_TITLE_xpath.format(index=random_dom_index))
 
             # count quantity of removing items for further actions (in case if there were >1 items in 'Qty' column)
             cart_object.removing_products_amount += int(self.get_value_from_input_field(
@@ -197,7 +222,7 @@ class ShoppingCartFunctions(ProjectFunction):
             self.logger.info(f"Removing product: -{cart_object.product_under_work['title']}-")
 
             # click 'Update shopping cart' button
-        self.wait_click_ability_and_click(locator_type=By.NAME, locator=cart_const.UPDATE_SHOPPING_CART_BUTTON_name)
+        self.wait_click_ability_and_click(locator_type=By.NAME, locator=cart_const.UPDATE_BUTTON_name)
         cart_object.current_count_in_cart -= cart_object.removing_products_amount
         return cart_object
 
@@ -210,16 +235,16 @@ class ShoppingCartFunctions(ProjectFunction):
         """
         cart_object.total_price[comment] = self.get_text_from_locator(
             locator=cart_const.PRODCUT_TOTAL_PRICE_xpath.format(index=cart_object.product_under_work["dom index"]))
-        cart_object.sub_total_price[comment] = self.get_text_from_locator(locator=cart_const.SUB_TOTAL_SUM_OF_SHOPPING_CART)
+        cart_object.sub_total_price[comment] = self.get_text_from_locator(locator=cart_const.SUB_TOTAL_SUM_xpath)
         self.logger.info(f"Total price  -{comment}-: -{cart_object.total_price[comment]}-")
         self.logger.info(f"Sub total price  -{comment}-: -{cart_object.sub_total_price[comment]}-")
 
     def get_list_of_shopping_cart_products(self, cart_object):
         """ return: list of product items , taken from the 'Shopping cart' page """
-        self.wait_click_ability_and_click(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id, locator_type=By.ID)
+        self.wait_click_ability_and_click(button=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
         if cart_object.current_count_in_cart == 0:
-            self.verify_message(locator=cart_const.SHOPPING_CART_EMPTY_CONTENT_class, locator_type=By.CLASS_NAME,
-                                expected_text=cart_const.SHOPPING_CART_EMPTY_CONTENT_text)
+            self.verify_message(locator=cart_const.EMPTY_CONTENT_class,
+                                expected_text=cart_const.EMPTY_CONTENT_text)
             return []
         # else:
-        return self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_IN_SHOPPING_CART_xpath)
+        return self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)

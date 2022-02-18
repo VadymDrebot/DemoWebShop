@@ -18,7 +18,7 @@ def wait_5_sec(target):
 
 
 class Waitings:
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
 
     def __init__(self, driver):
         self.driver = driver
@@ -38,28 +38,21 @@ class Waitings:
     def wait_find_element(self, locator, locator_type=By.XPATH, timeout=3):
         WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((locator_type, locator)))
         # product_page_constants.py.logger.info(product_page_constants.py.driver.find_element_by_xpath(locator))
-        return self.driver.find_element(by=locator_type, value=locator)
+        # return self.driver.find_element(by=locator_type, value=locator)
+        return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((locator_type, locator)))
 
     # @wait_5_sec
     # disable @wait5sec as it somehow nullify 'return' result(list of elements) of the function
-    def wait_find_elements(self, list_locator, locator_type=By.XPATH):
-        WebDriverWait(self.driver, timeout=3).until(EC.presence_of_all_elements_located((locator_type, list_locator)))
+    def wait_find_elements(self, list_locator):
+        WebDriverWait(self.driver, timeout=3).until(EC.presence_of_all_elements_located( list_locator))
         # product_page_constants.py.logger.info(f"list in waitings:{list_wait}")
-        return self.driver.find_elements(by=locator_type, value=list_locator)
+        return self.driver.find_elements(*list_locator)
 
     # ok
-    # @wait_5_sec
-    # def wait_click_ability_and_click(self, locator, locator_type=By.XPATH):
-    #     WebDriverWait(self.driver, timeout=5).until(EC.element_to_be_clickable((locator_type, locator)))
-    #     self.driver.find_element(by=locator_type, value=locator).click()
-    def wait_click_ability_and_click(self, button, locator_type=By.XPATH):
+    @wait_5_sec
+    def wait_click_ability_and_click(self, button):
         WebDriverWait(self.driver, timeout=5).until(EC.element_to_be_clickable(button))
-        # button=(By.XPATH, "//a[@class='ico-login']")
-        # a, b = "xpath", "//a[@class='ico-login']"
         self.driver.find_element(*button).click()
-
-        # c = a, b
-        # self.driver.find_element(c).click()
 
     # ok
     def wait_send_keys(self, locator, data):

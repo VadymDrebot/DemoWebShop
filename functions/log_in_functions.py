@@ -1,7 +1,7 @@
 from constants import login_page_constants as login_const
-from functions.common_functions import CommonFunctions
 from constants import header_constants as header_const
-from functions.waitings import Waitings
+
+from functions.common_functions import CommonFunctions
 
 
 class LogInFunctions(CommonFunctions):
@@ -24,9 +24,3 @@ class LogInFunctions(CommonFunctions):
     def logout_and_login(self):
         self.logout()
         self.login(email_data=login_const.VALID_EMAIL, password_data=login_const.VALID_PASSWORD)
-
-        # self.verify_message(locator=login_const.USER_NAME_IN_HEADER_xpath, expected_text=login_const.VALID_EMAIL)
-
-    # def logs_to_console(self,message_locator,expected_text):
-    #     self.logger.info(f"\nactual message:'{expected_text}' \n"
-    #                            f"is in expected message: '{self.get_text_from_locator(message_locator)}'")
