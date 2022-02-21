@@ -47,7 +47,7 @@ class CommonFunctions(Waitings):
     @wait_5_sec
     def click_button_and_verify_new_url(self, button, url):
         """ Click button(by locator) and check new URL(expected)"""
-        self.wait_click_ability_and_click(button=button)
+        self.wait_click_ability_and_click(locator=button)
 
         # An expectation for checking the current url.
         WebDriverWait(self.driver, timeout=5).until(EC.url_to_be(url))
@@ -65,7 +65,7 @@ class CommonFunctions(Waitings):
         return elem.text
 
     # ok
-    def verify_presence_of_element(self, locator):
+    def check_presence_of_element(self, locator):
         """ check the presence of the element by its xpath
         True -- element is present at DOM
         False -- element is absent at DOM   """
@@ -73,7 +73,7 @@ class CommonFunctions(Waitings):
             # decrease comment up to 1 sec for 'find_element_by_xpath'. By default, it will take 10 sec
             self.driver.implicitly_wait(1)
             self.driver.find_element(*locator)
-            self.logger.info(f" Element exists: -{self.driver.find_element(*locator).text}-")
+            # self.logger.info(f" Element exists: -{self.driver.find_element(*locator).text}-")
         except NoSuchElementException:
             return False
         return True
@@ -106,7 +106,7 @@ class CommonFunctions(Waitings):
         return self.driver.find_element(*locator).get_attribute('value')
 
     def take_attribute(self, locator, attribute):
-        WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located( locator))
+        WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located(locator))
         # self.logger.info(f"value of the attribute: '{product_page_constants.py.driver.find_element(by=locator_type, value=locator).get_attribute(attribute)}-")
         return self.driver.find_element(*locator).get_attribute(attribute)
 
@@ -117,29 +117,39 @@ class CommonFunctions(Waitings):
     #         return self.driver.find_element(by=locator_type, value=locator).text
     #     # else:
     #     return None
+    def formated_locator(self, locator, index) -> tuple:
+        """
+        uses for locators witch have '.format'  function
+        unpack tuple, (like: (By.XPATH,"xpath")) , modify with '.format' and pack/return new tuple  """
+        _, xpath = locator
+        new_xpath = xpath.format(index=index)
+        return _, new_xpath
+
     def get_text_from_locator(self, locator):
-        if self.verify_presence_of_element(locator=locator):
+        if self.check_presence_of_element(locator=locator):
             return self.driver.find_element(*locator).text
         return None
 
-    def get_list_of_elements(self, list_locator):
-        # self.logger.info(f"list in common: {list}")
-        return self.wait_find_elements(list_locator=list_locator)
+    # def get_list_of_elements(self, list_locator):
+    #     # self.logger.info(f"list in common: {list}")
+    #     return self.wait_find_elements(list_locator=list_locator)
 
-    def get_list_of_texts(self, list_locator):
-        list_of_elements = self.get_list_of_elements(list_locator=list_locator)
-        list_of_texts = []
-        for element in list_of_elements:
-            # self.logger.info(f"element: -{element.text.strip()}-")
-            list_of_texts.append(element.text.strip())
+    def get_list_of_texts(self, list_locator) -> list:
+        list_of_elements = self.wait_find_elements(list_locator=list_locator)
+        list_of_texts = [element.text.strip() for element in list_of_elements]
+
+        # list_of_texts = []
+        # for element in list_of_elements:
+        #     # self.logger.info(f"element: -{element.text.strip()}-")
+        #     list_of_texts.append(element.text.strip())
         return list_of_texts
 
-    def get_list_of_texts_from_several_locators(self, list_of_different_locators):
-        list_of_texts = []
-        for element in list_of_different_locators:
-            # self.logger.info(f"element: -{element.text.strip()}-")
-            list_of_texts.append(self.get_text_from_locator(locator=element).strip())
-        return list_of_texts
+    # def get_list_of_texts_from_several_locators(self, list_of_different_locators):
+    #     list_of_texts = []
+    #     for element in list_of_different_locators:
+    #         # self.logger.info(f"element: -{element.text.strip()}-")
+    #         list_of_texts.append(self.get_text_from_locator(locator=element).strip())
+    #     return list_of_texts
 
     @wait_5_sec
     def scroll_to_element(self, locator):

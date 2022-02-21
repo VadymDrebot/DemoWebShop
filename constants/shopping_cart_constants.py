@@ -14,12 +14,13 @@ PRODUCT_HAS_BEEN_ADDED_MESSAGE_text = "The product has been added to your shoppi
 
 # inside the shopping cart
 LIST_OF_PRODUCTS_xpath = (By.XPATH, "//tr[@class='cart-item-row']")
-PRODUCT_TITLE_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath}" + "[{index}]//a[@class='product-name']")
-PRODUCT_PRICE_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath}" + "[{index}]//span[@class='product-unit-price']")
-PRODUCT_REMOVING_CHECK_BOX_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath}" + "[{index}]//input[@name='removefromcart']")
-PRODUCT_QUANTITY_INPUT_FIELD_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath}" + "[{index}]//input[@class='qty-input']")
-PRODCUT_TOTAL_PRICE_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath}" + "[{index}]//span[@class='product-subtotal']")
+LIST_OF_PRODUCTS_xpath_as_string = "//tr[@class='cart-item-row']"
+PRODUCT_TITLE_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath_as_string}" + "[{index}]//a[@class='product-name']")
+PRODUCT_PRICE_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath_as_string}" + "[{index}]//span[@class='product-unit-price']")
+PRODUCT_REMOVING_CHECK_BOX_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath_as_string}" + "[{index}]//input[@name='removefromcart']")
+PRODUCT_QUANTITY_INPUT_FIELD_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath_as_string}" + "[{index}]//input[@class='qty-input']")
+PRODCUT_TOTAL_PRICE_xpath = (By.XPATH, f"{LIST_OF_PRODUCTS_xpath_as_string}" + "[{index}]//span[@class='product-subtotal']")
 
 LIST_OF_TITLES_xpath = (By.XPATH, "//tr[@class='cart-item-row']//a[@class='product-name']")
 SUB_TOTAL_SUM_xpath = (By.XPATH, "//tbody/tr[1]//span[@class='product-price']")  # before 'shipping' and 'tax'
-UPDATE_BUTTON_name = "updatecart"
+UPDATE_BUTTON_xpath = (By.XPATH, "//input[@class='button-2 update-cart-button']")

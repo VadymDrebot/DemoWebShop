@@ -100,7 +100,7 @@ class RegisterFunctions(ProjectFunction):
         for atr in user.obj_attributes:
             user_atr = eval("object." + atr, {"object": user})
             if not user_atr.error_message:
-                assert not self.verify_presence_of_element(user_atr.error_xpath)
+                assert not self.check_presence_of_element(user_atr.error_xpath)
             else:
                 self.verify_message(locator=user_atr.error_xpath, expected_text=user_atr.error_message)
 

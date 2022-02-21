@@ -21,7 +21,7 @@ class Category:
     def category_name(self, category):  # product_name => "Desktops"
         self.__category_name = category
         for item in categories.keys():
-            if item == category:  # checking_product item => "Desktops"
+            if item == category:  # checked_product item => "Desktops"
                 self.mouse_movement_categories_list = categories[category]["mouse_movement"]  # => ["Computers", "Desktops"],
                 self.sub_menu_list = categories[category].get("sub_menu")  # => ""
                 self.mouse_movement_locators_list = [categories[item]["xpath_for_click"] for item in categories[category]["mouse_movement"]]
@@ -47,9 +47,9 @@ class CategoryPageFunctions(ProjectFunction):
             self.logger.info(f"EXPECTED submenu list: -{category.sub_menu_list}-")
             assert self.get_list_of_texts(prod_page_const.LIST_OF_SUBCATEGORY_ON_PAGE_xpath) == category.sub_menu_list
         else:
-            assert self.verify_presence_of_element(locator=prod_page_const.DROP_DOWN_SORT_BY_LIST_xpath)
-            assert self.verify_presence_of_element(locator=prod_page_const.DROP_DOWN_DISPLAY_PER_PAGE_LIST_xpath)
-            assert self.verify_presence_of_element(locator=prod_page_const.DROP_DOWN_VIEW_AS_LIST_xpath)
+            assert self.check_presence_of_element(locator=prod_page_const.DROP_DOWN_SORT_BY_LIST_xpath)
+            assert self.check_presence_of_element(locator=prod_page_const.DROP_DOWN_DISPLAY_PER_PAGE_LIST_xpath)
+            assert self.check_presence_of_element(locator=prod_page_const.DROP_DOWN_VIEW_AS_LIST_xpath)
 
     def verify_page_name(self, category):
         actual_page_name = self.get_text_from_locator(locator=prod_page_const.PAGE_TITLE_xpath)

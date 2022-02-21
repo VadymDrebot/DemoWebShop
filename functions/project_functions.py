@@ -11,20 +11,18 @@ from functions.common_functions import CommonFunctions
 class ProjectFunction(CommonFunctions):
     """ functions which used throughout the project """
 
-    def get_list_of_dom_indexes(self, products_list_locator, condition_list_locator="", locator_type=By.XPATH):
+    def get_list_of_dom_indexes(self, products_list_locator, condition_list_locator="") -> []:
         """
-        products_list_locator -- list of ITEMS on a page(shopping cart,products page, etc...)
+        products_list_locator -- list of any ITEMS on a page(shopping cart,products page, etc...)
         condition_list_locator -- list of existing parameters of each item (like: 'add to cart' button, price, ....)
-        return: [] -- list of DOM indexes
         """
-        product_amount_on_page = len(self.driver.find_elements(by=locator_type, value=products_list_locator))  # f.e. len=5
-
+        product_amount_on_page = len(self.driver.find_elements(*products_list_locator))
         if condition_list_locator:
-            list_of_dom_indexes = [index for index in range(1, product_amount_on_page + 1) if self.verify_presence_of_element(
-                locator=condition_list_locator.format(index=index))]
+            list_of_dom_indexes = [index for index in range(1, product_amount_on_page + 1) if self.check_presence_of_element(
+                locator=self.formated_locator(condition_list_locator, index))]
         else:
             list_of_dom_indexes = [index for index in range(1, product_amount_on_page + 1)]  # lst= [1,2,3,4,5]
-
+        # self.logger.info(f"List of dom indexes: --{list_of_dom_indexes}--")
         return list_of_dom_indexes
 
     def verify_breadcrumb(self, category):
@@ -49,7 +47,6 @@ class ProjectFunction(CommonFunctions):
                 mouse_movement_names_list = item["mouse_movement"]  # f.e.: ["Computers", "Desktops"]
                 mouse_movement_locators_list = [categories[name]["xpath_for_click"] for name in mouse_movement_names_list]
         self.move_mouse_through_list_of_locators_and_click_last(mouse_movement_locators_list=mouse_movement_locators_list)
-
 
     def verify_empty_shopping_cart(self):
         self.verify_message(locator=PAGE_TITLE_class, locator_type=By.CLASS_NAME,

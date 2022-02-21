@@ -50,9 +50,9 @@ class Waitings:
 
     # ok
     @wait_5_sec
-    def wait_click_ability_and_click(self, button):
-        WebDriverWait(self.driver, timeout=5).until(EC.element_to_be_clickable(button))
-        self.driver.find_element(*button).click()
+    def wait_click_ability_and_click(self, locator):
+        WebDriverWait(self.driver, timeout=5).until(EC.element_to_be_clickable(locator))
+        self.driver.find_element(*locator).click()
 
     # ok
     def wait_send_keys(self, locator, data):
