@@ -1,10 +1,10 @@
 from random import choice
-from selenium.webdriver.common.by import By
+
 from constants import product_page_constants as prod_page_const
 from constants.header_constants import categories
-from constants import header_constants as header_const
 from constants.product_page_constants import PAGE_TITLE_class
 from constants.shopping_cart_constants import PAGE_TITLE_text, EMPTY_CONTENT_class, EMPTY_CONTENT_text
+
 from functions.common_functions import CommonFunctions
 
 
@@ -49,7 +49,5 @@ class ProjectFunction(CommonFunctions):
         self.move_mouse_through_list_of_locators_and_click_last(mouse_movement_locators_list=mouse_movement_locators_list)
 
     def verify_empty_shopping_cart(self):
-        self.verify_message(locator=PAGE_TITLE_class, locator_type=By.CLASS_NAME,
-                            expected_text=PAGE_TITLE_text)
-        self.verify_message(locator=EMPTY_CONTENT_class, locator_type=By.CLASS_NAME,
-                            expected_text=EMPTY_CONTENT_text)
+        self.verify_message(locator=PAGE_TITLE_class, expected_text=PAGE_TITLE_text)
+        self.verify_message(locator=EMPTY_CONTENT_class, expected_text=EMPTY_CONTENT_text)

@@ -56,7 +56,7 @@ class ShoppingCartFunctions(ProjectFunction):
             locator=self.formated_locator(cart_const.PRODUCT_QUANTITY_INPUT_FIELD_xpath, index=random_dom_index)))
         self.logger.info(f"Chosen product :  --{cart_object.product_under_work.title}-- with price: --{cart_object.product_under_work.price}--")
 
-    def add_random_products(self, cart_object, adding_amount: int):
+    def add_random_products(self, cart_object, adding_amount: int) -> list:
         """
         'adding_amount'  -- quantity of products, wanted to add to 'Shopping cart'
         make: add 'adding_amount' products to a shopping cart
@@ -119,7 +119,7 @@ class ShoppingCartFunctions(ProjectFunction):
         self.logger.info(f"EXPECTED new quantity : --{cart_object.product_under_work.quantity}-- ")
         self.logger.info(f"  ACTUAL new quantity : --{self.get_value_from_input_field(locator=quantity_input_field_locator)}-- ")
 
-    def check_presence_of_given_products_inside_shopping_cart(self, cart_object, given_products_list, comment=""):
+    def check_presence_of_given_products_inside_shopping_cart(self, cart_object, given_products_list, comment="") -> bool:
         self.wait_click_ability_and_click(header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
 
         for checking_product in given_products_list:
