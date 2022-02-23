@@ -1,11 +1,11 @@
-import random, time
+import random
+import time
 
 from selenium.webdriver.common.by import By
 
 from constants import header_constants as header_const
 from constants import product_page_constants as prod_page_const
 from constants import shopping_cart_constants as cart_const
-
 from functions.project_functions import ProjectFunction
 
 
@@ -99,8 +99,7 @@ class ShoppingCartFunctions(ProjectFunction):
                 cart_object.list_of_products_in_shopping_cart.append(temp_product)
                 cart_object.current_count_in_cart += 1
                 return
-            else:
-                return
+            return
 
     def get_item_quantity_from_top_menu(self, comment="") -> int:
         """ make: READ quantity of products in the 'Shopping cart' in the header . """
@@ -125,12 +124,12 @@ class ShoppingCartFunctions(ProjectFunction):
 
         for checking_product in given_products_list:
             if not self.check_presence_of_the_product_inside_shopping_cart(cart_object, checking_product, comment):
-                self.logger.info(f"Shopping cart -{comment}- : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
+                # self.logger.info(f"Shopping cart -{comment}- : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
                 return False
         return True
 
     def check_presence_of_products_inside_shopping_cart(self, cart_object, comment="") -> bool:
-        """make: verify presence of all products from the list: 'cart_object.list_of_products_in_shopping_cart' in the shopping cart"""
+        """ make: verify presence of all products from the list: 'cart_object.list_of_products_in_shopping_cart' in the shopping cart"""
         # go to the 'Shopping cart' by click 'Shopping Cart' button in the header
         self.wait_click_ability_and_click(header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
 
@@ -156,7 +155,7 @@ class ShoppingCartFunctions(ProjectFunction):
     def remove_random_products_with_update_button(self, cart_object, removed_amount=1):
         """ choose random product(s), tick it(them), click 'Update...' button"""
         # make list of 'Shopping cart' dom indexes
-        self.wait_click_ability_and_click(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id, locator_type=By.ID)
+        self.wait_click_ability_and_click(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
         self.logger.info(f"Shopping cart before removing : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
         cart_object.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
 
@@ -164,11 +163,11 @@ class ShoppingCartFunctions(ProjectFunction):
             # get random item and tick next to it
             random_dom_index = random.choice(cart_object.list_of_cart_dom_indexes)
             self.wait_click_ability_and_click(self.formated_locator(cart_const.PRODUCT_REMOVING_CHECK_BOX_xpath, index=random_dom_index))
-
+            # remember removed item for further verifying of its absence
             removed_item = ProductDescription()
-            removed_item.title = cart_object.product_under_work.title = self.get_text_from_locator(
+            removed_item.title = self.get_text_from_locator(
                 locator=self.formated_locator(cart_const.PRODUCT_TITLE_xpath, index=random_dom_index))
-            removed_item.price = cart_object.product_under_work.price = self.get_text_from_locator(
+            removed_item.price = self.get_text_from_locator(
                 locator=self.formated_locator(cart_const.PRODUCT_PRICE_xpath, index=random_dom_index))
 
             cart_object.removed_products.append(removed_item)
@@ -190,15 +189,13 @@ class ShoppingCartFunctions(ProjectFunction):
         sub_total_price = self.get_text_from_locator(locator=cart_const.SUB_TOTAL_SUM_xpath)
 
         if comment == "before cart edit":
-            cart_object.total_price.before_cart_edit = total_price
-            cart_object.sub_total_price.before_cart_edit = sub_total_price
+            cart_object.total_price.before_cart_edit, cart_object.sub_total_price.before_cart_edit = total_price, sub_total_price
         elif comment == "after cart edit":
-            cart_object.total_price.after_cart_edit = total_price
-            cart_object.sub_total_price.after_cart_edit = sub_total_price
+            cart_object.total_price.after_cart_edit, cart_object.sub_total_price.after_cart_edit = total_price, sub_total_price
         else:
             raise AssertionError(f"Wrong key/comment")
-        self.logger.info(f"    Total price  -{comment}-: --{total_price}--")
-        self.logger.info(f"Sub total price  -{comment}-: --{sub_total_price}--")
+
+        self.logger.info(f"    Total price  -{comment}-: --{total_price}--\n Sub total price  -{comment}-: --{sub_total_price}--")
 
     def get_list_of_shopping_cart_products(self, cart_object):
         """ return: list of product items , taken from the 'Shopping cart' page """

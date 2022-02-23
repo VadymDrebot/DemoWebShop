@@ -35,8 +35,10 @@ import re
 # x,y=2,5
 
 
-a = [2, 9]
-print(*a)
+a = [2, 9, 7, 5]
+d=lambda a:a.remove(x:=max(a))
+print(x)
+print(x)
 # a= lambda _, c: (_, c + "bbb")
 
 # print(a(*a))

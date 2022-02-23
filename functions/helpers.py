@@ -1,5 +1,6 @@
-import random, string
+import random
 import re
+import string
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options

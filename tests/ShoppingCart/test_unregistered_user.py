@@ -25,7 +25,7 @@ class TestShoppingCartUnregisteredUser:
                  4. verify page name: 'Shopping cart' and message: 'Your Shopping Cart is empty!'
         """
         # 1. move mouse to 'shopping cart' in header
-        shopping_cart_unreg.move_mouse_to_locator(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id, locator_type=By.ID)
+        shopping_cart_unreg.move_mouse_to_locator(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
 
         # 2. verify prompt message: 'You have no items in your shopping cart.'
         shopping_cart_unreg.verify_message(locator=header_const.USERPROMPT_SHOPPING_CART_IN_HEADER_xpath,
