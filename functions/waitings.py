@@ -1,6 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
-from selenium.webdriver.common.by import By
+
 import logging
 
 
@@ -71,5 +71,8 @@ class Waitings:
     def wait_slow_send_keys(self, locator, data):
         WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located(locator))
         input_field = self.driver.find_element(*locator)
-        for i in range(len(data)):
-            input_field.send_keys(data[i])
+        # for i in range(len(data)):
+        #     input_field.send_keys(data[i])
+        for data_item in data:
+            input_field.send_keys(data_item)
+
