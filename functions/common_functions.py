@@ -65,8 +65,8 @@ class CommonFunctions(Waitings):
     def verify_message(self, locator, expected_text, comments=""):
         """ verify that expected_text==actual text in 'locator'   """
         actual_text = self.get_text_from_locator(locator)
-        # self.logger.info(f"  actual  message {comments}: --{actual_text:17}--")
-        # self.logger.info(f"expected  message {comments}: --{expected_text:17}--")
+        self.logger.info(f"  actual  message {comments}: --{actual_text}--")
+        self.logger.info(f"expected  message {comments}: --{expected_text}--")
         assert actual_text == expected_text, f"{actual_text=} , {expected_text=}"
 
     def verify_text_partly_present_in_locator(self, message_locator, expected_text):
