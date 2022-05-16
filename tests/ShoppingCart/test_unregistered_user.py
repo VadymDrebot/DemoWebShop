@@ -16,27 +16,27 @@ class TestShoppingCartUnregisteredUser:
     test6: set quantity to 3 of a random product in the 'Shopping cart'.
     """
 
-    def test1_empty_shopping_cart(self, shopping_cart_unreg):
-        """ Summary: verify empty shopping cart
-            Steps:
-                 1. move mouse to 'shopping cart' in header
-                 2. verify prompt message: 'You have no items in your shopping cart.'
-                 3. click 'Shopping cart' in header
-                 4. verify page name: 'Shopping cart' and message: 'Your Shopping Cart is empty!'
-        """
-        # 1. move mouse to 'shopping cart' in header
-        shopping_cart_unreg.move_mouse_to_locator(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
-
-        # 2. verify prompt message: 'You have no items in your shopping cart.'
-        shopping_cart_unreg.verify_message(locator=header_const.USERPROMPT_SHOPPING_CART_IN_HEADER_xpath,
-                                           expected_text=header_const.USERPROMPT_EMPTY_SHOPPING_CART_text)
-
-        # 3. click 'Shopping cart' in header and verify page name 'Shopping cart'
-        shopping_cart_unreg.click_button_and_verify_new_url(button_locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id,
-                                                            button_locator_type=By.ID, url=cart_const.SHOPPING_CART_url)
-
-        # 4. verify page name: 'Shopping cart' and message: 'Your Shopping Cart is empty!'
-        shopping_cart_unreg.verify_empty_shopping_cart()
+    # def test1_empty_shopping_cart(self, shopping_cart_unreg):
+    #     """ Summary: verify empty shopping cart
+    #         Steps:
+    #              1. move mouse to 'shopping cart' in header
+    #              2. verify prompt message: 'You have no items in your shopping cart.'
+    #              3. click 'Shopping cart' in header
+    #              4. verify page name: 'Shopping cart' and message: 'Your Shopping Cart is empty!'
+    #     """
+    #     # 1. move mouse to 'shopping cart' in header
+    #     shopping_cart_unreg.move_mouse_to_locator(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
+    #
+    #     # 2. verify prompt message: 'You have no items in your shopping cart.'
+    #     shopping_cart_unreg.verify_message(locator=header_const.USERPROMPT_SHOPPING_CART_IN_HEADER_xpath,
+    #                                        expected_text=header_const.USERPROMPT_EMPTY_SHOPPING_CART_text)
+    #
+    #     # 3. click 'Shopping cart' in header and verify page name 'Shopping cart'
+    #     shopping_cart_unreg.click_button_and_verify_new_url(button_locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id,
+    #                                                         button_locator_type=By.ID, url=cart_const.SHOPPING_CART_url)
+    #
+    #     # 4. verify page name: 'Shopping cart' and message: 'Your Shopping Cart is empty!'
+    #     shopping_cart_unreg.verify_empty_shopping_cart()
 
     def test2_add_one_random_product(self, shopping_cart_unreg):
         """
@@ -104,34 +104,34 @@ class TestShoppingCartUnregisteredUser:
         # 3. verify presence of the chosen products in the 'shopping cart'
         assert shopping_cart_unreg.check_presence_of_products_inside_shopping_cart(cart_object)
 
-    def test6_remove_random_product(self, shopping_cart_unreg):
-        """
-        Summary: 6. removing random product from shopping cart
-        Steps:
-            1. click 'Add to Cart' on a first random product
-            2. verify message at the top of the page: "The product has been added to your shopping cart"
-            3. click 'Add to Cart' on a second random product
-            4. verify message at the top of the page: "The product has been added to your shopping cart"
-            6. verify presence of the added products in the 'Shopping cart'
-            7. in the 'Shopping cart' tick in the column 'Remove' next to the random product
-            8. click 'Update shopping cart' button
-            9. verify removed product is absent in the 'Shopping cart'
-         """
-        cart_object = ShoppingCartObject()
-        # 1-4. click 'Add to Cart' on 2 random products (verifying "The product has been added to your shopping cart" messages)
-        shopping_cart_unreg.add_random_products(cart_object, adding_amount := 2)
-
-        # 5. verify the number next to 'shopping cart' became '2'
-        assert shopping_cart_unreg.get_item_quantity_from_top_menu() == adding_amount
-
-        # 6. verify presence of the 'cart_object.list_of_products_in_shopping_cart' in the 'shopping cart'
-        assert shopping_cart_unreg.check_presence_of_products_inside_shopping_cart(cart_object, comment="Cart BEFORE removing ")
-
-        # 7-8. remove random product from the 'Shopping cart'
-        shopping_cart_unreg.remove_random_products_with_update_button(cart_object)
-
-        # 9. verify removed cart_object not in the 'Shopping cart' any more
-        assert not shopping_cart_unreg.check_presence_of_the_product_inside_shopping_cart(cart_object, checked_product=cart_object.removed_product)
+    # def test6_remove_random_product(self, shopping_cart_unreg):
+    #     """
+    #     Summary: 6. removing random product from shopping cart
+    #     Steps:
+    #         1. click 'Add to Cart' on a first random product
+    #         2. verify message at the top of the page: "The product has been added to your shopping cart"
+    #         3. click 'Add to Cart' on a second random product
+    #         4. verify message at the top of the page: "The product has been added to your shopping cart"
+    #         6. verify presence of the added products in the 'Shopping cart'
+    #         7. in the 'Shopping cart' tick in the column 'Remove' next to the random product
+    #         8. click 'Update shopping cart' button
+    #         9. verify removed product is absent in the 'Shopping cart'
+    #      """
+    #     cart_object = ShoppingCartObject()
+    #     # 1-4. click 'Add to Cart' on 2 random products (verifying "The product has been added to your shopping cart" messages)
+    #     shopping_cart_unreg.add_random_products(cart_object, adding_amount := 2)
+    #
+    #     # 5. verify the number next to 'shopping cart' became '2'
+    #     assert shopping_cart_unreg.get_item_quantity_from_top_menu() == adding_amount
+    #
+    #     # 6. verify presence of the 'cart_object.list_of_products_in_shopping_cart' in the 'shopping cart'
+    #     assert shopping_cart_unreg.check_presence_of_products_inside_shopping_cart(cart_object, comment="Cart BEFORE removing ")
+    #
+    #     # 7-8. remove random product from the 'Shopping cart'
+    #     shopping_cart_unreg.remove_random_products_with_update_button(cart_object)
+    #
+    #     # 9. verify removed cart_object not in the 'Shopping cart' any more
+    #     assert not shopping_cart_unreg.check_presence_of_the_product_inside_shopping_cart(cart_object, checked_product=cart_object.removed_product)
 
     def test7_increase_product_quantity_with_quantity_input_field(self, shopping_cart_unreg):
         """
