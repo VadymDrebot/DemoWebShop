@@ -4,9 +4,10 @@
 
 // Pipeline
 pipeline {
-//  agent {
+  agent any
+  //{
 //    label 'master'
-//  }
+ // }
   options {
     timeout(time: 1, unit: 'HOURS')
     timestamps()
