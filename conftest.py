@@ -19,8 +19,6 @@ from functions.shopping_cart_functions import ShoppingCartFunctions
 def start_page():
     options = Options()
 
-
-
     options.headless = True
     driver = webdriver.Chrome(options=options, executable_path=global_const.PATH_TO_CHROME_WEBDRIVER)
 
