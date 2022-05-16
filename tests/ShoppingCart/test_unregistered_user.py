@@ -16,6 +16,7 @@ class TestShoppingCartUnregisteredUser:
     test6: set quantity to 3 of a random product in the 'Shopping cart'.
     """
 
+    # FAIL
     # def test1_empty_shopping_cart(self, shopping_cart_unreg):
     #     """ Summary: verify empty shopping cart
     #         Steps:
