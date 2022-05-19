@@ -34,11 +34,11 @@ def create_driver(browser_name):
     """ Create browser"""
     if browser_name == CHROME:
         options = webdriver.ChromeOptions()
-        options.headless = True
+        # options.headless = True
         return webdriver.Chrome(options=options, executable_path=PATH_TO_CHROME_WEBDRIVER)
     elif browser_name == FIREFOX:
         options = Options()
-        options.headless = True
+        # options.headless = True
         return webdriver.Firefox(options=options, executable_path=PATH_TO_FIREFOX_WEBDRIVER)
     else:
         raise ValueError

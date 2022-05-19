@@ -3,3 +3,6 @@
 /main.py
 /--------------.py
 /---------------.py
+/geckodriver.log
+/tests/geckodriver.log
+/tests/Sign_in_page/geckodriver.log
