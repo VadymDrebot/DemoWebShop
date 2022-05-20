@@ -113,3 +113,31 @@ class RegisterFunctions(ProjectFunction):
             user_atr = eval("object." + atr, {"object": user})
             if user_atr.input_value == "":
                 user_atr.error_message = reg_const.IS_REQUIRED_messages[atr]
+
+    def fill_register_fields_click_and_verify_error_messages(self, register_page, first_name="", last_name="", email="", password="",
+                                                             confirm_password=""):
+        user = RegisterObject(first_name=first_name,
+                              last_name=last_name,
+                              email=email,
+                              password=password,
+                              confirm_password=confirm_password)
+        # 1. fill all fields
+        register_page.fill_register_fields(user)
+        # 2. click 'Register' button
+        register_page.click_register_button(user)
+        # 3. verify error messages
+        register_page.verify_error_messages(user)
+
+    def fill_register_fields_and_verify_error_messages(self, register_page, first_name="", last_name="", email="", password="",
+                                                       confirm_password=""):
+        user = RegisterObject(first_name=first_name,
+                              last_name=last_name,
+                              email=email,
+                              password=password,
+                              confirm_password=confirm_password)
+
+        # 1. fill all fields with  values
+        register_page.fill_register_fields(user)
+
+        # 2. verify  error messages '... is required' appears next to empty fields
+        register_page.verify_error_messages(user)

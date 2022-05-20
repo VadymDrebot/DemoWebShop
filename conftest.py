@@ -39,11 +39,11 @@ from functions.shopping_cart_functions import ShoppingCartFunctions
 #     return LogInFunctions(start_page.driver)
 
 
-@pytest.fixture()
-def register_page(start_page):
-    start_page.click_button_and_verify_new_url(button=header_const.REGISTER_BUTTON_IN_HEADER_class,
-                                               url=global_const.REGISTER_PAGE_url)
-    return RegisterFunctions(start_page.driver)
+# @pytest.fixture()
+# def register_page(start_page):
+#     start_page.click_button_and_verify_new_url(button=header_const.REGISTER_BUTTON_IN_HEADER_class,
+#                                                url=global_const.REGISTER_PAGE_url)
+#     return RegisterFunctions(start_page.driver)
 
 
 @pytest.fixture()
