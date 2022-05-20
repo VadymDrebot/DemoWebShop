@@ -1,13 +1,40 @@
+import pytest
+
+from constants.global_constants import browser_list
+from functions.helpers import create_driver
 from functions.log_in_functions import LogInFunctions
-from functions.shopping_cart_functions import ShoppingCartObject
+from functions.shopping_cart_functions import ShoppingCartObject, ShoppingCartFunctions
+from constants import global_constants as global_const
+from constants import header_constants as header_const
+
+from functions.log_in_functions import LogInFunctions
+from functions.common_functions import CommonFunctions
+from constants import login_page_constants as login_const
 
 
+@pytest.mark.parametrize("browser_name", browser_list)
 class TestShoppingCartRegisteredUser:
     """  Tests for registered user:
     1. add random product and verify its existence in shopping cart after LogOut and LogIn again
     2. add 3 more random products  and verify its existence in shopping cart after LogOut and LogIn again
     3. removing random position from shopping cart by tick and verify its absence in shopping cart after LogOut and LogIn again
     """
+
+    @pytest.fixture(scope="function")
+    def start_page(self, browser_name):
+        driver = create_driver(browser_name)
+        driver.implicitly_wait(time_to_wait=10)
+        driver.get(global_const.START_PAGE_url)
+        yield LogInFunctions(driver)
+        driver.close()
+
+    @pytest.fixture()
+    def shopping_cart_reg(self, start_page):
+        start_page.wait_click_ability_and_click(header_const.LOGIN_BUTTON_IN_HEADER_xpath)
+        start_page.fill_login_page_fields_and_click(email_data=login_const.VALID_EMAIL, password_data=login_const.VALID_PASSWORD)
+        start_page.verify_message(locator=login_const.USER_NAME_IN_HEADER_xpath, expected_text=login_const.VALID_EMAIL)
+        return ShoppingCartFunctions(start_page.driver)
+
 
     def test8_product_existence_after_logout_login(self, shopping_cart_reg):
         """

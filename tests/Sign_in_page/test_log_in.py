@@ -1,13 +1,13 @@
 import pytest
-
+from constants.global_constants import brower_list
 from constants import login_page_constants as log_const
-from functions.helpers import FIREFOX, CHROME, create_driver
+from functions.helpers import create_driver
 from constants import global_constants as global_const
 from constants import header_constants as header_const
 from functions.log_in_functions import LogInFunctions
 
 
-@pytest.mark.parametrize("browser_name", [FIREFOX, CHROME])
+@pytest.mark.parametrize("browser_name", brower_list)
 class TestLogIn:
     """ Test cases for 'Log In' page.
     Log in data:

@@ -51,14 +51,15 @@ def product_page_elements(start_page):
     return CategoryPageFunctions(start_page.driver)
 
 
-@pytest.fixture()
-def shopping_cart_unreg(start_page):
-    return ShoppingCartFunctions(start_page.driver)
+# @pytest.fixture()
+# def shopping_cart_unreg(start_page):
+#     return ShoppingCartFunctions(start_page.driver)
 
 
-@pytest.fixture()
-def shopping_cart_reg(login_page):
-    # login_page.wait_click_ability_and_click(header_const.LOGIN_BUTTON_IN_HEADER_xpath)
-    login_page.fill_login_page_fields_and_click(email_data=login_const.VALID_EMAIL, password_data=login_const.VALID_PASSWORD)
-    login_page.verify_message(locator=login_const.USER_NAME_IN_HEADER_xpath, expected_text=login_const.VALID_EMAIL)
-    return ShoppingCartFunctions(login_page.driver)
+# @pytest.fixture()
+# def shopping_cart_reg(login_page):
+#     # login_page.wait_click_ability_and_click(header_const.LOGIN_BUTTON_IN_HEADER_xpath)
+#     login_page.fill_login_page_fields_and_click(email_data=login_const.VALID_EMAIL, password_data=login_const.VALID_PASSWORD)
+#     login_page.verify_message(locator=login_const.USER_NAME_IN_HEADER_xpath, expected_text=login_const.VALID_EMAIL)
+#     return LogInFunctions.fill_login_page_fields_and_click(email_data=login_const.VALID_EMAIL, password_data=login_const.VALID_PASSWORD)
+#         CommonFunctions.verify_message(locator=login_const.USER_NAME_IN_HEADER_xpath, expected_text=login_const.VALID_EMAIL)

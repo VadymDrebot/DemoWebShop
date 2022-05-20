@@ -4,3 +4,7 @@ PATH_TO_FIREFOX_WEBDRIVER = "P:/Pycharm/PycharmProjects/DemoWebShop/drivers/geck
 START_PAGE_url = "http://demowebshop.tricentis.com/"
 REGISTER_PAGE_url = f"{START_PAGE_url}register"
 LOGIN_PAGE_url = f"{START_PAGE_url}login"
+
+CHROME = "chrome"
+FIREFOX = "firefox"
+browser_list = [CHROME, FIREFOX]

@@ -1,11 +1,18 @@
+import pytest
 from selenium.webdriver.common.by import By
 
 from constants import header_constants as header_const
 from constants import shopping_cart_constants as cart_const
+from functions.common_functions import CommonFunctions
+from functions.helpers import create_driver
+from functions.log_in_functions import LogInFunctions
+from constants import global_constants as global_const
+from functions.shopping_cart_functions import ShoppingCartObject, ShoppingCartFunctions
+from constants.global_constants import brower_list
+from constants import login_page_constants as login_const
 
-from functions.shopping_cart_functions import ShoppingCartObject
 
-
+@pytest.mark.parametrize("browser_name", brower_list)
 class TestShoppingCartUnregisteredUser:
     """  Tests for unregistered user:
     test1: verify empty 'Shopping cart'
@@ -15,7 +22,21 @@ class TestShoppingCartUnregisteredUser:
     test5: removing random product from the 'Shopping cart'
     test6: set quantity to 3 of a random product in the 'Shopping cart'.
     """
-# alot of fail
+
+    @pytest.fixture(scope="function")
+    def shopping_cart_unreg(self, browser_name):
+        driver = create_driver(browser_name)
+        driver.implicitly_wait(time_to_wait=10)
+        driver.get(global_const.START_PAGE_url)
+        yield ShoppingCartFunctions(driver)
+        driver.close()
+
+
+    # @pytest.fixture(scope="function")
+    # def shopping_cart_unreg(self, start_page):
+    #     return ShoppingCartFunctions(start_page.driver)
+
+    # alot of fail
     # FAIL
     # def test1_empty_shopping_cart(self, shopping_cart_unreg):
     #     """ Summary: verify empty shopping cart
@@ -51,6 +72,7 @@ class TestShoppingCartUnregisteredUser:
               6. go to 'Shopping cart'
               7. verify presence of the added product in the 'Shopping cart'
         """
+
         cart_object = ShoppingCartObject()
         assert shopping_cart_unreg.get_item_quantity_from_top_menu(comment="before adding") == 0
         # steps 1,2,3 -- click 'Add to Cart' on a random product and verify message "The product has been added to your shopping cart"
@@ -106,7 +128,6 @@ class TestShoppingCartUnregisteredUser:
     #
     #     # 3. verify presence of the chosen products in the 'shopping cart'
     #     assert shopping_cart_unreg.check_presence_of_products_inside_shopping_cart(cart_object)
-
 
     # FAIL FAIL
     # def test6_remove_random_product(self, shopping_cart_unreg):
