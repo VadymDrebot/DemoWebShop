@@ -1,4 +1,5 @@
 import logging
+import time
 
 from constants.header_constants import categories
 from constants import product_page_constants as prod_page_const
@@ -8,6 +9,7 @@ from functions.project_functions import ProjectFunction
 
 class Category:
     """ instance -- name/item of the category(in header) """
+
     def __init__(self, category):
         self.mouse_movement_categories_list = []
         self.__category_name = ""
@@ -34,7 +36,7 @@ class CategoryPageFunctions(ProjectFunction):
 
     def verify_correct_transition_to_new_url(self, category):
         expected_url = self.take_attribute(locator=category.mouse_movement_locators_list[-1], attribute='href')
-        self.logger.info(f"ACTUAL   url: --{self.driver.current_url}--")
+        self.logger.info(f"ACTUAL   url: --{self.wait_current_url()}--")
         self.logger.info(f"EXPECTED url: --{expected_url}--")
         assert self.driver.current_url == expected_url
 
@@ -57,3 +59,12 @@ class CategoryPageFunctions(ProjectFunction):
         self.logger.info(f"ACTUAL   name of the page: --{actual_page_name}--")
         self.logger.info(f"EXPECTED name of the page: --{expected_page_name}--")
         assert actual_page_name == expected_page_name, f"{actual_page_name}, {expected_page_name}"
+
+    def move_mouse_click_and_verify_category_page(self, product_page_elements, category_name):
+        category = Category(category=category_name)
+        if not category.mouse_movement_categories_list:
+            self.logger.info(f"There is no such category -{category.category_name}-")
+            return
+        product_page_elements.move_mouse_through_list_of_locators_and_click_last(mouse_movement_locators_list=category.mouse_movement_locators_list)
+        product_page_elements.verify_correct_transition_to_new_url(category)
+        product_page_elements.verify_ui_elements(category)

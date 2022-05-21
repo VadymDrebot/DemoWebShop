@@ -46,9 +46,9 @@ from functions.shopping_cart_functions import ShoppingCartFunctions
 #     return RegisterFunctions(start_page.driver)
 
 
-@pytest.fixture()
-def product_page_elements(start_page):
-    return CategoryPageFunctions(start_page.driver)
+# @pytest.fixture()
+# def product_page_elements(start_page):
+#     return CategoryPageFunctions(start_page.driver)
 
 
 # @pytest.fixture()

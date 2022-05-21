@@ -8,11 +8,11 @@ from functions.helpers import create_driver
 from functions.log_in_functions import LogInFunctions
 from constants import global_constants as global_const
 from functions.shopping_cart_functions import ShoppingCartObject, ShoppingCartFunctions
-from constants.global_constants import brower_list
+from constants.global_constants import browser_list
 from constants import login_page_constants as login_const
 
 
-@pytest.mark.parametrize("browser_name", brower_list)
+@pytest.mark.parametrize("browser_name", browser_list)
 class TestShoppingCartUnregisteredUser:
     """  Tests for unregistered user:
     test1: verify empty 'Shopping cart'
