@@ -22,7 +22,7 @@ def random_valid_email():
 
 
 def verify_email(email):
-    if re.search("\w+[@]\w + [.] \w+", email):
+    if re.search("\\w+[@]\\w+[.]\\w+", email):
         return True
     return False
 
