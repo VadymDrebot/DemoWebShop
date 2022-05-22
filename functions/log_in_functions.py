@@ -24,3 +24,11 @@ class LogInFunctions(CommonFunctions):
     def logout_and_login(self):
         self.logout()
         self.login(email_data=login_const.VALID_EMAIL, password_data=login_const.VALID_PASSWORD)
+
+    def fill_login_fields_click_verify_partial_text(self, message_locator, expected_text, email_data="", password_data=""):
+        self.fill_login_page_fields_and_click(email_data=email_data, password_data=password_data)
+        self.verify_text_partly_present_in_locator(message_locator, expected_text)
+
+    def fill_login_fields_click_verify_message(self, message_locator, expected_text, comments="", email_data="", password_data=""):
+        self.fill_login_page_fields_and_click(email_data=email_data, password_data=password_data)
+        self.verify_message(locator=message_locator, expected_text=expected_text, comments=comments)
