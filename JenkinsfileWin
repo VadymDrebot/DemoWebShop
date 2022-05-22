@@ -13,7 +13,6 @@ pipeline {
     timestamps()
   } // options
   stages {
-    //stage('\u2776 Test') {
     stage('Build') {
       steps {
         script {
@@ -24,18 +23,16 @@ pipeline {
       } // steps
     }
 
-
     stage('Test') {
       steps {
         script {
-         // currentBuild.displayName = "#${env.BUILD_NUMBER} (${env.GIT_COMMIT.take(8)}) ${env.GIT_BRANCH}"
           bat '''
-           // pip install -r requirements.txt
             pytest -n 4
           '''
         } // script
       } // steps
     } // stage
+
   } // stages
   post {
     always {
