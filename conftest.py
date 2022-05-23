@@ -7,12 +7,14 @@ from selenium import webdriver
 from constants import login_page_constants as login_const
 from constants import header_constants as header_const
 from constants import global_constants as global_const
+from constants.login_page_constants import VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3
 
 from functions.common_functions import CommonFunctions
+
 from functions.log_in_functions import LogInFunctions
 from functions.register_functions import RegisterFunctions
 from functions.category_page_functions import CategoryPageFunctions
-from functions.shopping_cart_functions import ShoppingCartFunctions
+from functions.shopping_cart_functions import ShoppingCartObject
 
 
 @pytest.fixture()
@@ -46,14 +48,19 @@ def product_page_elements(start_page):
     return CategoryPageFunctions(start_page.driver)
 
 
-@pytest.fixture()
-def shopping_cart_unreg(start_page):
-    return ShoppingCartFunctions(start_page.driver)
+@pytest.fixture(scope="class")
+def get_next_valid_email():
+    iterator = iter([VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3])
+    return iterator
 
 
 @pytest.fixture()
-def shopping_cart_reg(login_page):
-    # login_page.wait_click_ability_and_click(header_const.LOGIN_BUTTON_IN_HEADER_xpath)
-    login_page.fill_login_page_fields_and_click(email_data=login_const.VALID_EMAIL, password_data=login_const.VALID_PASSWORD)
-    login_page.verify_message(locator=login_const.USER_NAME_IN_HEADER_xpath, expected_text=login_const.VALID_EMAIL)
-    return ShoppingCartFunctions(login_page.driver)
+def email(request, login_page):
+    get_email = request.node.get_closest_marker('marker_email').args[0]
+    login_page.fill_login_page_fields_and_click(email_data=get_email, password_data=login_const.VALID_PASSWORD)
+    return get_email
+
+
+@pytest.fixture()
+def cart_object(start_page):
+    return ShoppingCartObject(start_page.driver)

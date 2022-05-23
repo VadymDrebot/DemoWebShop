@@ -23,20 +23,23 @@ class PriceObject:
         self.after_cart_edit = ""
 
 
-class ShoppingCartObject:
-    def __init__(self, start_count_in_cart=0):
+class ShoppingCartObject(ProjectFunction):
+    def __init__(self, driver):
+        super().__init__(driver)
         self.list_of_products_in_shopping_cart = []
-        self.start_count_in_cart = start_count_in_cart
+        self.start_count_in_cart = self.get_item_quantity_from_top_menu(comment='before')
         self.current_count_in_cart = self.start_count_in_cart
 
         self.removed_product = ProductDescription()
         self.product_under_work = ProductDescription()
+        self.removed_products = []
 
         self.total_price = PriceObject()
         self.sub_total_price = PriceObject()
+        self.list_of_add_cart_dom_indexes = ""
+        self.list_of_cart_dom_indexes = ""
 
-
-class ShoppingCartFunctions(ProjectFunction):
+    # class ShoppingCartFunctions(ProjectFunction):
 
     def get_random_product(self, cart_object):
         """
@@ -56,30 +59,30 @@ class ShoppingCartFunctions(ProjectFunction):
             locator=self.formated_locator(cart_const.PRODUCT_QUANTITY_INPUT_FIELD_xpath, index=random_dom_index)))
         self.logger.info(f"Chosen product :  --{cart_object.product_under_work.title}-- with price: --{cart_object.product_under_work.price}--")
 
-    def add_random_products(self, cart_object, adding_amount: int) -> list:
+    def add_random_products(self, adding_amount):
         """
         'adding_amount'  -- quantity of products, wanted to add to 'Shopping cart'
         make: add 'adding_amount' products to a shopping cart
         fill: cart_object.list_of_products_in_shopping_cart => [ {"title": "", "price":""}  , ... ]
         """
-        while cart_object.current_count_in_cart != cart_object.start_count_in_cart + adding_amount:
+        while self.current_count_in_cart != self.start_count_in_cart + adding_amount:
             self.open_random_product_category_page()
             current_url = self.driver.current_url
-            self.click_add_cart_button_of_random_product(cart_object, current_url)
+            self.click_add_cart_button_of_random_product(current_url)
 
-    def click_add_cart_button_of_random_product(self, cart_object, current_url=""):
+    def click_add_cart_button_of_random_product(self, current_url=""):
         """
         make: on a cart_object category page(with numerous adding_amount of products) choose RANDOM cart_object with a 'Add to cart' button
         fill: cart_object.list_of_products_under_work = [ {"title": "", "price":""} ]
         """
         # create list of dom indexes of "Add to cart' buttons
-        cart_object.list_of_add_cart_dom_indexes = self.get_list_of_dom_indexes(
+        self.list_of_add_cart_dom_indexes = self.get_list_of_dom_indexes(
             products_list_locator=prod_page_const.LIST_OF_PRODUCTS_ON_PAGE_xpath,
             condition_list_locator=prod_page_const.LIST_OF_ADD_TO_CART_BUTTONS_ON_PAGE_xpath)
         # remove products dom index from "list_of_add_cart_dom_indexes" and try to add the product to the cart(not allways it's possible)
-        while cart_object.list_of_add_cart_dom_indexes:
-            random_dom_index = random.choice(cart_object.list_of_add_cart_dom_indexes)
-            cart_object.list_of_add_cart_dom_indexes.remove(random_dom_index)
+        while self.list_of_add_cart_dom_indexes:
+            random_dom_index = random.choice(self.list_of_add_cart_dom_indexes)
+            self.list_of_add_cart_dom_indexes.remove(random_dom_index)
 
             # if 'add to cart' button exists -- remember 'name' and 'price' and click it
             temp_product = ProductDescription()
@@ -96,8 +99,8 @@ class ShoppingCartFunctions(ProjectFunction):
                 self.verify_message(locator=cart_const.PRODUCT_HAS_BEEN_ADDED_MESSAGE_xpath,
                                     expected_text=cart_const.PRODUCT_HAS_BEEN_ADDED_MESSAGE_text, comments="above the header")
                 self.logger.info(f"Product was added to Shopping cart: --{temp_product.title}--")
-                cart_object.list_of_products_in_shopping_cart.append(temp_product)
-                cart_object.current_count_in_cart += 1
+                self.list_of_products_in_shopping_cart.append(temp_product)
+                self.current_count_in_cart += 1
                 return
             return
 
@@ -119,29 +122,29 @@ class ShoppingCartFunctions(ProjectFunction):
         self.logger.info(f"EXPECTED new quantity : --{cart_object.product_under_work.quantity}-- ")
         self.logger.info(f"  ACTUAL new quantity : --{self.get_value_from_input_field(locator=quantity_input_field_locator)}-- ")
 
-    def check_presence_of_given_products_inside_shopping_cart(self, cart_object, given_products_list, comment="") -> bool:
+    def check_presence_of_given_products_inside_shopping_cart(self, given_products_list, comment="") -> bool:
         self.wait_click_ability_and_click(header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
 
         for checking_product in given_products_list:
-            if not self.check_presence_of_the_product_inside_shopping_cart(cart_object, checking_product, comment):
+            if not self.check_presence_of_the_product_inside_shopping_cart(checking_product, comment):
                 # self.logger.info(f"Shopping cart -{comment}- : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
                 return False
         return True
 
-    def check_presence_of_products_inside_shopping_cart(self, cart_object, comment="") -> bool:
+    def check_presence_of_products_inside_shopping_cart(self, comment="") -> bool:
         """ make: verify presence of all products from the list: 'cart_object.list_of_products_in_shopping_cart' in the shopping cart"""
         # go to the 'Shopping cart' by click 'Shopping Cart' button in the header
         self.wait_click_ability_and_click(header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
 
-        for checked_product in cart_object.list_of_products_in_shopping_cart:
-            if not self.check_presence_of_the_product_inside_shopping_cart(cart_object=cart_object, checked_product=checked_product, comment=comment):
+        for checked_product in self.list_of_products_in_shopping_cart:
+            if not self.check_presence_of_the_product_inside_shopping_cart(checked_product=checked_product, comment=comment):
                 return False
         return True
 
-    def check_presence_of_the_product_inside_shopping_cart(self, cart_object, checked_product, comment="") -> bool:
+    def check_presence_of_the_product_inside_shopping_cart(self, checked_product, comment="") -> bool:
         """ make: check if ONE (checked_product) product presents in the 'Shopping cart'  """
-        cart_object.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
-        for product_dom_index in cart_object.list_of_cart_dom_indexes:
+        self.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
+        for product_dom_index in self.list_of_cart_dom_indexes:
             if checked_product.title == \
                     self.get_text_from_locator(locator=self.formated_locator(cart_const.PRODUCT_TITLE_xpath, product_dom_index)) \
                     and checked_product.price == \
@@ -152,16 +155,17 @@ class ShoppingCartFunctions(ProjectFunction):
                 return True
         return False
 
-    def remove_random_products_with_update_button(self, cart_object, removed_amount=1):
+    def remove_random_products_with_update_button(self, removed_amount=1):
         """ choose random product(s), tick it(them), click 'Update...' button"""
+
         # make list of 'Shopping cart' dom indexes
         self.wait_click_ability_and_click(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
         self.logger.info(f"Shopping cart before removing : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
-        cart_object.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
+        self.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
 
         for _ in range(removed_amount):
             # get random item and tick next to it
-            random_dom_index = random.choice(cart_object.list_of_cart_dom_indexes)
+            random_dom_index = random.choice(self.list_of_cart_dom_indexes)
             self.wait_click_ability_and_click(self.formated_locator(cart_const.PRODUCT_REMOVING_CHECK_BOX_xpath, index=random_dom_index))
             # remember removed item for further verifying of its absence
             removed_item = ProductDescription()
@@ -170,9 +174,9 @@ class ShoppingCartFunctions(ProjectFunction):
             removed_item.price = self.get_text_from_locator(
                 locator=self.formated_locator(cart_const.PRODUCT_PRICE_xpath, index=random_dom_index))
 
-            cart_object.removed_products.append(removed_item)
+            self.removed_products.append(removed_item)
 
-            cart_object.list_of_cart_dom_indexes.remove(random_dom_index)
+            self.list_of_cart_dom_indexes.remove(random_dom_index)
             self.logger.info(f"Removing product: --{removed_item.title}--")
 
         # click 'Update...' button

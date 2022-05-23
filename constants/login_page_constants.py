@@ -3,12 +3,15 @@ from selenium.webdriver.common.by import By
 from functions.helpers import random_word
 
 VALID_EMAIL = "vadim1@yahoo.com"
+VALID_EMAIL2 = "vadim2@yahoo.com"
+VALID_EMAIL3 = "vadim3@yahoo.com"
 VALID_PASSWORD = "drevad"
+iterator = iter([VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3])
 
 INVALID_EMAIL = random_word()
 INVALID_PASSWORD = "invalid" + random_word()
 
-USER_NAME_IN_HEADER_xpath = (By.XPATH,"//div[@class='header-links']//a[@class='account']")
+USER_NAME_IN_HEADER_xpath = (By.XPATH, "//div[@class='header-links']//a[@class='account']")
 
 EMAIL_INPUT_FIELD_xpath = (By.XPATH, "//form/div/input[@id='Email']")
 PASSWORD_INPUT_FIELD_xpath = (By.XPATH, "//form/div/input[@id='Password']")

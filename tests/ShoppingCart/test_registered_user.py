@@ -1,3 +1,9 @@
+import logging
+
+import pytest
+
+from constants.login_page_constants import VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3, iterator
+
 from functions.log_in_functions import LogInFunctions
 from functions.shopping_cart_functions import ShoppingCartObject
 
@@ -9,12 +15,12 @@ class TestShoppingCartRegisteredUser:
     3. removing random position from shopping cart by tick and verify its absence in shopping cart after LogOut and LogIn again
     """
 
-    def test8_product_existence_after_logout_login(self, shopping_cart_reg):
+    @pytest.mark.marker_email(next(iterator))
+    def test8_product_existence_after_logout_login(self, email, cart_object):
         """
         Summary: add random product and verify its existence in 'Shopping cart' after LogOut and LogIn again
         Precondition: Log In with Valid login|password
         Steps:
-             1. remember number of products in 'Shopping cart'
              2. click 'Add to Cart' on a random product
              3. verify the number next to 'Shopping cart' in the header increase by '1'
              4. verify presence of the added product in the 'Shopping cart'
@@ -22,25 +28,24 @@ class TestShoppingCartRegisteredUser:
              6. Log In with the same credentials
              7. verify the existence of the ADDED product (not all products) in the 'Shopping cart'
         """
-        # 1. remember number of products in 'Shopping cart'
-        cart_object = ShoppingCartObject(start_count_in_cart=shopping_cart_reg.get_item_quantity_from_top_menu(comment='before'))
 
         # 2. click 'Add to Cart' on a random cart_object (verifying "The cart_object has been added to your shopping cart" message)
-        shopping_cart_reg.add_random_products(cart_object, adding_amount := 1)
+        cart_object.add_random_products(adding_amount := 1)
 
         # 3. verify the number next to 'shopping cart' in the top menu increase by '1'
-        assert shopping_cart_reg.get_item_quantity_from_top_menu(comment='after') == cart_object.start_count_in_cart + adding_amount
+        assert cart_object.get_item_quantity_from_top_menu(comment='after') == cart_object.start_count_in_cart + adding_amount
 
         # 4. verify presence of the chosen cart_object in the 'shopping cart'
-        shopping_cart_reg.check_presence_of_products_inside_shopping_cart(cart_object, comment="before LogOut")
+        cart_object.check_presence_of_products_inside_shopping_cart(comment="before LogOut")
 
         # 6,7 Log Out and Log In with the same credentials
-        LogInFunctions(shopping_cart_reg.driver).logout_and_login()
+        LogInFunctions(cart_object.driver).logout_and_login(email_data=email)
 
         # 8. verify the existence of the ADDED cart_object in the "shopping cart"
-        shopping_cart_reg.check_presence_of_products_inside_shopping_cart(cart_object, comment="after LogIn")
+        cart_object.check_presence_of_products_inside_shopping_cart(comment="after LogIn")
 
-    def test9_two_products_existence_after_logout_login(self, shopping_cart_reg):
+    @pytest.mark.marker_email(next(iterator))
+    def test9_two_products_existence_after_logout_login(self, email, cart_object):
         """
        Summary: add 2 random product from random Category page and verify its existence in shopping cart after LogOut and LogIn again
        Precondition: Log In with Valid login|password
@@ -54,25 +59,24 @@ class TestShoppingCartRegisteredUser:
            7. Log In with the same credentials
            8. verify the existence of the ADDED products (not all products) in the "shopping cart"
         """
-        # 1. remember number of products in 'Shopping cart'
-        cart_object = ShoppingCartObject(start_count_in_cart=shopping_cart_reg.get_item_quantity_from_top_menu(comment='before'))
 
         # 2,3. click 'Add to Cart' on a random product twice (verifying "The cart_object has been added to your shopping cart" message)
-        shopping_cart_reg.add_random_products(cart_object, adding_amount := 2)
+        cart_object.add_random_products(adding_amount := 2)
 
         # 4. verify the number next to 'shopping cart' in the top menu increase by '2'
-        assert shopping_cart_reg.get_item_quantity_from_top_menu(comment='after') == cart_object.start_count_in_cart + adding_amount
+        assert cart_object.get_item_quantity_from_top_menu(comment='after') == cart_object.start_count_in_cart + adding_amount
 
         # 5. verify presence of the chosen cart_object in the 'shopping cart'
-        shopping_cart_reg.check_presence_of_products_inside_shopping_cart(cart_object, comment="before LogOut")
+        cart_object.check_presence_of_products_inside_shopping_cart(comment="before LogOut")
 
         # 6,7 Log Out and Log In with the same credentials
-        LogInFunctions(shopping_cart_reg.driver).logout_and_login()
+        LogInFunctions(cart_object.driver).logout_and_login(email_data=email)
 
         # 8. verify the existence of the ADDED cart_object in the "shopping cart"
-        shopping_cart_reg.check_presence_of_products_inside_shopping_cart(cart_object, comment="after  LogIn")
+        cart_object.check_presence_of_products_inside_shopping_cart(comment="after  LogIn")
 
-    def test10_remove_two_random_products(self, shopping_cart_reg):
+    @pytest.mark.marker_email(next(iterator))
+    def test10_remove_two_random_products(self, email, cart_object):
         """
              Summary: removing two random positions from 'Shopping cart' by tick and verify its absence in Shopping cart after LogOut and LogIn again
              Preconditions: Log In with Valid login|password
@@ -88,26 +92,22 @@ class TestShoppingCartRegisteredUser:
                    9. Log In with the same credentials
                    10. verify the absence of the removed product in the "Shopping cart"
         """
-        cart_object = ShoppingCartObject()
-        cart_object.removed_products = []
 
         # 1,2,3 click 'Add to Cart' on a random products
-        shopping_cart_reg.add_random_products(cart_object, adding_amount=3)
+        cart_object.add_random_products(adding_amount=3)
 
         # 4. verify presence of the added products in the "Shopping cart"
-        assert shopping_cart_reg.check_presence_of_products_inside_shopping_cart(cart_object, comment="before removing")
+        assert cart_object.check_presence_of_products_inside_shopping_cart(comment="before removing")
 
         # 5,5 Tick next to the random product in the 'Remove' column. Click 'Update shopping cart' button
-        shopping_cart_reg.remove_random_products_with_update_button(cart_object, removed_amount=2)
+        cart_object.remove_random_products_with_update_button(removed_amount=2)
 
         # 7. verify removed product not in the 'Shopping cart' any more
-        assert not shopping_cart_reg.check_presence_of_given_products_inside_shopping_cart(cart_object,
-                                                                                           given_products_list=cart_object.removed_products,
-                                                                                           comment="before LogOut")
+        assert not cart_object.check_presence_of_given_products_inside_shopping_cart(given_products_list=cart_object.removed_products,
+                                                                                     comment="before LogOut")
         # 8,9 Log Out and Log In with the same credentials
-        LogInFunctions(shopping_cart_reg.driver).logout_and_login()
+        LogInFunctions(cart_object.driver).logout_and_login(email_data=email)
 
         # 10. verify the absence of the REMOVED position in the "shopping cart"
-        assert not shopping_cart_reg.check_presence_of_given_products_inside_shopping_cart(cart_object,
-                                                                                           given_products_list=cart_object.removed_products,
-                                                                                           comment="after LogIn")
+        assert not cart_object.check_presence_of_given_products_inside_shopping_cart(given_products_list=cart_object.removed_products,
+                                                                                     comment="after LogIn")
