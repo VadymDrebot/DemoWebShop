@@ -1,11 +1,8 @@
-import logging
-
 import pytest
 
-from constants.login_page_constants import VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3, iterator
+from constants.login_page_constants import EMAIL_ITERATOR
 
 from functions.log_in_functions import LogInFunctions
-from functions.shopping_cart_functions import ShoppingCartObject
 
 
 class TestShoppingCartRegisteredUser:
@@ -15,7 +12,7 @@ class TestShoppingCartRegisteredUser:
     3. removing random position from shopping cart by tick and verify its absence in shopping cart after LogOut and LogIn again
     """
 
-    @pytest.mark.marker_email(next(iterator))
+    @pytest.mark.marker_email(next(EMAIL_ITERATOR))
     def test8_product_existence_after_logout_login(self, email, cart_object):
         """
         Summary: add random product and verify its existence in 'Shopping cart' after LogOut and LogIn again
@@ -44,53 +41,52 @@ class TestShoppingCartRegisteredUser:
         # 8. verify the existence of the ADDED cart_object in the "shopping cart"
         cart_object.check_presence_of_products_inside_shopping_cart(comment="after LogIn")
 
-    @pytest.mark.marker_email(next(iterator))
+    @pytest.mark.marker_email(next(EMAIL_ITERATOR))
     def test9_two_products_existence_after_logout_login(self, email, cart_object):
         """
        Summary: add 2 random product from random Category page and verify its existence in shopping cart after LogOut and LogIn again
        Precondition: Log In with Valid login|password
        Steps:
-           1. remember number of products in 'Shopping cart'
-           2. click 'Add to Cart' on a random product (first product)
-           3. click 'Add to Cart' on a random product (second product)
-           4. verify the number next to 'shopping cart' in the top menu increase by '2'
-           5. verify presence of the added products in the "Shopping cart"
-           6. Log Out
-           7. Log In with the same credentials
-           8. verify the existence of the ADDED products (not all products) in the "shopping cart"
+           1. click 'Add to Cart' on a random product (first product)
+           2. click 'Add to Cart' on a random product (second product)
+           3. verify the number next to 'shopping cart' in the top menu increase by '2'
+           4. verify presence of the added products in the "Shopping cart"
+           5. Log Out
+           6. Log In with the same credentials
+           7. verify the existence of the ADDED products (not all products) in the "shopping cart"
         """
 
-        # 2,3. click 'Add to Cart' on a random product twice (verifying "The cart_object has been added to your shopping cart" message)
+        # 1,2. click 'Add to Cart' on a random product twice (verifying "The cart_object has been added to your shopping cart" message)
         cart_object.add_random_products(adding_amount := 2)
 
-        # 4. verify the number next to 'shopping cart' in the top menu increase by '2'
+        # 3. verify the number next to 'shopping cart' in the top menu increase by '2'
         assert cart_object.get_item_quantity_from_top_menu(comment='after') == cart_object.start_count_in_cart + adding_amount
 
-        # 5. verify presence of the chosen cart_object in the 'shopping cart'
+        # 4. verify presence of the chosen cart_object in the 'shopping cart'
         cart_object.check_presence_of_products_inside_shopping_cart(comment="before LogOut")
 
-        # 6,7 Log Out and Log In with the same credentials
+        # 5,6 Log Out and Log In with the same credentials
         LogInFunctions(cart_object.driver).logout_and_login(email_data=email)
 
-        # 8. verify the existence of the ADDED cart_object in the "shopping cart"
+        # 7. verify the existence of the ADDED cart_object in the "shopping cart"
         cart_object.check_presence_of_products_inside_shopping_cart(comment="after  LogIn")
 
-    @pytest.mark.marker_email(next(iterator))
+    @pytest.mark.marker_email(next(EMAIL_ITERATOR))
     def test10_remove_two_random_products(self, email, cart_object):
         """
-             Summary: removing two random positions from 'Shopping cart' by tick and verify its absence in Shopping cart after LogOut and LogIn again
-             Preconditions: Log In with Valid login|password
-             Steps:
-                   1. click 'Add to Cart' on a random product (first product)
-                   2. click 'Add to Cart' on a random product (second product)
-                   3. click 'Add to Cart' on a random product (third product)
-                   4. verify presence of the added products in the "Shopping cart"
-                   5. in the shopping cart tick next to the two random products in the 'Remove' column
-                   6. click 'Update shopping cart' button
-                   7. verify removed product not in the 'Shopping cart' any more
-                   8. Log Out
-                   9. Log In with the same credentials
-                   10. verify the absence of the removed product in the "Shopping cart"
+        Summary: removing two random positions from 'Shopping cart' by tick and verify its absence in Shopping cart after LogOut and LogIn again
+        Preconditions: Log In with Valid login|password
+        Steps:
+            1. click 'Add to Cart' on a random product (first product)
+            2. click 'Add to Cart' on a random product (second product)
+            3. click 'Add to Cart' on a random product (third product)
+            4. verify presence of the added products in the "Shopping cart"
+            5. in the shopping cart tick next to the two random products in the 'Remove' column
+            6. click 'Update shopping cart' button
+            7. verify removed product not in the 'Shopping cart' any more
+            8. Log Out
+            9. Log In with the same credentials
+            10. verify the absence of the removed product in the "Shopping cart"
         """
 
         # 1,2,3 click 'Add to Cart' on a random products

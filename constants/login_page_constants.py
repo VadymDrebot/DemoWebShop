@@ -1,12 +1,14 @@
+import json
+
 from selenium.webdriver.common.by import By
 
-from functions.helpers import random_word
+from functions.helpers import random_word, email_iterator
 
 VALID_EMAIL = "vadim1@yahoo.com"
 VALID_EMAIL2 = "vadim2@yahoo.com"
 VALID_EMAIL3 = "vadim3@yahoo.com"
 VALID_PASSWORD = "drevad"
-iterator = iter([VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3])
+EMAIL_ITERATOR = email_iterator()
 
 INVALID_EMAIL = random_word()
 INVALID_PASSWORD = "invalid" + random_word()
@@ -22,3 +24,8 @@ EMAIL_VALIDATION_ERROR_MESSAGE_text = "Please enter a valid email address."
 
 LOGIN_ERROR_MESSAGE_xpath = (By.XPATH, "//div[@class='validation-summary-errors']")
 LOGIN_ERROR_MESSAGE_text = "Login was unsuccessful. Please correct the errors and try again."
+
+# def it():
+#     with open("P:/Pycharm/PycharmProjects/DemoWebShop/constants/credentials.json") as file:
+#         iterat = iter([key["login"] for key in json.load(file).values()])
+#     return iterat

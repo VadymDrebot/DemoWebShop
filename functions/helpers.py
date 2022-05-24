@@ -1,3 +1,4 @@
+import json
 import random
 import re
 import string
@@ -5,19 +6,18 @@ import string
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-from constants.global_constants import PATH_TO_CHROME_WEBDRIVER, PATH_TO_FIREFOX_WEBDRIVER
-# from constants.login_page_constants import VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3
+from constants.global_constants import PATH_TO_CHROME_WEBDRIVER, PATH_TO_FIREFOX_WEBDRIVER, PATH_TO_USERS_JSON, CHROME, FIREFOX
 
-CHROME = "chrome"
-FIREFOX = "firefox"
 
-# iterator = iter([VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3])
+def email_iterator():
+    with open(PATH_TO_USERS_JSON) as file:
+        return iter([key["login"] for key in json.load(file).values()])
 
-#
+
 def random_word(count=5):
     # generate random word up to 'count' symbols
     random_w = ''
-    for elem in range(count):
+    for _ in range(count):
         random_w = random_w + random.choice(string.ascii_letters)
     return random_w
 

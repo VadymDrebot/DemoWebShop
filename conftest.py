@@ -7,10 +7,8 @@ from selenium import webdriver
 from constants import login_page_constants as login_const
 from constants import header_constants as header_const
 from constants import global_constants as global_const
-from constants.login_page_constants import VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3
 
 from functions.common_functions import CommonFunctions
-
 from functions.log_in_functions import LogInFunctions
 from functions.register_functions import RegisterFunctions
 from functions.category_page_functions import CategoryPageFunctions
@@ -46,12 +44,6 @@ def register_page(start_page):
 @pytest.fixture()
 def product_page_elements(start_page):
     return CategoryPageFunctions(start_page.driver)
-
-
-@pytest.fixture(scope="class")
-def get_next_valid_email():
-    iterator = iter([VALID_EMAIL, VALID_EMAIL2, VALID_EMAIL3])
-    return iterator
 
 
 @pytest.fixture()
