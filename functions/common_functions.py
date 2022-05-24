@@ -30,7 +30,6 @@ class CommonFunctions(Waitings):
     def click_button_and_verify_new_url(self, button, url):
         """ Click button(by locator) and check new URL(expected)"""
         self.wait_click_ability_and_click(locator=button)
-
         # An expectation for checking the current url.
         WebDriverWait(self.driver, timeout=5).until(EC.url_to_be(url))
         # self.logger.info(f" Actual  url: -{self.driver.current_url}-")

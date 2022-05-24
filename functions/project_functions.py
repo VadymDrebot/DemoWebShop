@@ -51,3 +51,8 @@ class ProjectFunction(CommonFunctions):
     def verify_empty_shopping_cart(self):
         self.verify_message(locator=PAGE_TITLE_class, expected_text=PAGE_TITLE_text)
         self.verify_message(locator=EMPTY_CONTENT_class, expected_text=EMPTY_CONTENT_text)
+
+    def check_if_empty_shopping_cart(self):
+        if self.get_text_from_locator(locator=EMPTY_CONTENT_class) == EMPTY_CONTENT_text:
+            return True
+        return False

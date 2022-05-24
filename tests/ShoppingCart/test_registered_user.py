@@ -99,11 +99,11 @@ class TestShoppingCartRegisteredUser:
         cart_object.remove_random_products_with_update_button(removed_amount=2)
 
         # 7. verify removed product not in the 'Shopping cart' any more
-        assert not cart_object.check_presence_of_given_products_inside_shopping_cart(given_products_list=cart_object.removed_products,
+        assert not cart_object.check_presence_of_given_products_inside_shopping_cart(given_products_list=cart_object.list_of_removed_products,
                                                                                      comment="before LogOut")
         # 8,9 Log Out and Log In with the same credentials
         LogInFunctions(cart_object.driver).logout_and_login(email_data=email)
 
         # 10. verify the absence of the REMOVED position in the "shopping cart"
-        assert not cart_object.check_presence_of_given_products_inside_shopping_cart(given_products_list=cart_object.removed_products,
+        assert not cart_object.check_presence_of_given_products_inside_shopping_cart(given_products_list=cart_object.list_of_removed_products,
                                                                                      comment="after LogIn")
