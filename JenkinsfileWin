@@ -19,7 +19,7 @@ pipeline {
           currentBuild.displayName = "#${env.BUILD_NUMBER} (${env.GIT_COMMIT.take(8)}) ${env.GIT_BRANCH}"
           bat '''
             pip install -r requirements.txt
-            pytest
+            pytest -n 8
           '''
         } // script
       } // steps
