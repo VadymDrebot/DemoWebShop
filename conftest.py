@@ -1,3 +1,5 @@
+import logging
+
 import pytest
 
 from selenium.webdriver.firefox.options import Options
@@ -7,13 +9,14 @@ from selenium import webdriver
 from constants import login_page_constants as login_const
 from constants import header_constants as header_const
 from constants import global_constants as global_const
+from constants.header_constants import categories
 
 from functions.common_functions import CommonFunctions
 from functions.log_in_functions import LogInFunctions
 from functions.register_functions import RegisterFunctions
 from functions.category_page_functions import CategoryPageFunctions
 from functions.shopping_cart_functions import ShoppingCartObject
-
+logger = logging.getLogger()
 
 @pytest.fixture()
 def start_page():
@@ -43,7 +46,9 @@ def register_page(start_page):
 
 @pytest.fixture()
 def product_page_elements(start_page):
-    return CategoryPageFunctions(start_page.driver)
+    yield CategoryPageFunctions(start_page.driver)
+    logging.info(f"Was verified --{len(list(categories.keys()))}-- categories")
+
 
 
 @pytest.fixture()
