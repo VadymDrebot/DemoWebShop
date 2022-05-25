@@ -41,7 +41,7 @@ categories = {"Books": {"mouse_movement": ["Books"], "xpath_for_click": BOOKS_BU
 
               "Electronics": {"mouse_movement": ["Electronics"], "xpath_for_click": ELECTRONICS_BUTTON_IN_HEADER_xpath,
                               "sub_menu": ["Camera, photo", "Cell phones"]},
-              "Camera, photo": {"mouse_movement": ["Electronics", "Camera,photo"], "xpath_for_click": CAMERA_FOTO_BUTTON_IN_HEADER_xpath},
+              "Camera, photo": {"mouse_movement": ["Electronics", "Camera, photo"], "xpath_for_click": CAMERA_FOTO_BUTTON_IN_HEADER_xpath},
               "Cell phones": {"mouse_movement": ["Electronics", "Cell phones"], "xpath_for_click": CELL_PHONES_BUTTON_IN_HEADER_xpath},
 
               "Apparel & Shoes": {"mouse_movement": ["Apparel & Shoes"], "xpath_for_click": APPAREL_AND_SHOES_BUTTON_IN_HEADER_xpath},
