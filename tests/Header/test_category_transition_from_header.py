@@ -3,8 +3,9 @@ import pytest
 
 from constants import global_constants as global_const
 from constants.global_constants import browser_list
+from constants.header_constants import categories
 
-from functions.category_page_functions import CategoryPageFunctions
+from functions.category_page_functions import CategoryPageFunctions, Category
 
 from functions.helpers import create_driver
 
@@ -21,28 +22,12 @@ class TestCategoryTransitionFromHeader:
         driver.implicitly_wait(time_to_wait=10)
         driver.get(global_const.START_PAGE_url)
         yield CategoryPageFunctions(driver)
+        # logging.info(f"Was verified {len(list(categories.keys()))} categories in {len(browser_name)} browsers")
         driver.close()
 
-    def test1_books(self, product_page_elements):
-        """ verify transaction to the "Books" page """
-        product_page_elements.move_mouse_click_and_verify_category_page(product_page_elements, category_name="Books")
-
-    def test2_computer(self, product_page_elements):
-        """ verify transaction to the "Computers" page """
-        product_page_elements.move_mouse_click_and_verify_category_page(product_page_elements, category_name="Computers")
-
-    def test3_desktops(self, product_page_elements):
-        """ verify transaction to the "Desktops" page """
-        product_page_elements.move_mouse_click_and_verify_category_page(product_page_elements, category_name="Desktops")
-
-    def test8(self, product_page_elements):
-        """ verify transaction to the "Cell phones" page """
-        product_page_elements.move_mouse_click_and_verify_category_page(product_page_elements, category_name="Cell phones")
-
-    def test11(self, product_page_elements):
-        """ verify transaction to the "Jewelry" page """
-        product_page_elements.move_mouse_click_and_verify_category_page(product_page_elements, category_name="Jewelry")
-
-    def test13(self, product_page_elements):
-        """ Negative test:  verify transaction to the unexisting category: "Shoes" page """
-        product_page_elements.move_mouse_click_and_verify_category_page(product_page_elements, category_name="Shoes")
+    @pytest.mark.parametrize("category_name", list(categories.keys()))
+    def test1_category_transaction_from_header(self, product_page_elements, category_name):
+        category = Category(category=category_name)
+        product_page_elements.move_mouse_through_list_of_locators_and_click_last(mouse_movement_locators_list=category.mouse_movement_locators_list)
+        product_page_elements.verify_correct_transition_to_new_url(category)
+        product_page_elements.verify_ui_elements(category)
