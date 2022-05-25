@@ -4,11 +4,14 @@ from functions import helpers
 VALID_FIRST_NAME = "valid username"
 VALID_LAST_NAME = "valid last_name"
 VALID_EMAIL = helpers.random_valid_email()
+VALID_PASSWORD = helpers.random_valid_password()
+VALID_CONFIRM_PASSWORD = VALID_PASSWORD
+
 EXISTING_EMAIL = "vadim1@yahoo.com"
 
-VALID_PASSWORD = "abcdefg"
-INVALID_EMAIL = "abc"
-INVALID_PASSWORD = "abcde"
+INVALID_EMAIL = helpers.random_invalid_email()
+INVALID_PASSWORD = helpers.random_invalid_password()
+INVALID_CONFIRM_PASSWORD = VALID_PASSWORD + "abc"
 
 # input fields
 GENDER_MAIL_CHECK_BOX_xpath = (By.XPATH, "//input[@id='gender-male']")

@@ -16,7 +16,9 @@ from functions.log_in_functions import LogInFunctions
 from functions.register_functions import RegisterFunctions
 from functions.category_page_functions import CategoryPageFunctions
 from functions.shopping_cart_functions import ShoppingCartObject
+
 logger = logging.getLogger()
+
 
 @pytest.fixture()
 def start_page():
@@ -48,7 +50,6 @@ def register_page(start_page):
 def product_page_elements(start_page):
     yield CategoryPageFunctions(start_page.driver)
     logging.info(f"Was verified --{len(list(categories.keys()))}-- categories")
-
 
 
 @pytest.fixture()

@@ -33,6 +33,7 @@ class RegisterObject:
         self.password = password
         self.confirm_password = confirm_password
         self.obj_attributes = "first_name", "last_name", "email", "password", "confirm_password"
+        # self.set_email_message()
 
     @property
     def first_name(self):
@@ -60,9 +61,13 @@ class RegisterObject:
         if email:
             if not verify_email(email):
                 self.__email.error_message = reg_const.WRONG_EMAIL_text
-            elif email == reg_const.EXISTING_EMAIL:
-                self.__email.error_xpath = reg_const.EMAIL_ALREADY_EXISTS_xpath
-                self.__email.error_message = reg_const.EMAIL_ALREADY_EXISTS_text
+            # elif email == reg_const.EXISTING_EMAIL \
+            #         and self.first_name.error_message == "" \
+            #         and self.last_name.error_message == "" \
+            #         and self.password.error_message == "" \
+            #         and self.confirm_password.error_message == "":
+            #     self.__email.error_xpath = reg_const.EMAIL_ALREADY_EXISTS_xpath
+            #     self.__email.error_message = reg_const.EMAIL_ALREADY_EXISTS_text
 
     @property
     def password(self):
@@ -97,6 +102,13 @@ class RegisterFunctions(ProjectFunction):
     def verify_error_messages(self, user):
         """ if field's 'error_message' should be empty -- verify there is no any error message in field's 'error_message' xpath
             if field's 'error_messages' is NOT empty -- verify there is appropriate error message presents in its xpath """
+        if user.first_name.error_message == "" \
+                and user.last_name.error_message == "" \
+                and user.password.error_message == "" \
+                and user.confirm_password.error_message == "" \
+                and user.email.error_message == "":
+            self.verify_message(locator=reg_const.SUCCESS_REGISTRATION_xpath, expected_text=reg_const.SUCCESS_REGISTRATION_text)
+            return
         for atr in user.obj_attributes:
             user_atr = eval("object." + atr, {"object": user})
             if not user_atr.error_message:
@@ -105,14 +117,44 @@ class RegisterFunctions(ProjectFunction):
                 self.verify_message(locator=user_atr.error_xpath, expected_text=user_atr.error_message)
 
             self.logger.info(
-                f" value of the {user_atr.field_name:18} field: --{self.get_value_from_input_field(user_atr.input_field_xpath):18}--  Error message actual result: --{self.get_text_from_locator(user_atr.error_xpath)}")
+                f" value of the --{user_atr.field_name:18}-- field is : --{self.get_value_from_input_field(user_atr.input_field_xpath):18}--  Error message actual result: --{self.get_text_from_locator(user_atr.error_xpath)}")
 
     def click_register_button(self, user):
         self.wait_click_ability_and_click(reg_const.REGISTER_BUTTON_xpath)
+        # for atr in user.obj_attributes:
+        #     user_atr = eval("object." + atr, {"object": user})
+        #     if user_atr.input_value == "":
+        #         user_atr.error_message = reg_const.IS_REQUIRED_messages[atr]
+        self.edit_error_messages_after_click_register_button(user)
+
+
+    def edit_error_messages_after_click_register_button(self, user):
+
+
         for atr in user.obj_attributes:
             user_atr = eval("object." + atr, {"object": user})
             if user_atr.input_value == "":
                 user_atr.error_message = reg_const.IS_REQUIRED_messages[atr]
+
+            if user.first_name.error_message == "" \
+                    and user.last_name.error_message == "" \
+                    and user.password.error_message == "" \
+                    and user.confirm_password.error_message == "":
+                if user.email == reg_const.EXISTING_EMAIL:
+                    user.email.error_xpath = reg_const.EMAIL_ALREADY_EXISTS_xpath
+                    user.email.error_message = reg_const.EMAIL_ALREADY_EXISTS_text
+                # elif user.email == reg_const.VALID_EMAIL:
+                #     user.email.error_xpath = reg_const.SUCCESS_REGISTRATION_xpath
+                #     user.email.error_message = reg_const.SUCCESS_REGISTRATION_text
+
+    # def check_existing_of_error_messages(self,user):
+    #     if user.email == reg_const.EXISTING_EMAIL \
+    #             and user.first_name.error_message == "" \
+    #             and user.last_name.error_message == "" \
+    #             and user.password.error_message == "" \
+    #             and user.confirm_password.error_message == "":
+    #         user.email.error_xpath = reg_const.EMAIL_ALREADY_EXISTS_xpath
+    #         user.email.error_message = reg_const.EMAIL_ALREADY_EXISTS_text
 
     def fill_register_fields_click_and_verify_error_messages(self, register_page, first_name="", last_name="", email="", password="",
                                                              confirm_password=""):
@@ -123,11 +165,33 @@ class RegisterFunctions(ProjectFunction):
                               password=password,
                               confirm_password=confirm_password)
         # 1. fill all fields
-        register_page.fill_register_fields(user)
+        self.fill_register_fields(user)
         # 2. click 'Register' button
-        register_page.click_register_button(user)
+        self.click_register_button(user)
         # 3. verify error messages
-        register_page.verify_error_messages(user)
+        # if user.email == reg_const.EXISTING_EMAIL \
+        #         and user.first_name.error_message == "" \
+        #         and user.last_name.error_message == "" \
+        #         and user.password.error_message == "" \
+        #         and user.confirm_password.error_message == "":
+        #     user.email.error_xpath = reg_const.EMAIL_ALREADY_EXISTS_xpath
+        #     user.email.error_message = reg_const.EMAIL_ALREADY_EXISTS_text
+
+
+
+        self.verify_error_messages(user)
+
+    # def set_email_message(self, user):
+    # if user.first_name.error_message == "" \
+    #         and user.last_name.error_message == "" \
+    #         and user.password.error_message == "" \
+    #         and user.confirm_password.error_message == "":
+    #     if user.email == reg_const.EXISTING_EMAIL:
+    #         user.email.error_xpath = reg_const.EMAIL_ALREADY_EXISTS_xpath
+    #         user.email.error_message = reg_const.EMAIL_ALREADY_EXISTS_text
+    #     elif user.email == reg_const.VALID_EMAIL:
+    #         user.email.error_xpath = reg_const.SUCCESS_REGISTRATION_xpath
+    #         user.email.error_message = reg_const.SUCCESS_REGISTRATION_text
 
     def fill_register_fields_and_verify_error_messages(self, register_page, first_name="", last_name="", email="", password="",
                                                        confirm_password=""):

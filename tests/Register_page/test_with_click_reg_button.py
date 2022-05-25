@@ -1,5 +1,7 @@
 import logging
 
+import pytest
+
 from constants import register_page_constants as reg_const
 
 from functions.register_functions import RegisterObject
@@ -36,126 +38,171 @@ class TestRegisterPageClick:
     registration_complet:   -   -   -   -   -   -   -   -   -   6
     """
 
-    def test9_empty_fields(self, register_page):
-        """
-        Summary: registering user with all empty fields
-        Steps:  1. fill all fields with empty values
-                2. click 'Register' button
-                3. verify error messages
-        Expected result: all error messages == ' ... is required'  """
+    @pytest.mark.parametrize("first_name", [reg_const.VALID_FIRST_NAME, ""])
+    @pytest.mark.parametrize("last_name", [reg_const.VALID_LAST_NAME, ""])
+    @pytest.mark.parametrize("email", [reg_const.VALID_EMAIL, reg_const.INVALID_EMAIL, reg_const.EXISTING_EMAIL])
+    @pytest.mark.parametrize("password", [reg_const.VALID_PASSWORD, reg_const.INVALID_PASSWORD])
+    @pytest.mark.parametrize("confirm_password", [reg_const.VALID_CONFIRM_PASSWORD, reg_const.INVALID_CONFIRM_PASSWORD])
+    def est_regist(self, register_page, first_name, last_name, email, password, confirm_password):
+        user = RegisterObject(first_name=first_name,
+                              last_name=last_name,
+                              email=email,
+                              password=password,
+                              confirm_password=confirm_password)
+        logging.info(f"{first_name=},  {last_name=},  {email=},  {password=},  {confirm_password=}")
+        # 1. fill all fields
+        register_page.fill_register_fields(user)
+        # 2. click 'Register' button
+        register_page.click_register_button(user)
 
-        register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page)
+        # 3. verify error messages
+        # if user.email == reg_const.VALID_EMAIL and user.password == reg_const.VALID_PASSWORD and user.confirm_password == reg_const.VALID_CONFIRM_PASSWORD:
+        #     register_page.verify_message(locator=reg_const.SUCCESS_REGISTRATION_xpath,
+        #                                  expected_text=reg_const.SUCCESS_REGISTRATION_text)
+        #     register_page.verify_message(locator=reg_const.EMAIL_IN_HEADER_xpath, expected_text=email)
+        # else:
+        register_page.verify_error_messages(user)
 
-    def test10_valid_lastname(self, register_page, first_name="", last_name="", email="", password="", confirm_password=""):
-        """
-        Summary: registering user with valid last_name , rest fields are empty
-        Steps:  1. fill all fields
-                2. click 'Register' button
-                3. verify error messages
-        Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
-        register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
-                                                                           last_name=reg_const.VALID_LAST_NAME)
+    # def test9_empty_fields(self, register_page):
+    #     """
+    #     Summary: registering user with all empty fields
+    #     Steps:  1. fill all fields with empty values
+    #             2. click 'Register' button
+    #             3. verify error messages
+    #     Expected result: all error messages == ' ... is required'  """
+    #
+    # register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page)
 
-    def test11_valid_firstname_password_invalid_email(self, register_page):
-        """
-        Summary: registering user with valid first_name and password, invalid email, rest fields are empty
-        Steps:  1. fill all fields
-                2. click 'Register' button
-                3. verify error messages
-        Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
-        register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
-                                                                           first_name=reg_const.VALID_FIRST_NAME,
-                                                                           email=reg_const.INVALID_EMAIL,
-                                                                           confirm_password=reg_const.VALID_PASSWORD)
+    # def test10_valid_lastname(self, register_page, first_name="", last_name="", email="", password="", confirm_password=""):
+    #     """
+    #     Summary: registering user with valid last_name , rest fields are empty
+    #     Steps:  1. fill all fields
+    #             2. click 'Register' button
+    #             3. verify error messages
+    #     Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
+    #     register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
+    #                                                                        last_name=reg_const.VALID_LAST_NAME)
 
-    def test12_valid_lastname_email_invalid_confirm_password(self, register_page):
-        """
-        Summary: registering user with valid last_name and email, invalid confirm_password, rest fields are empty
-        Steps:  1. fill all fields
-                2. click 'Register' button
-                3. verify error messages
-        Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
+    # def test11_valid_firstname_password_invalid_email(self, register_page):
+    #     """
+    #     Summary: registering user with valid first_name and password, invalid email, rest fields are empty
+    #     Steps:  1. fill all fields
+    #             2. click 'Register' button
+    #             3. verify error messages
+    #     Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
+    #     register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
+    #                                                                        first_name=reg_const.VALID_FIRST_NAME,
+    #                                                                        email=reg_const.INVALID_EMAIL,
+    #                                                                        confirm_password=reg_const.VALID_PASSWORD)
 
-        register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
-                                                                           last_name=reg_const.VALID_LAST_NAME,
-                                                                           email=reg_const.VALID_EMAIL,
-                                                                           confirm_password=reg_const.INVALID_PASSWORD)
+    # def test12_valid_lastname_email_invalid_confirm_password(self, register_page):
+    #     """
+    #     Summary: registering user with valid last_name and email, invalid confirm_password, rest fields are empty
+    #     Steps:  1. fill all fields
+    #             2. click 'Register' button
+    #             3. verify error messages
+    #     Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
+    #
+    #     register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
+    #                                                                        last_name=reg_const.VALID_LAST_NAME,
+    #                                                                        email=reg_const.VALID_EMAIL,
+    #                                                                        confirm_password=reg_const.INVALID_PASSWORD)
 
-    def test13_valid_firstname_password_confirm_password(self, register_page):
-        """
-        Summary: registering user with valid first_name and password and confirm_password, rest fields are empty
-        Steps:  1. fill all fields
-                2. click 'Register' button
-                3. verify error messages
-       Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
+    # def test13_valid_firstname_password_confirm_password(self, register_page):
+    #     """
+    #     Summary: registering user with valid first_name and password and confirm_password, rest fields are empty
+    #     Steps:  1. fill all fields
+    #             2. click 'Register' button
+    #             3. verify error messages
+    #    Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
+    #
+    #     register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
+    #                                                                        first_name=reg_const.VALID_FIRST_NAME,
+    #                                                                        password=reg_const.VALID_PASSWORD,
+    #                                                                        confirm_password=reg_const.VALID_PASSWORD)
+    #
+    # def test14_valid_lastname_invalid_email_password_confirm_password(self, register_page):
+    #     """
+    #     Summary: registering user with valid last_name , invalid email and password and confirm_password, rest fields are empty
+    #     Steps:  1. fill all fields
+    #             2. click 'Register' button
+    #             3. verify error messages
+    #     Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
+    #     register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
+    #                                                                        last_name=reg_const.VALID_LAST_NAME,
+    #                                                                        email=reg_const.INVALID_EMAIL,
+    #                                                                        password=reg_const.INVALID_PASSWORD,
+    #                                                                        confirm_password=reg_const.INVALID_PASSWORD)
+    #
+    # def test15_valid_first_name_email_confirm_password_invalid_password(self, register_page):
+    #     # 1. first_name_name - valid , email - valid , password - invalid , confirm_password -- valid
+    #     register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
+    #                                                                        first_name=reg_const.VALID_FIRST_NAME,
+    #                                                                        email=reg_const.VALID_EMAIL,
+    #                                                                        password=reg_const.INVALID_PASSWORD,
+    #                                                                        confirm_password=reg_const.VALID_PASSWORD)
+    #
+    # def test16_valid_first_name_email_password_invalid_confirm_password(self, register_page):
+    #     # 1. first_name_name - valid , email - valid , password - valid , confirm_password -- invalid
+    #     register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
+    #                                                                        first_name=reg_const.VALID_FIRST_NAME,
+    #                                                                        email=reg_const.VALID_EMAIL,
+    #                                                                        password=reg_const.VALID_PASSWORD,
+    #                                                                        confirm_password=reg_const.INVALID_PASSWORD)
+    #
 
-        register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
-                                                                           first_name=reg_const.VALID_FIRST_NAME,
-                                                                           password=reg_const.VALID_PASSWORD,
-                                                                           confirm_password=reg_const.VALID_PASSWORD)
 
-    def test14_valid_lastname_invalid_email_password_confirm_password(self, register_page):
-        """
-        Summary: registering user with valid last_name , invalid email and password and confirm_password, rest fields are empty
-        Steps:  1. fill all fields
-                2. click 'Register' button
-                3. verify error messages
-        Expected result: last_name error message - empty , rest error message fields -- ' ... is required'  """
-        register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
-                                                                           last_name=reg_const.VALID_LAST_NAME,
-                                                                           email=reg_const.INVALID_EMAIL,
-                                                                           password=reg_const.INVALID_PASSWORD,
-                                                                           confirm_password=reg_const.INVALID_PASSWORD)
 
-    def test15_valid_first_name_email_confirm_password_invalid_password(self, register_page):
-        # 1. first_name_name - valid , email - valid , password - invalid , confirm_password -- valid
-        register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
-                                                                           first_name=reg_const.VALID_FIRST_NAME,
-                                                                           email=reg_const.VALID_EMAIL,
-                                                                           password=reg_const.INVALID_PASSWORD,
-                                                                           confirm_password=reg_const.VALID_PASSWORD)
 
-    def test16_valid_first_name_email_password_invalid_confirm_password(self, register_page):
-        # 1. first_name_name - valid , email - valid , password - valid , confirm_password -- invalid
-        register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
-                                                                           first_name=reg_const.VALID_FIRST_NAME,
-                                                                           email=reg_const.VALID_EMAIL,
-                                                                           password=reg_const.VALID_PASSWORD,
-                                                                           confirm_password=reg_const.INVALID_PASSWORD)
+
+
+
+
+
 
     def test17_valid_first_name_last_name_password_confirm_password_existing_email(self, register_page):
         # 1. first_name,last_name  - valid , email - existing , password - valid , confirm_password -- valid
         register_page.fill_register_fields_click_and_verify_error_messages(register_page=register_page,
-                                                                           first_name=reg_const.VALID_FIRST_NAME,
+                                                                           first_name=reg_const.VALID_LAST_NAME,
                                                                            last_name=reg_const.VALID_LAST_NAME,
                                                                            email=reg_const.EXISTING_EMAIL,
                                                                            password=reg_const.VALID_PASSWORD,
                                                                            confirm_password=reg_const.VALID_PASSWORD)
 
-    def test18_valid_all_fields(self, register_page):
-        # first_name,last_name  - valid , email - valid , password - valid , confirm_password -- valid
-        email = reg_const.VALID_EMAIL
-        user = RegisterObject(first_name=reg_const.VALID_FIRST_NAME,
-                              last_name=reg_const.VALID_LAST_NAME,
-                              email=email,
-                              password=reg_const.VALID_PASSWORD,
-                              confirm_password=reg_const.VALID_PASSWORD)
 
-        # 1. fill all fields
-        register_page.fill_register_fields(user)
 
-        # 2. verify error messages
-        register_page.verify_error_messages(user)
 
-        # 3. click 'Register' button
-        register_page.click_register_button(user)
 
-        # 4. verify  message "Your registration completed"
-        register_page.verify_message(locator=reg_const.SUCCESS_REGISTRATION_xpath,
-                                     expected_text=reg_const.SUCCESS_REGISTRATION_text)
-        self.logger.info(f"Observe message:  --{register_page.get_text_from_locator(reg_const.SUCCESS_REGISTRATION_xpath)}--")
 
-        # 4. verify just inputed email in header
-        register_page.verify_message(locator=reg_const.EMAIL_IN_HEADER_xpath, expected_text=email)
-        self.logger.info(
-            f"Observe username in header:  --{register_page.get_text_from_locator(reg_const.EMAIL_IN_HEADER_xpath)}--")
+
+
+
+
+
+    # def test18_valid_all_fields(self, register_page):
+    #     # first_name,last_name  - valid , email - valid , password - valid , confirm_password -- valid
+    #     email = reg_const.VALID_EMAIL
+    #     user = RegisterObject(first_name=reg_const.VALID_FIRST_NAME,
+    #                           last_name=reg_const.VALID_LAST_NAME,
+    #                           email=email,
+    #                           password=reg_const.VALID_PASSWORD,
+    #                           confirm_password=reg_const.VALID_PASSWORD)
+    #
+    #     # 1. fill all fields
+    #     register_page.fill_register_fields(user)
+    #
+    #     # 2. verify error messages
+    #     register_page.verify_error_messages(user)
+    #
+    #     # 3. click 'Register' button
+    #     register_page.click_register_button(user)
+    #
+    # 4. verify  message "Your registration completed"
+    # register_page.verify_message(locator=reg_const.SUCCESS_REGISTRATION_xpath,
+    #                              expected_text=reg_const.SUCCESS_REGISTRATION_text)
+    # self.logger.info(f"Observe message:  --{register_page.get_text_from_locator(reg_const.SUCCESS_REGISTRATION_xpath)}--")
+    #
+    # # 4. verify just inputed email in header
+    # register_page.verify_message(locator=reg_const.EMAIL_IN_HEADER_xpath, expected_text=email)
+    # self.logger.info(
+    #     f"Observe username in header:  --{register_page.get_text_from_locator(reg_const.EMAIL_IN_HEADER_xpath)}--")
