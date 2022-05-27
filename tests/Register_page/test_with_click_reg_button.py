@@ -17,7 +17,7 @@ class TestRegisterPageClick:
 
     @pytest.mark.parametrize("first_name", [reg_const.VALID_FIRST_NAME, ""])
     @pytest.mark.parametrize("last_name", [reg_const.VALID_LAST_NAME, ""])
-    @pytest.mark.parametrize("email", [reg_const.VALID_EMAIL, reg_const.INVALID_EMAIL, reg_const.EXISTING_EMAIL, ""])
+    @pytest.mark.parametrize("email", [ reg_const.EXISTING_EMAIL, ""])
     @pytest.mark.parametrize("password", [reg_const.VALID_PASSWORD, reg_const.INVALID_PASSWORD, ""])
     @pytest.mark.parametrize("confirm_password", [reg_const.VALID_CONFIRM_PASSWORD, reg_const.INVALID_CONFIRM_PASSWORD, ""])
     def test1_fill_input_fields_and_click_register_button(self, register_page_obj, first_name, last_name, email, password, confirm_password):
