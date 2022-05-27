@@ -64,8 +64,8 @@ IS_REQUIRED_messages = {"first_name": FIRST_NAME_IS_REQUIRED_text,
                         "password": PASSWORD_IS_REQURED_text,
                         "confirm_password": PASSWORD_IS_REQURED_text}
 
-params_for_first_name_object = ("FIRST NAME", "", FIRST_NAME_INPUT_FIELD_xpath, FIRST_NAME_ERROR_xpath, "")
-params_for_last_name_object = ("LAST NAME", "", LAST_NAME_INPUT_FIELD_xpath, LAST_NAME_ERROR_xpath, "")
-params_for_email_object = ("EMAIL", "", EMAIL_INPUT_FIELD_id, EMAIL_ERROR_xpath, "")
-params_for_password_object = ("PASSWORD", "", PASSWORD_INPUT_FIELD_xpath, PASSWORD_ERROR_xpath, "")
-params_for_confirm_password_object = ("CONFIRM_PASSWORD", "", CONFIRM_PASSWORD_INPUT_FIELD_xpath, CONFIRM_PASSWORD_ERROR_xpath, "")
+params_for_first_name_object = ("first_name", "", FIRST_NAME_INPUT_FIELD_xpath, FIRST_NAME_ERROR_xpath, "")
+params_for_last_name_object = ("last_name", "", LAST_NAME_INPUT_FIELD_xpath, LAST_NAME_ERROR_xpath, "")
+params_for_email_object = ("email", "", EMAIL_INPUT_FIELD_id, EMAIL_ERROR_xpath, "")
+params_for_password_object = ("password", "", PASSWORD_INPUT_FIELD_xpath, PASSWORD_ERROR_xpath, "")
+params_for_confirm_password_object = ("confirm_password", "", CONFIRM_PASSWORD_INPUT_FIELD_xpath, CONFIRM_PASSWORD_ERROR_xpath, "")

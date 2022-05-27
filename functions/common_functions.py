@@ -26,6 +26,10 @@ class CommonFunctions(Waitings):
         actions.send_keys(button)
         actions.perform()
 
+    def wait_send_keys_and_click_button(self, locator, data, button):
+        self.wait_send_keys(locator=locator, data=data)
+        self.press_keyboard_button(button=button)
+
     @wait_5_sec
     def click_button_and_verify_new_url(self, button, url):
         """ Click button(by locator) and check new URL(expected)"""
@@ -44,7 +48,7 @@ class CommonFunctions(Waitings):
         time.sleep(1)
         return elem.text
 
-    def check_presence_of_element(self, locator)->bool:
+    def check_presence_of_element(self, locator) -> bool:
         """ check the presence of the element by its xpath
         True -- element is present at DOM
         False -- element is absent at DOM   """
@@ -64,8 +68,8 @@ class CommonFunctions(Waitings):
     def verify_message(self, locator, expected_text, comments=""):
         """ verify that expected_text==actual text in 'locator'   """
         actual_text = self.get_text_from_locator(locator)
-        self.logger.info(f"  actual  message {comments}: --{actual_text}--")
-        self.logger.info(f"expected  message {comments}: --{expected_text}--")
+        # self.logger.info(f"  actual  message {comments}: --{actual_text}--")
+        # self.logger.info(f"expected  message {comments}: --{expected_text}--")
         assert actual_text == expected_text, f"{actual_text=} , {expected_text=}"
 
     def verify_text_partly_present_in_locator(self, message_locator, expected_text):
@@ -76,12 +80,12 @@ class CommonFunctions(Waitings):
         self.logger.info(f"    actual whole text: --{message}--")
         assert expected_text in message
 
-    def get_value_from_input_field(self, locator)->str:
+    def get_value_from_input_field(self, locator) -> str:
         """ returns as string"""
         WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located(locator))
         return self.driver.find_element(*locator).get_attribute('value')
 
-    def take_attribute(self, locator, attribute)->str:
+    def take_attribute(self, locator, attribute) -> str:
         WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located(locator))
         # self.logger.info(f"value of the attribute: '{product_page_constants.py.driver.find_element(by=locator_type, value=locator).get_attribute(attribute)}-")
         return self.driver.find_element(*locator).get_attribute(attribute)

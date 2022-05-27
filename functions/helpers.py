@@ -24,37 +24,31 @@ def random_word(count=5):
 
 def random_valid_email():
     # create email in format:  ***@***.***
-    return str(random_word(5) + "@" + random_word(5) + "." + random_word(5)).lower()
+    return str(random_word(3) + "@" + random_word(3) + "." + random_word(3)).lower()
 
 
 def random_invalid_email():
-    num = random.randint(1, 6)
-    if num == 1:
-        return str(random_word(5))
-    elif num == 2:
-        return str(random_word(3) + "." + random_word(3)).lower()
-    elif num == 3:
-        return str(random_word(3) + "@" + random_word(3))
-    elif num == 4:
-        return "@" + random_word(3) + "." + random_word(3).lower()
-    elif num == 5:
-        return str(random_word(3) + "@" + random_word(3) + "." + random_word(3).lower())
-    elif num == 6:
-        return str(random_word(3) + "@" + "." + random_word(3)).lower()
+    return str(random_word(random.randint(1, 6)))
 
 
 def random_valid_password():
-    return str(random_word(random.randint(7, 10)))
+    return str(random_word(random.randint(6, 10)))
 
 
 def random_invalid_password():
-    return str(random_word(random.randint(1, 6)))
+    return str(random_word(random.randint(1, 5)))
 
 
 def verify_email(email):
     if re.match("\\w+[@]\\w+[.]\\w+", email):
         return True
     return False
+
+
+def verify_password(password):
+    if 0 < len(password) < 6:
+        return False
+    return True
 
 
 def create_driver(browser_name):

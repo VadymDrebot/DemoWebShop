@@ -13,7 +13,7 @@ from constants.header_constants import categories
 
 from functions.common_functions import CommonFunctions
 from functions.log_in_functions import LogInFunctions
-from functions.register_functions import RegisterFunctions
+from functions.register_functions import  RegisterObject
 from functions.category_page_functions import CategoryPageFunctions
 from functions.shopping_cart_functions import ShoppingCartObject
 
@@ -40,10 +40,12 @@ def login_page(start_page):
 
 
 @pytest.fixture()
-def register_page(start_page):
+def register_page_obj(start_page):
     start_page.click_button_and_verify_new_url(button=header_const.REGISTER_BUTTON_IN_HEADER_class,
                                                url=global_const.REGISTER_PAGE_url)
-    return RegisterFunctions(start_page.driver)
+
+    # return RegisterFunctions(start_page.driver)
+    return RegisterObject(start_page.driver)
 
 
 @pytest.fixture()
