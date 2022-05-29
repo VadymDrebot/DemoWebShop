@@ -1,6 +1,6 @@
 #!groovy
 //
-// QA Complex App tests Runner
+// DemoWebShop tests Runner
 
 // Pipeline
 pipeline {

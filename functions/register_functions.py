@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 from selenium.webdriver.common.keys import Keys
 
 from constants import register_page_constants as reg_const
@@ -6,13 +8,13 @@ from functions.project_functions import ProjectFunction
 from functions import helpers
 
 
+@dataclass
 class Fields:
-    def __init__(self, field_name, input_value, input_field_xpath, error_xpath, error_message=""):
-        self.field_name = field_name
-        self.input_value = input_value
-        self.input_field_xpath = input_field_xpath
-        self.error_xpath = error_xpath
-        self.error_message = error_message
+    field_name: str
+    input_value: str
+    input_field_xpath: tuple
+    error_xpath: tuple
+    error_message: str
 
 
 class RegisterObject(ProjectFunction):

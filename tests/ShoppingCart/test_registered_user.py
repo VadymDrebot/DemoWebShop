@@ -1,6 +1,6 @@
 import pytest
 
-from constants.login_page_constants import EMAIL_ITERATOR
+from constants.sign_in_page_constants import EMAIL_ITERATOR
 
 from functions.log_in_functions import LogInFunctions
 
