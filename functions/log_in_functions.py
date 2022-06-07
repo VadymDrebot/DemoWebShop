@@ -67,3 +67,4 @@ class LoginFunctions(CommonFunctions):
         self.logout()
         self.login(email_data=email_data, password_data=password_data)
 
+

@@ -18,7 +18,7 @@ class CommonFunctions(Waitings):
     logger = logging.getLogger()
 
     def clear_input_field(self, locator, locator_type=By.XPATH):
-        input_field = self.driver.driver.find_element(by=locator_type, value=locator)
+        input_field = self.driver.find_element(by=locator_type, value=locator)
         input_field.clear()
 
     def press_keyboard_button(self, button):
@@ -40,13 +40,35 @@ class CommonFunctions(Waitings):
         # self.logger.info(f"Expected url: -{url}-")
         assert self.driver.current_url == url
 
-    def choose_random_from_drop_list(self, locator, locator_type=By.XPATH) -> str:
-        select = Select(self.driver.driver.find_element(by=locator_type, value=locator))
-        lst = select.options
-        elem = lst[random.randint(1, len(lst) - 1)]
-        elem.click()
+    def get_list_of_drop_list_web_elements(self, locator):
+        """ return list of WEB_ELEMENTS """
+        select = Select(self.driver.find_element(*locator))
+        return select.options
+
+    def get_list_of_drop_down_values(self, locator):
+        """ return list of VALUES from drop down menu"""
+        web_elements_list = self.get_list_of_drop_list_web_elements(locator)
+        return [element.text for element in web_elements_list]
+
+    def click_random_from_drop_list(self, locator) -> str:
+        """ from 'drop list' choose random element, click on it and return the value(text) of the clicked element"""
+        web_elements = self.get_list_of_drop_list_web_elements(locator)
+        web_element = web_elements[random.randint(1, len(web_elements) - 1)]
+        clicked_name_from_dropdown_menu = web_element.text
+        web_element.click()
         time.sleep(1)
-        return elem.text
+        return clicked_name_from_dropdown_menu
+
+    def click_concrete_value_from_drop_down_list(self, value: str, locator):
+        """ from 'drop list' choose CONCRETE element by given name(value) and click on it """
+        web_elements = self.get_list_of_drop_list_web_elements(locator)
+        for web_element in web_elements:
+            if web_element.text == value:
+                web_element.click()
+                time.sleep(1)
+                return
+        else:
+            raise ValueError("Wrong input 'value'")
 
     def check_presence_of_element(self, locator) -> bool:
         """ check the presence of the element by its xpath

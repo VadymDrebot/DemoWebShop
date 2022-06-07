@@ -12,7 +12,7 @@ from constants import global_constants as global_const
 from constants.header_constants import categories
 
 from functions.common_functions import CommonFunctions
-from functions.log_in_functions import  LoginFunctions
+from functions.log_in_functions import LoginFunctions
 from functions.register_functions import RegisterObject
 from functions.category_page_functions import CategoryPageFunctions
 from functions.shopping_cart_functions import ShoppingCartObject
@@ -24,7 +24,7 @@ logger = logging.getLogger()
 def start_page():
     options = Options()
 
-    options.headless = True
+    # options.headless = True
     driver = webdriver.Chrome(options=options, executable_path=global_const.PATH_TO_CHROME_WEBDRIVER)
     driver.get(global_const.START_PAGE_url)
     driver.implicitly_wait(time_to_wait=10)
@@ -48,8 +48,8 @@ def register_page_obj(start_page):
 
 @pytest.fixture()
 def product_page_elements(start_page):
-    yield CategoryPageFunctions(start_page.driver)
-    logging.info(f"Was verified --{len(list(categories.keys()))}-- categories")
+    return CategoryPageFunctions(start_page.driver)
+    # logging.info(f"Was verified --{len(list(categories.keys()))}-- categories")
 
 
 @pytest.fixture()
@@ -62,3 +62,10 @@ def email(request, login_page):
 @pytest.fixture()
 def cart_object(start_page):
     return ShoppingCartObject(start_page.driver)
+
+
+# @pytest.fixture()
+# def ui_elements(start_page):
+#     CategoryPageFunctions.open_random_product_category_page(start_page.driver)
+#     return
+

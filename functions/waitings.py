@@ -11,7 +11,7 @@ def wait_5_sec(target):
             try:
                 target(*args, **kwargs)
                 limit = 5
-            except Exception:
+            except TimeoutError:
                 limit = limit + 0.5
 
     return wrapper
@@ -28,10 +28,21 @@ class Waitings:
         WebDriverWait(self.driver, timeout=period).until(EC.visibility_of_element_located(locator))
         return self.driver.find_element(*locator)
 
-    @wait_5_sec
-    def wait_find_element(self, locator, timeout=3):
+    # @wait_5_sec
+    def wait_find_element(self, locator, timeout=5):
+        # b, xpath=locator
         WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
-        return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(*locator))
+        return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
+
+    # @wait_5_sec
+    # def wait_element_in_dom(self, element):
+    #     """ return web element as it becomes attached to the DOM"""
+    #     flag = True
+    #     while flag:
+    #         if  WebDriverWait(self.driver, timeout=5).until(EC.staleness_of(element))==False:
+    #             flag = False
+    #
+    #     return element
 
     # @wait_5_sec
     # disable @wait5sec as it somehow nullify 'return' result(list of elements) of the function
@@ -75,6 +86,3 @@ class Waitings:
         #     input_field.send_keys(data[i])
         for data_item in data:
             input_field.send_keys(data_item)
-
-
-

@@ -2,7 +2,7 @@ import pytest
 
 from constants.sign_in_page_constants import EMAIL_ITERATOR
 
-from functions.log_in_functions import LogInFunctions
+from functions.log_in_functions import LoginFunctions
 
 
 class TestShoppingCartRegisteredUser:
@@ -36,7 +36,7 @@ class TestShoppingCartRegisteredUser:
         cart_object.check_presence_of_products_inside_shopping_cart(comment="before LogOut")
 
         # 6,7 Log Out and Log In with the same credentials
-        LogInFunctions(cart_object.driver).logout_and_login(email_data=email)
+        LoginFunctions(cart_object.driver).logout_and_login(email_data=email)
 
         # 8. verify the existence of the ADDED cart_object in the "shopping cart"
         cart_object.check_presence_of_products_inside_shopping_cart(comment="after LogIn")
@@ -66,7 +66,7 @@ class TestShoppingCartRegisteredUser:
         cart_object.check_presence_of_products_inside_shopping_cart(comment="before LogOut")
 
         # 5,6 Log Out and Log In with the same credentials
-        LogInFunctions(cart_object.driver).logout_and_login(email_data=email)
+        LoginFunctions(cart_object.driver).logout_and_login(email_data=email)
 
         # 7. verify the existence of the ADDED cart_object in the "shopping cart"
         cart_object.check_presence_of_products_inside_shopping_cart(comment="after  LogIn")
@@ -102,7 +102,7 @@ class TestShoppingCartRegisteredUser:
         assert not cart_object.check_presence_of_given_products_inside_shopping_cart(given_products_list=cart_object.list_of_removed_products,
                                                                                      comment="before LogOut")
         # 8,9 Log Out and Log In with the same credentials
-        LogInFunctions(cart_object.driver).logout_and_login(email_data=email)
+        LoginFunctions(cart_object.driver).logout_and_login(email_data=email)
 
         # 10. verify the absence of the REMOVED position in the "shopping cart"
         assert not cart_object.check_presence_of_given_products_inside_shopping_cart(given_products_list=cart_object.list_of_removed_products,

@@ -29,8 +29,6 @@ DIGITAL_DOWNLOADS_BUTTON_IN_HEADER_xpath = (By.XPATH, "//ul[@class='top-menu']//
 JEWELRY_BUTTON_IN_HEADER_xpath = (By.XPATH, "//ul[@class='top-menu']//a[@href='/jewelry']")
 GIFT_CARDS_BUTTON_IN_HEADER_xpath = (By.XPATH, "//ul[@class='top-menu']//a[@href='/gift-cards']")
 
-BOOKS = {"mouse_movement": ["Books"], "xpath_for_click": BOOKS_BUTTON_xpath}
-
 categories = {"Books": {"mouse_movement": ["Books"], "xpath_for_click": BOOKS_BUTTON_xpath},
 
               "Computers": {"mouse_movement": ["Computers"], "xpath_for_click": COMPUTERS_BUTTON_IN_HEADER_xpath,
