@@ -35,16 +35,6 @@ class Waitings:
         return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
 
     # @wait_5_sec
-    # def wait_element_in_dom(self, element):
-    #     """ return web element as it becomes attached to the DOM"""
-    #     flag = True
-    #     while flag:
-    #         if  WebDriverWait(self.driver, timeout=5).until(EC.staleness_of(element))==False:
-    #             flag = False
-    #
-    #     return element
-
-    # @wait_5_sec
     # disable @wait5sec as it somehow nullify 'return' result(list of elements) of the function
     def wait_find_elements(self, list_locator):
         WebDriverWait(self.driver, timeout=3).until(EC.presence_of_all_elements_located(list_locator))
@@ -82,7 +72,5 @@ class Waitings:
     def wait_slow_send_keys(self, locator, data):
         WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located(locator))
         input_field = self.driver.find_element(*locator)
-        # for i in range(len(data)):
-        #     input_field.send_keys(data[i])
         for data_item in data:
             input_field.send_keys(data_item)

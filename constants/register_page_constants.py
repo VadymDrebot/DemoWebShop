@@ -58,12 +58,6 @@ SUCCESS_REGISTRATION_text = "Your registration completed"
 EMAIL_IN_HEADER_xpath = (By.XPATH, "//div[@class='header-links']//a[@class='account']")
 # EMAIL_IN_HEADER_xpath = (By.XPATH, "//a[@class='account' and contains(text(),'{email}')]")
 
-# IS_REQUIRED_messages = {"first_name": FIRST_NAME_IS_REQUIRED_text,
-#                         "last_name": LAST_NAME_IS_REQUIRED_text,
-#                         "email": EMAIL_IS_REQUIRED_text,
-#                         "password": PASSWORD_IS_REQURED_text,
-#                         "confirm_password": PASSWORD_IS_REQURED_text}
-
 params_for_first_name_object = ("first_name", "", FIRST_NAME_INPUT_FIELD_xpath, FIRST_NAME_ERROR_xpath, "")
 params_for_last_name_object = ("last_name", "", LAST_NAME_INPUT_FIELD_xpath, LAST_NAME_ERROR_xpath, "")
 params_for_email_object = ("email", "", EMAIL_INPUT_FIELD_id, EMAIL_ERROR_xpath, "")

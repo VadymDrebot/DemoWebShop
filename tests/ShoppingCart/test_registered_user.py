@@ -18,27 +18,27 @@ class TestShoppingCartRegisteredUser:
         Summary: add random product and verify its existence in 'Shopping cart' after LogOut and LogIn again
         Precondition: Log In with Valid login|password
         Steps:
-             2. click 'Add to Cart' on a random product
-             3. verify the number next to 'Shopping cart' in the header increase by '1'
-             4. verify presence of the added product in the 'Shopping cart'
-             5. Log Out
-             6. Log In with the same credentials
-             7. verify the existence of the ADDED product (not all products) in the 'Shopping cart'
+             1. click 'Add to Cart' on a random product
+             2. verify the number next to 'Shopping cart' in the header increase by '1'
+             3. verify presence of the added product in the 'Shopping cart'
+             4. Log Out
+             5. Log In with the same credentials
+             6. verify the existence of the ADDED product (not all products) in the 'Shopping cart'
         """
 
-        # 2. click 'Add to Cart' on a random cart_object (verifying "The cart_object has been added to your shopping cart" message)
+        # 1. click 'Add to Cart' on a random cart_object (verifying "The cart_object has been added to your shopping cart" message)
         cart_object.add_random_products(adding_amount := 1)
 
-        # 3. verify the number next to 'shopping cart' in the top menu increase by '1'
+        # 2. verify the number next to 'shopping cart' in the top menu increase by '1'
         assert cart_object.get_item_quantity_from_top_menu(comment='after') == cart_object.start_count_in_cart + adding_amount
 
-        # 4. verify presence of the chosen cart_object in the 'shopping cart'
+        # 3. verify presence of the chosen cart_object in the 'shopping cart'
         cart_object.check_presence_of_products_inside_shopping_cart(comment="before LogOut")
 
-        # 6,7 Log Out and Log In with the same credentials
+        # 4,5 Log Out and Log In with the same credentials
         LoginFunctions(cart_object.driver).logout_and_login(email_data=email)
 
-        # 8. verify the existence of the ADDED cart_object in the "shopping cart"
+        # 6. verify the existence of the ADDED cart_object in the "shopping cart"
         cart_object.check_presence_of_products_inside_shopping_cart(comment="after LogIn")
 
     @pytest.mark.marker_email(next(EMAIL_ITERATOR))

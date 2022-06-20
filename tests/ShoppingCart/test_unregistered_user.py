@@ -24,7 +24,8 @@ class TestShoppingCartUnregisteredUser:
         # 1. move mouse to 'shopping cart' in header
         product_page_elements.move_mouse_to_locator(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
 
-        # 2. verify PROMPT message: 'You have no items in your shopping cart.' DO NOT WORKS IN 'HEADLESS' MODE
+        # 2. verify PROMPT message: 'You have no items in your shopping cart.'
+        # DO NOT WORKS IN 'HEADLESS' MODE
         # product_page_elements.verify_message(locator=header_const.USERPROMPT_SHOPPING_CART_IN_HEADER_xpath,
         #                                      expected_text=header_const.USERPROMPT_EMPTY_SHOPPING_CART_text)
 

@@ -21,7 +21,7 @@ class TestLogIn:
                    3. verify  error messages
         """
         login_page.fill_login_page_fields(email_data=email, password_data=password)
-        login_page.verify_login_error_messages_no_click(email, password)
+        login_page.verify_login_error_messages_no_click(email)
 
     @pytest.mark.parametrize("email", [reg_const.VALID_EMAIL, reg_const.EXISTING_EMAIL, sign_const.INVALID_EMAIL, ""])
     @pytest.mark.parametrize("password", [reg_const.VALID_PASSWORD, sign_const.EXISTING_PASSWORD, ""])

@@ -12,7 +12,6 @@ from functions.common_functions import CommonFunctions
 class LoginFunctions(CommonFunctions):
     logger = logging.getLogger()
 
-
     def verify_login_error_messages_no_click(self, email):
 
         # email INVALID and NOT EMPTY (no matter, LogIn button clicked or not)
@@ -20,8 +19,8 @@ class LoginFunctions(CommonFunctions):
             self.verify_message(locator=sign_const.EMAIL_VALIDATION_ERROR_xpath, expected_text=sign_const.EMAIL_VALIDATION_ERROR_text)
         else:
             assert not self.check_presence_of_element(locator=sign_const.EMAIL_VALIDATION_ERROR_xpath)
-        assert not self.check_presence_of_element(locator=sign_const.LOGIN_ERROR_MESSAGE_xpath)
-        assert not self.check_presence_of_element(locator=sign_const.CREDENTIAL_ERROR_MESSAGE_xpath)
+            assert not self.check_presence_of_element(locator=sign_const.LOGIN_ERROR_MESSAGE_xpath)
+            assert not self.check_presence_of_element(locator=sign_const.CREDENTIAL_ERROR_MESSAGE_xpath)
 
     def verify_login_error_messages_after_click(self, email, password):
         if email and not verify_email(email):
@@ -66,5 +65,3 @@ class LoginFunctions(CommonFunctions):
     def logout_and_login(self, email_data=sign_const.VALID_EMAIL, password_data=sign_const.EXISTING_PASSWORD):
         self.logout()
         self.login(email_data=email_data, password_data=password_data)
-
-

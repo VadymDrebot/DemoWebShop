@@ -9,7 +9,6 @@ from selenium import webdriver
 from constants import sign_in_page_constants as login_const
 from constants import header_constants as header_const
 from constants import global_constants as global_const
-from constants.header_constants import categories
 
 from functions.common_functions import CommonFunctions
 from functions.log_in_functions import LoginFunctions
@@ -62,10 +61,4 @@ def email(request, login_page):
 @pytest.fixture()
 def cart_object(start_page):
     return ShoppingCartObject(start_page.driver)
-
-
-# @pytest.fixture()
-# def ui_elements(start_page):
-#     CategoryPageFunctions.open_random_product_category_page(start_page.driver)
-#     return
 

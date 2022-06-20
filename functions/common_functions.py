@@ -71,9 +71,10 @@ class CommonFunctions(Waitings):
             raise ValueError("Wrong input 'value'")
 
     def check_presence_of_element(self, locator) -> bool:
-        """ check the presence of the element by its xpath
-        True -- element is present at DOM
-        False -- element is absent at DOM   """
+        """ check the presence of the element by its locator
+        return:
+            True -- element is present at DOM
+            False -- element is absent at DOM   """
         try:
             # decrease comment up to 1 sec for 'find_element_by_xpath'. By default, it will take 10 sec
             self.driver.implicitly_wait(1)

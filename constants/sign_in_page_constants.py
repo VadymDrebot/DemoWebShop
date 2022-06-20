@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from functions import helpers
-from functions.helpers import  email_iterator
+from functions.helpers import email_iterator
 
 VALID_EMAIL = helpers.random_valid_email()
 INVALID_EMAIL = helpers.random_invalid_email()
@@ -26,4 +26,3 @@ LOGIN_ERROR_MESSAGE_text = "Login was unsuccessful. Please correct the errors an
 CREDENTIAL_ERROR_MESSAGE_xpath = (By.XPATH, "//div[@class='message-error']//li")
 CREDENTIAL_ERROR_NO_CUSTOMER__text = "No customer account found"
 CREDENTIAL_ERROR_EXISTING_EMAIL_text = "The credentials provided are incorrect"
-

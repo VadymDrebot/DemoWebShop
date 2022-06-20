@@ -1,9 +1,7 @@
 import logging
-import random
-import time
 
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.select import Select
+
 
 from constants.header_constants import categories
 from constants import product_page_constants as prod_page_const
