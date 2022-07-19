@@ -26,8 +26,6 @@ def start_page():
 
     # options.headless = True
     driver = webdriver.Chrome(options=options, executable_path=global_const.PATH_TO_CHROME_WEBDRIVER)
-    # driver_service = Service(ChromeDriverManager().install())
-    # driver = webdriver.Chrome(options=options, service_args=driver_service)
     driver.get(global_const.START_PAGE_url)
     driver.implicitly_wait(time_to_wait=10)
     yield CommonFunctions(driver)

@@ -33,8 +33,8 @@ class ProjectFunction(CommonFunctions):
 
         expected_breadcrumb = "HOME /" + " /".join(category.mouse_movement_categories_list).upper()
 
-        self.logger.info(f"ACTUAL   breadcrumb: --{actual_breadcrumb}--")
-        self.logger.info(f"EXPECTED breadcrumb: --{expected_breadcrumb}--")
+        # self.logger.info(f"ACTUAL   breadcrumb: --{actual_breadcrumb}--")
+        # self.logger.info(f"EXPECTED breadcrumb: --{expected_breadcrumb}--")
         assert actual_breadcrumb == expected_breadcrumb
 
     def open_random_product_category_page(self):
@@ -53,6 +53,4 @@ class ProjectFunction(CommonFunctions):
         self.verify_message(locator=EMPTY_CONTENT_class, expected_text=EMPTY_CONTENT_text)
 
     def check_if_empty_shopping_cart(self):
-        if self.get_text_from_locator(locator=EMPTY_CONTENT_class) == EMPTY_CONTENT_text:
-            return True
-        return False
+        return True if self.get_text_from_locator(locator=EMPTY_CONTENT_class) == EMPTY_CONTENT_text else False

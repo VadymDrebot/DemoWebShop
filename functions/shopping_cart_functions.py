@@ -157,7 +157,7 @@ class ShoppingCartObject(ProjectFunction):
 
         # make list of 'Shopping cart' dom indexes
         self.wait_click_ability_and_click(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
-        self.logger.info(f"Shopping cart before removing : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
+        # self.logger.info(f"Shopping cart before removing : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
         self.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
 
         for _ in range(removed_amount):

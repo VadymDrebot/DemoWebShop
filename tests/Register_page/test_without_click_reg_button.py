@@ -22,7 +22,7 @@ class TestRegisterPageNoClick:
     @pytest.mark.parametrize("password", [reg_const.VALID_PASSWORD, reg_const.INVALID_PASSWORD, ""])
     @pytest.mark.parametrize("confirm_password", [reg_const.VALID_CONFIRM_PASSWORD, reg_const.INVALID_CONFIRM_PASSWORD, ""])
     def test1_fill_input_fields_without_click_register_button(self, register_page_obj, first_name, last_name, email, password, confirm_password):
-        logging.info(f"{first_name=},  {last_name=},  {email=},  {password=},  {confirm_password=}\n")
+        # logging.info(f"{first_name=},  {last_name=},  {email=},  {password=},  {confirm_password=}\n")
 
         register_page_obj.fill_register_fields_with_tab_click(first_name_value=first_name,
                                                               last_name_value=last_name,

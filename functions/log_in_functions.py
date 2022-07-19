@@ -51,8 +51,8 @@ class LoginFunctions(CommonFunctions):
     def fill_login_page_fields(self, email_data, password_data):
         self.wait_send_keys_and_click_button(locator=sign_const.EMAIL_INPUT_FIELD_xpath, data=email_data, button=Keys.TAB)
         self.wait_send_keys_and_click_button(locator=sign_const.PASSWORD_INPUT_FIELD_xpath, data=password_data, button=Keys.TAB)
-        logging.info(f"Field values:  email: --{self.get_value_from_input_field(locator=sign_const.EMAIL_INPUT_FIELD_xpath)}--\n"
-                     f"                 password: --{self.get_value_from_input_field(locator=sign_const.PASSWORD_INPUT_FIELD_xpath)}--")
+        # logging.info(f"Field values:  email: --{self.get_value_from_input_field(locator=sign_const.EMAIL_INPUT_FIELD_xpath)}--\n"
+        #              f"                 password: --{self.get_value_from_input_field(locator=sign_const.PASSWORD_INPUT_FIELD_xpath)}--")
         self.logging_errors("before click")
 
     def login(self, email_data, password_data):

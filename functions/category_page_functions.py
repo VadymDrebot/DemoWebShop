@@ -2,7 +2,6 @@ import logging
 
 from selenium.common.exceptions import TimeoutException
 
-
 from constants.header_constants import categories
 from constants import product_page_constants as prod_page_const
 
@@ -38,8 +37,8 @@ class CategoryPageFunctions(ProjectFunction):
 
     def verify_correct_transition_to_new_url(self, category):
         expected_url = self.take_attribute(locator=category.mouse_movement_locators_list[-1], attribute='href')
-        self.logger.info(f"ACTUAL   url: --{self.driver.current_url}--")
-        self.logger.info(f"EXPECTED url: --{expected_url}--")
+        # self.logger.info(f"ACTUAL   url: --{self.driver.current_url}--")
+        # self.logger.info(f"EXPECTED url: --{expected_url}--")
         assert self.driver.current_url == expected_url
 
     def verify_ui_elements(self, category):
@@ -58,19 +57,19 @@ class CategoryPageFunctions(ProjectFunction):
     def verify_page_name(self, category):
         actual_page_name = self.get_text_from_locator(locator=prod_page_const.PAGE_TITLE_xpath)
         expected_page_name = category.category_name
-        self.logger.info(f"ACTUAL   name of the page: --{actual_page_name}--")
-        self.logger.info(f"EXPECTED name of the page: --{expected_page_name}--")
+        # self.logger.info(f"ACTUAL   name of the page: --{actual_page_name}--")
+        # self.logger.info(f"EXPECTED name of the page: --{expected_page_name}--")
         assert actual_page_name == expected_page_name, f"{actual_page_name}, {expected_page_name}"
 
     def verify_elements_to_be_sorted_from_whole_dropdown_menu(self, locator):
         """ verify if page elements are sorted for EACH value from drop down menu"""
-        # list_of_names = self.get_list_of_drop_down_values(locator)
         for name in self.get_list_of_drop_down_values(locator):
             self.click_concrete_value_from_drop_down_list(value=name, locator=locator)
             self.verify_elements_to_be_sorted_by_single_value(name)
 
     def verify_elements_to_be_sorted_by_single_value(self, text):
         """ verify if page elements are sorted as ONE GIVEN (as text) value from drop down menu"""
+
         if text == "Position":
             sorted_list = "Was chosen 'Position'. Sorting passed..."
             assert True
@@ -97,21 +96,19 @@ class CategoryPageFunctions(ProjectFunction):
 
         else:
             raise AssertionError("Unknown position in drop list menu")
-        logging.info(f"Sorting type: --{text}--, Sorted result: --{sorted_list}--")
+        # logging.info(f"Sorting type: --{text}--, Sorted result: --{sorted_list}--")
 
     def verify_number_of_products_on_page(self, locator):
         """ verify if the number of elements on the page no more then value from drop down menu"""
-        # list_of_values_from_dropdown_menu = self.get_list_of_drop_down_values(locator=locator)
         for name in self.get_list_of_drop_down_values(locator=locator):
             self.click_concrete_value_from_drop_down_list(value=name, locator=locator)
             actual_list_of_numbers_on_page = self.driver.find_elements(*prod_page_const.LIST_OF_PRODUCTS_ON_PAGE_GRID_VIEW_xpath)
-            logging.info(
-                f"ACTUAL number on page: --{len(actual_list_of_numbers_on_page):2}-- is less or equal then number from dropdown box: --{name}--")
+            # logging.info(
+            #     f"ACTUAL number on page: --{len(actual_list_of_numbers_on_page):2}-- is less or equal then number from dropdown box: --{name}--")
             assert int(name) >= len(actual_list_of_numbers_on_page)
 
     def verify_products_type_view_on_page(self, locator):
         """ verify if the type of view of elements on the page is the same as it is in drop down menu"""
-        # list_of_names_from_dropdown_list = self.get_list_of_drop_down_values(locator=locator)
         for name in self.get_list_of_drop_down_values(locator=locator):
             self.click_concrete_value_from_drop_down_list(value=name, locator=locator)
             if name == "Grid":
@@ -121,11 +118,11 @@ class CategoryPageFunctions(ProjectFunction):
             else:
                 raise ValueError("Wrong value")
             assert self.wait_find_element(locator=list_of_products_locator)
-            logging.info(f"ACTUAL view type: --{list_of_products_locator}--, EXPECTED view type: --{name}--")
+            # logging.info(f"ACTUAL view type: --{list_of_products_locator}--, EXPECTED view type: --{name}--")
 
     def verify_filter_by_price_functionality(self, locator):
         """ verify functionality of the 'Filter by price' filter  (drop down menu)"""
-        logging.info(f"Values from 'Filter by': --{self.get_list_of_texts(locator)}--")
+        # logging.info(f"Values from 'Filter by': --{self.get_list_of_texts(locator)}--")
 
         for index in range(len(self.wait_find_elements(locator))):
             web_element = self.wait_find_elements(list_locator=locator)[index]
@@ -156,4 +153,4 @@ class CategoryPageFunctions(ProjectFunction):
             assert float(sorted_actual_price_list[0]) >= float(over_value)
         if under_value:
             assert float(sorted_actual_price_list[-1]) <= float(under_value)
-        logging.info(f"Filter values: --{over_value=:20}--,--{under_value=:20}-- . Actual price list: --{actual_price_list}--")
+        # logging.info(f"Filter values: --{over_value=:20}--,--{under_value=:20}-- . Actual price list: --{actual_price_list}--")

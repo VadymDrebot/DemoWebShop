@@ -40,15 +40,11 @@ def random_invalid_password():
 
 
 def verify_email(email):
-    if re.match("\\w+[@]\\w+[.]\\w+", email):
-        return True
-    return False
+    return True if re.match("\\w+[@]\\w+[.]\\w+", email) else False
 
 
 def verify_password(password):
-    if 0 < len(password) < 6:
-        return False
-    return True
+    return False if 0 < len(password) < 6 else True
 
 
 def create_driver(browser_name):

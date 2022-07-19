@@ -126,7 +126,7 @@ class RegisterObject(ProjectFunction):
         if self.empty_error_messages_flag and not self.check_presence_of_element(reg_const.EMAIL_ALREADY_EXISTS_xpath):
             # verify OUR existing email by flag AND somebody's else existing email
             self.verify_message(locator=reg_const.SUCCESS_REGISTRATION_xpath, expected_text=reg_const.SUCCESS_REGISTRATION_text)
-            self.logger.info(f"{self.get_text_from_locator(locator=reg_const.SUCCESS_REGISTRATION_xpath)}")
+            # self.logger.info(f"{self.get_text_from_locator(locator=reg_const.SUCCESS_REGISTRATION_xpath)}")
         else:
             for field_name in self.obj_field_names:
                 self_dot_field_name = eval("object." + field_name, {"object": self})
@@ -137,8 +137,8 @@ class RegisterObject(ProjectFunction):
                     self.verify_message(locator=self_dot_field_name.error_xpath, expected_text=self_dot_field_name.error_message)
                     actual_error_message = self.get_text_from_locator(self_dot_field_name.error_xpath)
                     self.empty_error_messages_flag = True
-                self.logger.info(
-                    f"Field: --{self_dot_field_name.field_name:16}--   Value: --{self.get_value_from_input_field(self_dot_field_name.input_field_xpath):16}--   ACTUAL error message: --{actual_error_message:24}-- EXPECTED error message: --{self_dot_field_name.error_message:24}--")
+                # self.logger.info(
+                #     f"Field: --{self_dot_field_name.field_name:16}--   Value: --{self.get_value_from_input_field(self_dot_field_name.input_field_xpath):16}--   ACTUAL error message: --{actual_error_message:24}-- EXPECTED error message: --{self_dot_field_name.error_message:24}--")
 
     def fill_register_fields_with_tab_click(self, first_name_value, last_name_value, email_value, password_value, confirm_password_value):
         # fill 'first_name' field

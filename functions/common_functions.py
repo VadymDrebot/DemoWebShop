@@ -99,8 +99,8 @@ class CommonFunctions(Waitings):
         """verify that 'expected_text' PARTLY IN the  message(with 'message_locator')"""
         message = self.get_text_from_locator(message_locator)
 
-        self.logger.info(f"expected part of text: --{expected_text}--")
-        self.logger.info(f"    actual whole text: --{message}--")
+        # self.logger.info(f"expected part of text: --{expected_text}--")
+        # self.logger.info(f"    actual whole text: --{message}--")
         assert expected_text in message
 
     def get_value_from_input_field(self, locator) -> str:
@@ -122,9 +122,7 @@ class CommonFunctions(Waitings):
         return _, new_xpath
 
     def get_text_from_locator(self, locator):
-        if self.check_presence_of_element(locator=locator):
-            return self.driver.find_element(*locator).text
-        return None
+        return self.driver.find_element(*locator).text if self.check_presence_of_element(locator=locator) else None
 
     def get_list_of_texts(self, list_locator) -> list:
         list_of_elements = self.wait_find_elements(list_locator=list_locator)
