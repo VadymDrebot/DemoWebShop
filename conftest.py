@@ -1,23 +1,21 @@
 import logging
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
 import pytest
 
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
-from constants import sign_in_page_constants as login_const
-from constants import header_constants as header_const
-from constants import global_constants as global_const
+from Pages.Log_In_Page import log_in_page_constants as login_const
+from Pages.Header import header_constants as header_const
+from Pages.Base_Page import global_constants as global_const
 
-from functions.common_functions import CommonFunctions
-from functions.log_in_functions import LoginFunctions
-from functions.register_functions import RegisterObject
-from functions.category_page_functions import CategoryPageFunctions
-from functions.shopping_cart_functions import ShoppingCartObject
+from Helpers.common_functions import CommonFunctions
+from Pages.Log_In_Page.log_in_functions import LoginFunctions
+from Pages.Register_Page.register_functions import RegisterObject
+from Pages.Header.category_page_functions import CategoryPageFunctions
+from Pages.Shopping_cart_Page.shopping_cart_functions import ShoppingCartObject
 
-logger = logging.getLogger()
+# logger = logging.getLogger()
 
 
 @pytest.fixture()
