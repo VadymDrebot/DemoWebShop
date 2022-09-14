@@ -10,7 +10,8 @@ from functions.common_functions import CommonFunctions
 
 
 class LoginFunctions(CommonFunctions):
-    logger = logging.getLogger()
+    # logger = logging.getLogger(__name__)
+
 
     def verify_login_error_messages_no_click(self, email):
 

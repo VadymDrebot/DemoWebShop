@@ -22,7 +22,7 @@ class ProjectFunction(CommonFunctions):
                 locator=self.formated_locator(condition_list_locator, index))]
         else:
             list_of_dom_indexes = [index for index in range(1, product_amount_on_page + 1)]  # lst= [1,2,3,4,5]
-        # self.logger.info(f"List of dom indexes: --{list_of_dom_indexes}--")
+        self.logger.info(f"List of dom indexes: --{list_of_dom_indexes}--")
         return list_of_dom_indexes
 
     def verify_breadcrumb(self, category):
@@ -33,8 +33,8 @@ class ProjectFunction(CommonFunctions):
 
         expected_breadcrumb = "HOME /" + " /".join(category.mouse_movement_categories_list).upper()
 
-        # self.logger.info(f"ACTUAL   breadcrumb: --{actual_breadcrumb}--")
-        # self.logger.info(f"EXPECTED breadcrumb: --{expected_breadcrumb}--")
+        self.logger.info(f"ACTUAL   breadcrumb: --{actual_breadcrumb}--")
+        self.logger.info(f"EXPECTED breadcrumb: --{expected_breadcrumb}--")
         assert actual_breadcrumb == expected_breadcrumb
 
     def open_random_product_category_page(self):

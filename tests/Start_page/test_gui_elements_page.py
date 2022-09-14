@@ -1,3 +1,5 @@
+import logging
+
 from constants import product_page_constants as prod_const
 
 
@@ -8,7 +10,7 @@ class TestGuiElements:
     test3 : testing 'View as' element
     test4 : testing 'Filter by price' element
     """
-
+    logger = logging.getLogger()
     def test1_sort_by_element(self, product_page_elements):
         """
         Summary: verify functionality of the 'Sort by' dropdown box on category page

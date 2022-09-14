@@ -46,8 +46,8 @@ class CategoryPageFunctions(ProjectFunction):
         self.verify_breadcrumb(category)
 
         if category.sub_menu_list:
-            self.logger.info(f" ACTUAL  submenu list: -{self.get_list_of_texts(prod_page_const.LIST_OF_SUBCATEGORY_ON_PAGE_xpath)}-")
-            self.logger.info(f"EXPECTED submenu list: -{category.sub_menu_list}-")
+            # self.logger.info(f" ACTUAL  submenu list: -{self.get_list_of_texts(prod_page_const.LIST_OF_SUBCATEGORY_ON_PAGE_xpath)}-")
+            # self.logger.info(f"EXPECTED submenu list: -{category.sub_menu_list}-")
             assert self.get_list_of_texts(prod_page_const.LIST_OF_SUBCATEGORY_ON_PAGE_xpath) == category.sub_menu_list
         else:
             assert self.check_presence_of_element(locator=prod_page_const.DROP_DOWN_SORT_BY_LIST_BLOCK_xpath)

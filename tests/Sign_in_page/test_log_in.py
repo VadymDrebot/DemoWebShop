@@ -8,7 +8,7 @@ from constants import sign_in_page_constants as sign_const
 
 class TestLogIn:
     """ Tests for Log In page"""
-    logger = logging.getLogger()
+    # logger = logging.getLogger(__name__)
 
     @pytest.mark.parametrize("email", [sign_const.VALID_EMAIL, sign_const.EXISTING_EMAIL, sign_const.INVALID_EMAIL, ""])
     @pytest.mark.parametrize("password", [sign_const.VALID_PASSWORD, sign_const.EXISTING_PASSWORD, ""])

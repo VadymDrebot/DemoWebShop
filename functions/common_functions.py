@@ -3,6 +3,7 @@ import random
 import time
 
 import selenium.webdriver.support.expected_conditions as EC
+
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
@@ -35,9 +36,9 @@ class CommonFunctions(Waitings):
         """ Click button(by locator) and check new URL(expected)"""
         self.wait_click_ability_and_click(locator=button)
         # An expectation for checking the current url.
+        self.logger.info(f" Actual  url: -{self.driver.current_url}-")
+        self.logger.info(f"Expected url: -{url}-")
         WebDriverWait(self.driver, timeout=5).until(EC.url_to_be(url))
-        # self.logger.info(f" Actual  url: -{self.driver.current_url}-")
-        # self.logger.info(f"Expected url: -{url}-")
         assert self.driver.current_url == url
 
     def get_list_of_drop_list_web_elements(self, locator):

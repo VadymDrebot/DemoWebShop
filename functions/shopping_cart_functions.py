@@ -95,7 +95,7 @@ class ShoppingCartObject(ProjectFunction):
             if self.driver.current_url == current_url:
                 self.verify_message(locator=cart_const.PRODUCT_HAS_BEEN_ADDED_MESSAGE_xpath,
                                     expected_text=cart_const.PRODUCT_HAS_BEEN_ADDED_MESSAGE_text, comments="above the header")
-                # self.logger.info(f"Product was added to Shopping cart: --{temp_product.title}--")
+                self.logger.info(f"Product was added to Shopping cart: --{temp_product.title}--")
                 self.list_of_products_added_to_shopping_cart.append(temp_product)
                 self.current_count_in_cart += 1
                 return
@@ -105,7 +105,7 @@ class ShoppingCartObject(ProjectFunction):
         """ make: READ quantity of products in the 'Shopping cart' in the header . """
         quantity = self.get_text_from_locator(header_const.QUANTITY_OF_PRODUCTS_IN_SHOPPING_CART_xpath)
         int_quantity = int(quantity[1:-1])
-        # self.logger.info(f"Quantity of products in shopping cart from the header -{comment}- : --{int_quantity}--")
+        self.logger.info(f"Quantity of products in shopping cart from the header -{comment}- : --{int_quantity}--")
         return int_quantity
 
     def set_item_quantity_and_click_update(self):
@@ -116,15 +116,15 @@ class ShoppingCartObject(ProjectFunction):
         self.wait_send_keys(locator=quantity_input_field_locator, data=str(self.product_under_work.quantity))
         self.wait_click_ability_and_click(locator=cart_const.UPDATE_BUTTON_xpath)
 
-        # self.logger.info(f"EXPECTED new quantity : --{self.product_under_work.quantity}-- ")
-        # self.logger.info(f"  ACTUAL new quantity : --{self.get_value_from_input_field(locator=quantity_input_field_locator)}-- ")
+        self.logger.info(f"EXPECTED new quantity : --{self.product_under_work.quantity}-- ")
+        self.logger.info(f"  ACTUAL new quantity : --{self.get_value_from_input_field(locator=quantity_input_field_locator)}-- ")
 
     def check_presence_of_given_products_inside_shopping_cart(self, given_products_list, comment="") -> bool:
         self.wait_click_ability_and_click(header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
 
         for checking_product in given_products_list:
             if not self.check_presence_of_the_product_inside_shopping_cart(checking_product, comment):
-                # self.logger.info(f"Shopping cart -{comment}- : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
+                self.logger.info(f"Shopping cart -{comment}- : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
                 return False
         return True
 
@@ -146,9 +146,9 @@ class ShoppingCartObject(ProjectFunction):
                     self.get_text_from_locator(locator=self.formated_locator(cart_const.PRODUCT_TITLE_xpath, product_dom_index)) \
                     and checked_product.price == \
                     self.get_text_from_locator(locator=self.formated_locator(cart_const.PRODUCT_PRICE_xpath, product_dom_index)):
-                # self.logger.info(f"EXPECTED product in the 'Shopping cart -{comment}-: --{checked_product.title}--")
-                # self.logger.info(
-                #     f"  ACTUAL product in the 'Shopping cart -{comment}-: --{self.get_text_from_locator(locator=self.formated_locator(cart_const.PRODUCT_TITLE_xpath, product_dom_index))}--")
+                self.logger.info(f"EXPECTED product in the 'Shopping cart -{comment}-: --{checked_product.title}--")
+                self.logger.info(
+                    f"  ACTUAL product in the 'Shopping cart -{comment}-: --{self.get_text_from_locator(locator=self.formated_locator(cart_const.PRODUCT_TITLE_xpath, product_dom_index))}--")
                 return True
         return False
 
@@ -157,7 +157,7 @@ class ShoppingCartObject(ProjectFunction):
 
         # make list of 'Shopping cart' dom indexes
         self.wait_click_ability_and_click(locator=header_const.SHOPPING_CART_BUTTON_IN_HEADER_id)
-        # self.logger.info(f"Shopping cart before removing : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
+        self.logger.info(f"Shopping cart before removing : -{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}-")
         self.list_of_cart_dom_indexes = self.get_list_of_dom_indexes(products_list_locator=cart_const.LIST_OF_PRODUCTS_xpath)
 
         for _ in range(removed_amount):
@@ -174,13 +174,13 @@ class ShoppingCartObject(ProjectFunction):
             self.list_of_removed_products.append(removed_item)
 
             self.list_of_cart_dom_indexes.remove(random_dom_index)
-            # self.logger.info(f"Removing product: --{removed_item.title}--")
+            self.logger.info(f"Removing product: --{removed_item.title}--")
 
         # click 'Update...' button
         self.wait_click_ability_and_click(cart_const.UPDATE_BUTTON_xpath)
 
-        # self.logger.info("Shopping cart after removing : " + (" --Shopping cart is empty--" if self.check_if_empty_shopping_cart() else
-        #                                                       f"--{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}--"))
+        self.logger.info("Shopping cart after removing : " + (" --Shopping cart is empty--" if self.check_if_empty_shopping_cart() else
+                                                              f"--{self.get_list_of_texts(list_locator=cart_const.LIST_OF_TITLES_xpath)}--"))
 
     def get_total_and_subtotal_data(self, comment=""):
         """
@@ -198,7 +198,7 @@ class ShoppingCartObject(ProjectFunction):
         else:
             raise AssertionError(f"Wrong key/comment")
 
-        # self.logger.info(f"Total price  -{comment}-: --{total_price}--\n     Sub total price  -{comment}-: --{sub_total_price}--")
+        self.logger.info(f"Total price  -{comment}-: --{total_price}--\n     Sub total price  -{comment}-: --{sub_total_price}--")
 
     def get_list_of_shopping_cart_products(self, cart_object):
         """ return: list of product items , taken from the 'Shopping cart' page """
