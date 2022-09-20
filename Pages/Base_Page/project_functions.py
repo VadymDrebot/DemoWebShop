@@ -1,8 +1,8 @@
 from random import choice
 
-from Pages.Start_Page import product_page_constants as prod_page_const
+from Pages.Header import product_page_constants as prod_page_const
 from Pages.Header.header_constants import categories
-from Pages.Start_Page.product_page_constants import PAGE_TITLE_class
+from Pages.Header.product_page_constants import PAGE_TITLE_class
 from Pages.Shopping_cart_Page.shopping_cart_constants import PAGE_TITLE_text, EMPTY_CONTENT_class, EMPTY_CONTENT_text
 
 from Helpers.common_functions import CommonFunctions

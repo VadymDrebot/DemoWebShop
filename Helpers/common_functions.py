@@ -10,13 +10,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
+from Helpers.logging_functions import create_logger
 from Helpers.waitings import Waitings, wait_5_sec
 
 
 class CommonFunctions(Waitings):
     """common/universal Pages  for all/any points of the project or even other projects"""
-
-    # logger = logging.getLogger()
 
     def clear_input_field(self, locator, locator_type=By.XPATH):
         input_field = self.driver.find_element(by=locator_type, value=locator)
@@ -36,8 +35,8 @@ class CommonFunctions(Waitings):
         """ Click button(by locator) and check new URL(expected)"""
         self.wait_click_ability_and_click(locator=button)
         # An expectation for checking the current url.
-        self.logger.info(f" Actual  url: -{self.driver.current_url}-")
-        self.logger.info(f"Expected url: -{url}-")
+        self.logger.debug(f" Actual  url: -{self.driver.current_url}-")
+        self.logger.debug(f"Expected url: -{url}-")
         WebDriverWait(self.driver, timeout=5).until(EC.url_to_be(url))
         assert self.driver.current_url == url
 
@@ -80,7 +79,7 @@ class CommonFunctions(Waitings):
             # decrease comment up to 1 sec for 'find_element_by_xpath'. By default, it will take 10 sec
             self.driver.implicitly_wait(1)
             self.driver.find_element(*locator)
-            self.logger.info(f" Element exists: -{self.driver.find_element(*locator).text}-")
+            self.logger.debug(f" Element exists: -{self.driver.find_element(*locator).text}-")
         except NoSuchElementException:
             return False
         return True
@@ -92,16 +91,16 @@ class CommonFunctions(Waitings):
     def verify_message(self, locator, expected_text, comments=""):
         """ verify that expected_text==actual text in 'locator'   """
         actual_text = self.get_text_from_locator(locator)
-        # self.logger.info(f"  actual  message {comments}: --{actual_text}--")
-        # self.logger.info(f"expected  message {comments}: --{expected_text}--")
+        # self.logger.debug(f"  actual  message {comments}: --{actual_text}--")
+        # self.logger.debug(f"expected  message {comments}: --{expected_text}--")
         assert actual_text == expected_text, f"{actual_text=} , {expected_text=}"
 
     def verify_text_partly_present_in_locator(self, message_locator, expected_text):
         """verify that 'expected_text' PARTLY IN the  message(with 'message_locator')"""
         message = self.get_text_from_locator(message_locator)
 
-        # self.logger.info(f"expected part of text: --{expected_text}--")
-        # self.logger.info(f"    actual whole text: --{message}--")
+        self.logger.info(f"expected part of text: --{expected_text}--")
+        self.logger.info(f"    actual whole text: --{message}--")
         assert expected_text in message
 
     def get_value_from_input_field(self, locator) -> str:

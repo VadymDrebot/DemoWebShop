@@ -15,18 +15,19 @@ from Pages.Register_Page.register_functions import RegisterObject
 from Pages.Header.category_page_functions import CategoryPageFunctions
 from Pages.Shopping_cart_Page.shopping_cart_functions import ShoppingCartObject
 
-# logger = logging.getLogger()
 
 
-@pytest.fixture()
-def start_page():
+
+
+@pytest.fixture
+def start_page(request):
     options = Options()
 
-    # options.headless = True
+    options.headless = True
     driver = webdriver.Chrome(options=options, executable_path=global_const.PATH_TO_CHROME_WEBDRIVER)
     driver.get(global_const.START_PAGE_url)
     driver.implicitly_wait(time_to_wait=10)
-    yield CommonFunctions(driver)
+    yield CommonFunctions(driver, request.cls.logger,request.cls.node.name)
     driver.close()
 
 
@@ -34,14 +35,14 @@ def start_page():
 def login_page(start_page):
     start_page.click_button_and_verify_new_url(button=header_const.LOGIN_BUTTON_IN_HEADER_xpath,
                                                url=global_const.LOGIN_PAGE_url)
-    return LoginFunctions(start_page.driver)
+    return LoginFunctions(driver=start_page.driver, logger=start_page.logger)
 
 
 @pytest.fixture()
 def register_page_obj(start_page):
     start_page.click_button_and_verify_new_url(button=header_const.REGISTER_BUTTON_IN_HEADER_class,
                                                url=global_const.REGISTER_PAGE_url)
-    return RegisterObject(start_page.driver)
+    return RegisterObject(start_page.driver, logger=start_page.logger)
 
 
 @pytest.fixture()
