@@ -1,8 +1,7 @@
 import random
 import time
 
-from Pages.Header import header_constants as header_const
-from Pages.Start_Page import product_page_constants as prod_page_const
+from Pages.Header import header_constants as header_const, product_page_constants as prod_page_const
 from Pages.Shopping_cart_Page import shopping_cart_constants as cart_const
 
 from Pages.Base_Page.project_functions import ProjectFunction

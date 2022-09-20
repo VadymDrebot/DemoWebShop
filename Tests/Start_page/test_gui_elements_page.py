@@ -1,6 +1,6 @@
 import logging
 
-from Pages.Start_Page import product_page_constants as prod_const
+from Pages.Header import product_page_constants as prod_const
 
 
 class TestGuiElements:
@@ -11,6 +11,7 @@ class TestGuiElements:
     test4 : testing 'Filter by price' element
     """
     logger = logging.getLogger()
+
     def test1_sort_by_element(self, product_page_elements):
         """
         Summary: verify functionality of the 'Sort by' dropdown box on category page

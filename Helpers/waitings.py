@@ -21,9 +21,10 @@ def wait_5_sec(target):
 
 class Waitings:
 
-    def __init__(self, driver, logger):
+    def __init__(self, driver, logger,test_name):
         self.driver = driver
         self.logger = logger
+        self.test_name=test_name
 
     def wait_and_get_element_after_visibility(self, locator, period=5):
         # wait until element became visible and return it

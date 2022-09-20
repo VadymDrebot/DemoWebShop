@@ -27,7 +27,7 @@ def start_page(request):
     driver = webdriver.Chrome(options=options, executable_path=global_const.PATH_TO_CHROME_WEBDRIVER)
     driver.get(global_const.START_PAGE_url)
     driver.implicitly_wait(time_to_wait=10)
-    yield CommonFunctions(driver, request.cls.logger)
+    yield CommonFunctions(driver, request.cls.logger,request.cls.node.name)
     driver.close()
 
 

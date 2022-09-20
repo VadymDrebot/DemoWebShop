@@ -3,7 +3,7 @@ import logging
 from selenium.common.exceptions import TimeoutException
 
 from Pages.Header.header_constants import categories
-from Pages.Start_Page import product_page_constants as prod_page_const
+from Pages.Header import product_page_constants as prod_page_const
 
 from Pages.Base_Page.project_functions import ProjectFunction
 

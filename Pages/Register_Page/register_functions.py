@@ -122,13 +122,13 @@ class RegisterObject(ProjectFunction):
                 self.empty_error_messages_flag = True
 
     @log
-    def verify_error_messages(self, logger, test_name):
+    def verify_error_messages(self,  test_name,logger):
         """ if field's 'error_message' should be empty -- verify there is no any error message in field's 'error_message' xpath
             if field's 'error_messages' is NOT empty -- verify there is appropriate error message presents in its xpath """
         if self.empty_error_messages_flag and not self.check_presence_of_element(reg_const.EMAIL_ALREADY_EXISTS_xpath):
             # verify OUR existing email by flag AND somebody's else existing email
             self.verify_message(locator=reg_const.SUCCESS_REGISTRATION_xpath, expected_text=reg_const.SUCCESS_REGISTRATION_text)
-            logger.debug(f"{self.get_text_from_locator(locator=reg_const.SUCCESS_REGISTRATION_xpath)}")
+            self.logger.debug(f"{self.get_text_from_locator(locator=reg_const.SUCCESS_REGISTRATION_xpath)}")
         else:
             for field_name in self.obj_field_names:
                 self_dot_field_name = eval("object." + field_name, {"object": self})
@@ -139,12 +139,12 @@ class RegisterObject(ProjectFunction):
                     self.verify_message(locator=self_dot_field_name.error_xpath, expected_text=self_dot_field_name.error_message)
                     actual_error_message = self.get_text_from_locator(self_dot_field_name.error_xpath)
                     self.empty_error_messages_flag = True
-                logger.debug(
+                self.logger.debug(
                     f"Field: --{self_dot_field_name.field_name:16}--   Value: --{self.get_value_from_input_field(self_dot_field_name.input_field_xpath):16}--"
                     f"\nACTUAL error message: --{actual_error_message:24}--\nEXPECTED error message: --{self_dot_field_name.error_message:24}--")
 
-    def fill_register_fields_with_tab_click(self, first_name_value, last_name_value, email_value, password_value, confirm_password_value, logger):
-        logger.info(f"\n{first_name_value=}\n{last_name_value=}\n{email_value=}\n{password_value=}\n{confirm_password_value=}")
+    def fill_register_fields_with_tab_click(self, first_name_value, last_name_value, email_value, password_value, confirm_password_value,logger):
+        self.logger.info(f"\n{first_name_value=}\n{last_name_value=}\n{email_value=}\n{password_value=}\n{confirm_password_value=}")
         # fill 'first_name' field
         self.wait_send_keys_and_click_button(locator=self.first_name.input_field_xpath, data=first_name_value, button=Keys.TAB)
         self.first_name = first_name_value

@@ -27,9 +27,9 @@ class TestRegisterPageClick:
                                                               email_value=email,
                                                               password_value=password,
                                                               confirm_password_value=confirm_password,
-                                                              logger=self.logger)
+                                                              logger=register_page_obj.logger)
 
         register_page_obj.click_register_button_and_change_error_messages()
 
-        register_page_obj.verify_error_messages(logger=self.logger,
-                                                test_name=request.node.name)
+        register_page_obj.verify_error_messages(test_name=register_page_obj.node.name,
+                                                logger=register_page_obj.logger)
